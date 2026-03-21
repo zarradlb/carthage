@@ -1371,8 +1371,8 @@
     const els = Array.from(getTranslatableElements());
     const allTexts = els.map((el, i) => originalContent[i] || el.innerHTML);
 
-    // Split into 3 parallel batches for speed
-    const batchCount = 3;
+    // Split into 6 parallel batches — small enough to complete reliably
+    const batchCount = 6;
     const batchSize = Math.ceil(allTexts.length / batchCount);
     const batches = [];
     for (let i = 0; i < allTexts.length; i += batchSize) {
@@ -1386,10 +1386,17 @@
       // Run all batches in parallel
       const results = await Promise.all(
         batches.map(async (batch) => {
-          const translations = await translateTexts(batch.texts, lang);
-          completed++;
-          progressEl.textContent = completed + ' / ' + batches.length;
-          return { start: batch.start, translations };
+          try {
+            const translations = await translateTexts(batch.texts, lang);
+            completed++;
+            progressEl.textContent = completed + ' / ' + batches.length;
+            return { start: batch.start, translations };
+          } catch (err) {
+            console.error('Batch failed at index ' + batch.start, err);
+            completed++;
+            progressEl.textContent = completed + ' / ' + batches.length;
+            return { start: batch.start, translations: batch.texts };
+          }
         })
       );
 
