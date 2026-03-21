@@ -304,16 +304,28 @@
   .lang-btn.active { color: var(--gold-light); border-color: rgba(201,168,76,0.4); }
   .lang-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
-  /* Translation loading state */
-  .translating { position: relative; min-height: 4rem; }
-  .translating::after {
-    content: ''; position: absolute; top: 1rem; left: 50%; transform: translateX(-50%);
-    width: 20px; height: 20px; border: 2px solid rgba(201,168,76,0.2);
-    border-top-color: var(--gold); border-radius: 50%;
-    animation: spin 0.8s linear infinite;
+  /* Translation loading overlay */
+  .translate-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(26,19,10,0.92);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.4s;
   }
-  .translating > * { opacity: 0.3; transition: opacity 0.3s; }
-  @keyframes spin { to { transform: translateX(-50%) rotate(360deg); } }
+  .translate-overlay.active { opacity: 1; pointer-events: auto; }
+  .translate-overlay .spinner {
+    width: 32px; height: 32px; border: 2px solid rgba(201,168,76,0.2);
+    border-top-color: var(--gold); border-radius: 50%;
+    animation: spin 0.8s linear infinite; margin-bottom: 1.5rem;
+  }
+  .translate-overlay p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+    font-style: italic; color: var(--sand-dark);
+  }
+  .translate-overlay .progress {
+    font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em;
+    color: var(--stone); margin-top: 0.75rem; text-transform: uppercase;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
   /* RTL support for Arabic */
   [dir="rtl"] .category, [dir="rtl"] .source-note, [dir="rtl"] .method-box,
@@ -346,6 +358,12 @@
 <body>
 
 <a class="skip-link" href="#main-content">Skip to content</a>
+
+<div class="translate-overlay" id="translateOverlay">
+  <div class="spinner"></div>
+  <p>Translating…</p>
+  <div class="progress" id="translateProgress"></div>
+</div>
 
 <section class="hero" aria-label="Introduction">
   <div class="hero-symbol" aria-hidden="true">☽ ✦ ☽</div>
@@ -1268,172 +1286,137 @@
   const translationCache = {};
   const originalContent = {};
   let currentLang = 'en';
-  let translatingCount = 0;
 
-  const langNames = { en: 'English', fr: 'French', ar: 'Arabic', ru: 'Russian', zh: 'Simplified Chinese' };
+  const overlay = document.getElementById('translateOverlay');
+  const progressEl = document.getElementById('translateProgress');
 
-  // Store original content on first load
   function getTranslatableElements() {
     return document.querySelectorAll(
       '.hero-eyebrow, .hero-title, .hero-subtitle, .hero-premise, ' +
       '.era-number, .era-dates, .era-title, ' +
-      '.cat-label .cat-icon, .category h3, .category p, ' +
-      '.source-note, .section-intro, ' +
+      '.category h3, .category > p, ' +
+      '.cat-label, .source-note, .section-intro, ' +
       'blockquote.pullquote p, blockquote.pullquote cite, ' +
       '.compare-label, .compare-cell p, ' +
       '.timeline-strip h4, .tl-text, ' +
       '.method-box h2, .method-tier p, ' +
-      '.final-line, .conclusion p, ' +
-      '.hinge-caption, .visual-break-caption p, .visual-break-caption span, ' +
+      '.final-line, .hinge-caption, ' +
+      '.visual-break-caption p, .visual-break-caption span, ' +
       'footer'
     );
   }
 
-  // Collect translatable sections (group by nearest .era or .conclusion parent)
-  function getSectionElements() {
-    const sectionMap = new Map();
-    // Group: hero
-    const heroEls = document.querySelectorAll('.hero-eyebrow, .hero-title, .hero-subtitle, .hero-premise');
-    if (heroEls.length) sectionMap.set('hero', Array.from(heroEls));
-    // Group: footer + visual break
-    const miscEls = document.querySelectorAll('.final-line, footer, .hinge-caption, .visual-break-caption p, .visual-break-caption span');
-    if (miscEls.length) sectionMap.set('misc', Array.from(miscEls));
-    // Group by section
-    document.querySelectorAll('.era, .conclusion').forEach(section => {
-      const id = section.id || 'unknown';
-      const els = section.querySelectorAll(
-        '.era-number, .era-dates, .era-title, ' +
-        '.cat-label, h3, .category > p, ' +
-        '.source-note, .section-intro, ' +
-        'blockquote.pullquote p, blockquote.pullquote cite, ' +
-        '.compare-label, .compare-cell > p, ' +
-        '.timeline-strip h4, .tl-text, ' +
-        '.method-box h2, .method-tier p, ' +
-        '.conclusion > .container > .category p'
-      );
-      if (els.length) sectionMap.set(id, Array.from(els));
-    });
-    return sectionMap;
-  }
-
-  // Save original HTML content
+  // Save originals on load
   function saveOriginals() {
-    const allEls = getTranslatableElements();
-    allEls.forEach((el, i) => {
+    getTranslatableElements().forEach((el, i) => {
       if (!originalContent[i]) {
         originalContent[i] = el.innerHTML;
-        el.dataset.transIdx = i;
+        el.dataset.ti = i;
       }
     });
   }
 
-  // Restore English
   function restoreOriginals() {
-    const allEls = getTranslatableElements();
-    allEls.forEach((el, i) => {
-      if (originalContent[i] !== undefined) {
-        el.innerHTML = originalContent[i];
-      }
+    getTranslatableElements().forEach((el, i) => {
+      if (originalContent[i] !== undefined) el.innerHTML = originalContent[i];
     });
     document.documentElement.setAttribute('dir', 'ltr');
     document.documentElement.setAttribute('lang', 'en');
   }
 
-  // Translate a batch of elements via serverless proxy
-  async function translateBatch(elements, lang) {
-    const texts = elements.map(el => {
-      const idx = el.dataset.transIdx;
-      return originalContent[idx] || el.innerHTML;
+  // Call the serverless proxy
+  async function translateTexts(texts, lang) {
+    const res = await fetch('/api/translate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ texts, lang })
     });
-
-    // Build cache key
-    const cacheKey = lang + '::' + texts.map(t => t.substring(0, 50)).join('|');
-    if (translationCache[cacheKey]) {
-      return translationCache[cacheKey];
-    }
-
-    try {
-      const response = await fetch('/api/translate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ texts, lang })
-      });
-
-      const data = await response.json();
-      if (data.translations && Array.isArray(data.translations)) {
-        translationCache[cacheKey] = data.translations;
-        return data.translations;
-      }
-      console.error('Translation response error:', data.error);
-      return null;
-    } catch (err) {
-      console.error('Translation error:', err);
-      return null;
-    }
+    const data = await res.json();
+    if (data.translations) return data.translations;
+    throw new Error(data.error || 'Translation failed');
   }
 
-  // Translate a single section
-  async function translateSection(sectionId, elements, lang) {
-    const parent = elements[0]?.closest('.era, .conclusion, .hero, section') || document.body;
-
-    // Show loading state
-    const container = parent.querySelector('.container') || parent;
-    container.classList.add('translating');
-
-    // Batch into chunks of ~15 elements to stay within token limits
-    const chunkSize = 15;
-    for (let i = 0; i < elements.length; i += chunkSize) {
-      const chunk = elements.slice(i, i + chunkSize);
-      const translations = await translateBatch(chunk, lang);
-      if (translations && translations.length === chunk.length) {
-        chunk.forEach((el, j) => {
-          el.innerHTML = translations[j];
-        });
-      }
-    }
-
-    container.classList.remove('translating');
-  }
-
-  // Main translation handler
   async function switchLanguage(lang) {
     if (lang === currentLang) return;
     currentLang = lang;
 
-    // Update button states
+    // Update buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
-      const isActive = btn.dataset.lang === lang;
-      btn.classList.toggle('active', isActive);
-      btn.setAttribute('aria-pressed', isActive);
+      const active = btn.dataset.lang === lang;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', active);
     });
 
-    // Set direction for Arabic
     document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
     document.documentElement.setAttribute('lang', lang === 'zh' ? 'zh-Hans' : lang);
 
-    if (lang === 'en') {
-      restoreOriginals();
+    if (lang === 'en') { restoreOriginals(); return; }
+
+    saveOriginals();
+
+    // Check full cache
+    if (translationCache[lang]) {
+      const cached = translationCache[lang];
+      getTranslatableElements().forEach((el, i) => {
+        if (cached[i]) el.innerHTML = cached[i];
+      });
       return;
     }
 
-    // Save originals if not yet saved
-    saveOriginals();
+    // Show overlay
+    overlay.classList.add('active');
+    progressEl.textContent = '';
 
-    // Get sections and translate visible ones first, then the rest
-    const sectionMap = getSectionElements();
-    const sectionEntries = Array.from(sectionMap.entries());
+    // Gather all texts
+    const els = Array.from(getTranslatableElements());
+    const allTexts = els.map((el, i) => originalContent[i] || el.innerHTML);
 
-    // Translate all sections sequentially
-    for (const [sectionId, elements] of sectionEntries) {
-      if (currentLang !== lang) return; // User switched again, abort
-      await translateSection(sectionId, elements, lang);
+    // Split into 3 parallel batches for speed
+    const batchCount = 3;
+    const batchSize = Math.ceil(allTexts.length / batchCount);
+    const batches = [];
+    for (let i = 0; i < allTexts.length; i += batchSize) {
+      batches.push({ start: i, texts: allTexts.slice(i, i + batchSize) });
     }
+
+    let completed = 0;
+    progressEl.textContent = '0 / ' + batches.length;
+
+    try {
+      // Run all batches in parallel
+      const results = await Promise.all(
+        batches.map(async (batch) => {
+          const translations = await translateTexts(batch.texts, lang);
+          completed++;
+          progressEl.textContent = completed + ' / ' + batches.length;
+          return { start: batch.start, translations };
+        })
+      );
+
+      // Abort if user switched language during translation
+      if (currentLang !== lang) { overlay.classList.remove('active'); return; }
+
+      // Build full translation array and cache it
+      const fullTranslation = new Array(allTexts.length);
+      results.forEach(r => {
+        r.translations.forEach((t, i) => { fullTranslation[r.start + i] = t; });
+      });
+      translationCache[lang] = fullTranslation;
+
+      // Apply all at once
+      els.forEach((el, i) => {
+        if (fullTranslation[i]) el.innerHTML = fullTranslation[i];
+      });
+
+    } catch (err) {
+      console.error('Translation error:', err);
+    }
+
+    overlay.classList.remove('active');
   }
 
   // Initialize
   saveOriginals();
-
-  // Bind language buttons
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
   });
