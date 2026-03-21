@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Carthaginian World — A Historical Simulation</title>
+<meta name="description" content="If Hannibal had taken Rome: a deep-dive counterfactual history of the world under Carthaginian hegemony, 216 BCE – 2026 CE. Built on primary sources from Aristotle, Polybius, Livy, and a 2025 Nature genomics study.">
+<meta name="author" content="Lamine Zarrad">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="If Hannibal Had Taken Rome">
+<meta property="og:description" content="A deep-dive counterfactual history of the world under Carthaginian hegemony, 216 BCE – 2026 CE.">
+<meta property="og:image" content="/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="If Hannibal Had Taken Rome">
+<meta name="twitter:description" content="A deep-dive counterfactual history of the world under Carthaginian hegemony, 216 BCE – 2026 CE.">
+<meta name="twitter:image" content="/og-image.png">
+
+<!-- Favicon (inline SVG as data URI) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231a130a'/><text x='16' y='23' font-size='20' text-anchor='middle' fill='%23c9a84c'>☽</text></svg>">
+<meta name="theme-color" content="#1a130a">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c; --gold-light: #e8c97a; --deep-red: #6b1a1a;
+    --crimson: #9b2335; --sand: #f0e6c8; --sand-dark: #ddd0a8;
+    --parchment: #f7f0de; --ink: #1a130a; --ink-light: #2d2015;
+    --sea: #1a3a4a; --sea-light: #2a5a6e; --stone: #a0917f; --stone-light: #c8bba8;
+    --badge-fact: #4a7a5a; --badge-plausible: #7a6a3a; --badge-speculative: #6a4a5a;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* Skip link */
+  .skip-link {
+    position: absolute; top: -100%; left: 1rem; z-index: 200;
+    background: var(--gold); color: var(--ink); padding: 0.5rem 1rem;
+    font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.1em;
+    text-decoration: none; border-radius: 0 0 4px 4px;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 0; }
+
+  body {
+    background: var(--ink); color: var(--sand);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 16px; line-height: 1.85; overflow-x: hidden;
+  }
+
+  /* === HERO === */
+  .hero {
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 70%, rgba(107,26,26,0.25) 0%, transparent 50%),
+      linear-gradient(180deg, #0a0805 0%, #150e06 40%, #1a130a 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 4rem 2rem; position: relative;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+  .hero-symbol { font-family: 'Cinzel', serif; font-size: 3.5rem; color: var(--gold); opacity: 0.6; letter-spacing: 0.5em; margin-bottom: 2rem; }
+  .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0.8; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 7vw, 6rem); font-weight: 300; color: var(--sand); line-height: 1.1; margin-bottom: 1rem; }
+  .hero-title em { font-style: italic; color: var(--gold-light); }
+  .hero-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-style: italic; color: var(--stone-light); max-width: 620px; margin: 1.5rem auto 3rem; }
+  .hero-divider { width: 200px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto 2rem; }
+  .hero-premise { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--stone-light); max-width: 720px; line-height: 1.9; }
+  .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.3em; color: var(--gold); opacity: 0.5; }
+
+  /* Animations with reduced-motion support */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-symbol, .hero-eyebrow, .hero-title, .hero-subtitle, .hero-divider, .hero-premise {
+      animation: fadeIn 2s ease both;
+    }
+    .hero-eyebrow { animation-delay: 0.3s; }
+    .hero-title { animation-delay: 0.6s; }
+    .hero-subtitle { animation-delay: 0.9s; }
+    .hero-divider { animation-delay: 1.2s; }
+    .hero-premise { animation-delay: 1.5s; }
+    .scroll-hint { animation: pulse 2s ease-in-out infinite; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+  }
+  @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* === NAV === */
+  .nav-bar {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,8,5,0.97); border-bottom: 1px solid rgba(201,168,76,0.2);
+    padding: 0.6rem 1rem; display: flex; gap: 0.15rem; justify-content: center;
+    flex-wrap: wrap; backdrop-filter: blur(10px);
+  }
+  .nav-link {
+    font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.15em;
+    color: var(--stone-light); text-decoration: none; transition: color 0.3s, border-color 0.3s;
+    text-transform: uppercase; padding: 0.4rem 0.6rem;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-link:hover, .nav-link:focus-visible { color: var(--gold); outline: none; }
+  .nav-link.active { color: var(--gold-light); border-bottom-color: var(--gold); }
+  .nav-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
+
+  /* === MAIN CONTENT === */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+  .source-note {
+    background: rgba(201,168,76,0.06); border-left: 3px solid var(--gold);
+    padding: 1.25rem 1.75rem; margin: 2.5rem 0; font-size: 0.88rem;
+    color: var(--stone-light); font-style: italic;
+  }
+  .source-note strong {
+    font-style: normal; color: var(--gold-light); font-family: 'Cinzel', serif;
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+  }
+
+  /* Confidence badges */
+  .confidence-badge {
+    display: inline-block; font-family: 'Cinzel', serif; font-size: 0.52rem;
+    letter-spacing: 0.2em; text-transform: uppercase; padding: 0.2rem 0.55rem;
+    border-radius: 2px; vertical-align: middle; margin-left: 0.75rem;
+    position: relative; top: -1px;
+  }
+  .badge-fact { background: rgba(74,122,90,0.25); color: #8ac49a; border: 1px solid rgba(74,122,90,0.4); }
+  .badge-plausible { background: rgba(122,106,58,0.25); color: var(--gold-light); border: 1px solid rgba(122,106,58,0.4); }
+  .badge-speculative { background: rgba(106,74,90,0.25); color: #c49ab5; border: 1px solid rgba(106,74,90,0.4); }
+
+  .era { padding: 4rem 0; border-bottom: 1px solid rgba(201,168,76,0.1); }
+  .era-header { text-align: center; margin-bottom: 3rem; }
+  .era-number { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.5em; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 0.5rem; opacity: 0.7; }
+  .era-dates { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 300; color: var(--gold-light); line-height: 1; margin-bottom: 0.75rem; }
+  .era-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--sand); margin-bottom: 1.5rem; }
+  .era-line { width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto; }
+
+  .category { margin-bottom: 2.75rem; }
+  .cat-label {
+    font-family: 'Cinzel', serif; font-size: 0.63rem; letter-spacing: 0.35em;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201,168,76,0.2);
+    display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+  }
+  .cat-icon { font-size: 1rem; opacity: 0.7; }
+  .category h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400;
+    color: var(--sand); margin-bottom: 0.9rem; line-height: 1.3;
+  }
+  .category p { color: var(--stone-light); margin-bottom: 0.9rem; font-size: 0.93rem; }
+  .category p:last-child { margin-bottom: 0; }
+
+  blockquote.pullquote {
+    border-left: 3px solid var(--crimson); padding: 1.2rem 1.5rem;
+    margin: 2rem 0; background: rgba(107,26,26,0.12);
+  }
+  blockquote.pullquote p {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+    font-style: italic; color: var(--sand-dark); line-height: 1.65;
+  }
+  blockquote.pullquote cite {
+    display: block; font-family: 'Cinzel', serif; font-size: 0.62rem;
+    letter-spacing: 0.2em; color: var(--stone); margin-top: 0.75rem; font-style: normal;
+  }
+
+  .compare {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: rgba(201,168,76,0.15); margin: 2rem 0; border: 1px solid rgba(201,168,76,0.15);
+  }
+  .compare-cell { background: rgba(10,8,5,0.95); padding: 1.2rem; }
+  .compare-label {
+    font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.3em;
+    text-transform: uppercase; margin-bottom: 0.75rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .compare-label.our { color: var(--stone); }
+  .compare-label.alt { color: var(--gold); }
+  .compare-cell p { font-size: 0.87rem; color: var(--stone-light); line-height: 1.6; }
+
+  .timeline-strip {
+    background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.12);
+    padding: 1.5rem; margin: 2.5rem 0;
+  }
+  .timeline-strip h4 {
+    font-family: 'Cinzel', serif; font-size: 0.63rem; letter-spacing: 0.3em;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 1.25rem;
+  }
+  .tl-list { list-style: none; }
+  .tl-item { display: flex; gap: 1.25rem; margin-bottom: 0.75rem; font-size: 0.87rem; align-items: baseline; }
+  .tl-date { font-family: 'Cinzel', serif; font-size: 0.72rem; color: var(--gold); white-space: nowrap; min-width: 90px; }
+  .tl-text { color: var(--stone-light); line-height: 1.55; }
+
+  /* Methodology box */
+  .method-box {
+    background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.18);
+    padding: 2rem 2.25rem; margin: 3rem 0; position: relative;
+  }
+  .method-box h2 {
+    font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.3em;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .method-tier { margin-bottom: 1.25rem; display: flex; gap: 1rem; align-items: baseline; }
+  .method-tier:last-child { margin-bottom: 0; }
+  .method-tier p { font-size: 0.88rem; color: var(--stone-light); line-height: 1.65; }
+
+  .section-intro {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+    color: var(--sand-dark); line-height: 1.85; margin-bottom: 2.5rem;
+    font-style: italic; border-bottom: 1px solid rgba(201,168,76,0.12); padding-bottom: 2rem;
+  }
+
+  .conclusion {
+    background: linear-gradient(180deg, rgba(26,19,10,0) 0%, rgba(26,19,10,1) 100%),
+      radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%);
+    padding: 5rem 0; text-align: center;
+  }
+  .conclusion h2 {
+    font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300; color: var(--gold-light); margin-bottom: 2rem; font-style: italic;
+  }
+  .conclusion p { font-size: 0.95rem; color: var(--stone-light); max-width: 700px; margin: 0 auto 1.25rem; line-height: 1.9; }
+  .final-line {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
+    font-style: italic; color: var(--sand); max-width: 640px; margin: 3rem auto 0;
+  }
+
+  footer {
+    border-top: 1px solid rgba(201,168,76,0.15); padding: 2rem;
+    text-align: center; font-family: 'Cinzel', serif;
+    font-size: 0.58rem; letter-spacing: 0.3em; color: var(--stone); opacity: 0.85;
+  }
+
+  /* Hinge diagram */
+  .hinge-diagram {
+    margin: 3rem 0; padding: 2.5rem 0; position: relative;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+  .hinge-diagram svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+  .hinge-caption {
+    text-align: center; margin-top: 1.5rem;
+    font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.25em;
+    color: var(--stone-light); text-transform: uppercase;
+  }
+
+  /* Focus states */
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  @media (max-width: 600px) {
+    .compare { grid-template-columns: 1fr; }
+    .nav-bar { gap: 0; padding: 0.5rem 0.5rem; }
+    .nav-link { font-size: 0.52rem; padding: 0.35rem 0.4rem; letter-spacing: 0.08em; }
+    body { font-size: 15px; }
+    .container { padding: 0 1.25rem; }
+    .method-tier { flex-direction: column; gap: 0.4rem; }
+    .hinge-diagram { padding: 1.5rem 0; margin: 2rem 0; overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<section class="hero" aria-label="Introduction">
+  <div class="hero-symbol" aria-hidden="true">☽ ✦ ☽</div>
+  <p class="hero-eyebrow">Historical Simulation · Primary Source Analysis</p>
+  <h1 class="hero-title">If Hannibal Had Taken <em>Rome</em></h1>
+  <p class="hero-subtitle">A Counterfactual History of the World Under Carthaginian Hegemony, 216 BCE – 2026 CE</p>
+  <div class="hero-divider" aria-hidden="true"></div>
+  <p class="hero-premise">On August 2, 216 BCE, Hannibal Barca annihilated eight Roman legions at Cannae. He did not march on Rome. He spent fourteen more years in Italy, undefeated in the field, waiting for a peace Rome refused to grant. This simulation asks: what if the weeks after Cannae had gone differently? Drawing on Aristotle, Polybius, Livy, Hanno's <em>Periplus</em>, and modern scholarship including a 2025 <em>Nature</em> genomics study on Punic populations, it reconstructs — with clearly marked tiers of confidence — the world that might have been.</p>
+  <p class="scroll-hint" aria-hidden="true">↓ SCROLL ↓</p>
+</section>
+
+<nav class="nav-bar" aria-label="Section navigation">
+  <a class="nav-link" href="#method">Method</a>
+  <a class="nav-link" href="#cannae">Cannae</a>
+  <a class="nav-link" href="#scipio">Scipio</a>
+  <a class="nav-link" href="#foundations">Carthage</a>
+  <a class="nav-link" href="#era1">216 BCE–300 CE</a>
+  <a class="nav-link" href="#era2">300–700 CE</a>
+  <a class="nav-link" href="#era3">700–1500 CE</a>
+  <a class="nav-link" href="#mongols">Mongols</a>
+  <a class="nav-link" href="#world">Wider World</a>
+  <a class="nav-link" href="#technology">Technology</a>
+  <a class="nav-link" href="#warfare">Warfare</a>
+  <a class="nav-link" href="#culture">Culture</a>
+  <a class="nav-link" href="#education">Education</a>
+  <a class="nav-link" href="#society">Society</a>
+  <a class="nav-link" href="#shadows">Shadows</a>
+  <a class="nav-link" href="#conclusion">2026</a>
+</nav>
+
+<main id="main-content">
+
+<!-- METHODOLOGY -->
+<section class="era" id="method">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">Framework</span>
+      <div class="era-dates">How to Read This</div>
+      <p class="era-title">A Note on Method and Confidence</p>
+      <div class="era-line"></div>
+    </div>
+
+    <div class="method-box">
+      <h2>Tiers of Confidence</h2>
+
+      <div class="method-tier">
+        <span class="confidence-badge badge-fact">Historical</span>
+        <p>Documented events, primary source accounts, and archaeological evidence. These are facts about the world as it was — the foundation on which the counterfactual is built.</p>
+      </div>
+
+      <div class="method-tier">
+        <span class="confidence-badge badge-plausible">Plausible</span>
+        <p>Downstream consequences that follow reasonably from the branching assumption. These require that you accept the initial premise (Hannibal secures favorable terms after Cannae), after which they follow from documented tendencies, institutional structures, and known trajectories.</p>
+      </div>
+
+      <div class="method-tier">
+        <span class="confidence-badge badge-speculative">Speculative</span>
+        <p>Projections that compound multiple layers of assumption. They are included where they illuminate the <em>direction</em> of change, not its specific form. The further we go from 216 BCE, the wider the cone of uncertainty becomes. Honesty about that uncertainty is part of the exercise.</p>
+      </div>
+    </div>
+
+    <p class="section-intro">Counterfactual history is not prophecy. It is a method for testing how much of what we take for granted was contingent — and what might have been otherwise. The goal is not to prove that Carthage was morally superior to Rome, but to show that the world we inherited was not the only world possible.</p>
+  </div>
+</section>
+
+<!-- CANNAE & THE DECISION -->
+<section class="era" id="cannae">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">Prologue I</span>
+      <div class="era-dates">216 BCE</div>
+      <p class="era-title">The Battle, the Decision, and Fourteen Lost Years</p>
+      <div class="era-line"></div>
+    </div>
+
+    <div class="source-note">
+      <strong>Primary Sources</strong><br>
+      Livy, <em>Ab Urbe Condita</em> XXII; Polybius, <em>Histories</em> III–XV; the Macedonian Treaty of 215 BCE (Polybius 7.9); Goldsworthy, <em>The Fall of Carthage</em> (2003); Hoyos, <em>Hannibal's Dynasty</em> (2003).
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">⚔</span> Cannae <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>August 2, 216 BCE</h3>
+      <p>By Cannae, Hannibal had already destroyed Roman armies at the Trebia (218 BCE) and Lake Trasimene (217 BCE). Rome responded with the largest army it had ever fielded: approximately 86,000 men under two consuls, with a mandate to destroy the invader.</p>
+      <p>What followed was an annihilation. Between 47,700 and 70,000 Romans died; another 19,300 were captured. Hannibal lost under 8,000. Within three campaign seasons, Rome had lost roughly a fifth of its adult male citizen population. The Senate banned the word "peace." Capua, Tarentum, and most of southern Italy defected. Philip V of Macedon opened negotiations. The Italian confederation was fracturing.</p>
+    </div>
+
+    <blockquote class="pullquote reveal">
+      <p>"By almost any reckoning, Hannibal had won the war. Rome's power base had been reduced to central Italy and Sicily. Its allies were abandoning it, and rival powers were beginning to line up behind Hannibal."</p>
+      <cite>— Dickinson College Commentaries, <em>The Second Punic War</em></cite>
+    </blockquote>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🤔</span> Why He Didn't March <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>Maharbal's Rebuke</h3>
+      <p>According to Livy (XXII.51), Maharbal urged an immediate advance on Rome after Cannae. When Hannibal demurred, Maharbal replied: <em>"You know how to gain a victory; you do not know how to use it."</em> Modern historians treat the quote with skepticism — Livy wrote 150 years later with strong pro-Roman sympathies — but the strategic question it raises is real.</p>
+
+      <div class="timeline-strip">
+        <h4>The Competing Explanations</h4>
+        <ol class="tl-list">
+          <li class="tl-item"><span class="tl-date">Logistical</span><span class="tl-text">Rome was 250 miles away; his army was exhausted, without siege equipment. Delbrück argued the march "would have been a fruitless demonstration."</span></li>
+          <li class="tl-item"><span class="tl-date">Political</span><span class="tl-text">Carthage's senate, led by Hanno II, had been denying Hannibal reinforcements and siege equipment since the war began. He couldn't besiege Rome because his own government left him half-supplied.</span></li>
+          <li class="tl-item"><span class="tl-date">Strategic</span><span class="tl-text">He may never have intended to destroy Rome — only to compel a negotiated peace. His 215 BCE treaty with Philip V explicitly limits Roman sovereignty to "their domain around the Tiber": containment, not annihilation.</span></li>
+          <li class="tl-item"><span class="tl-date">Cultural</span><span class="tl-text">He underestimated Roman will. Under ancient conventions, any state suffering Cannae's losses was expected to negotiate. Rome's political identity was uniquely organized around the refusal to admit defeat.</span></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">📜</span> Fourteen Years Undefeated <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>The Longest, Most Tragic Campaign in Ancient History</h3>
+      <p>Hannibal remained in Italy until 203 BCE, never defeated in open battle on Italian soil. Yet Rome would not break. The war ended not because Rome beat Hannibal in Italy, but because Scipio Africanus carried the war to Africa, forcing Hannibal's recall. At Zama in 202 BCE, fighting with green levies, he lost.</p>
+      <p><strong>The counterfactual hinge:</strong> We do not require Hannibal to become a different person. We require only a convergence of circumstances — Carthage's senate sends siege equipment; or Maharbal's cavalry screens the march before Rome recovers its nerve; or Hannibal presses for the negotiated peace he actually wanted, before Rome rebuilds. In this simulation, those stars align.</p>
+    </div>
+
+    <div class="hinge-diagram reveal" aria-label="Branching timeline diagram showing the hinge moment at Cannae, 216 BCE">
+      <svg viewBox="0 0 780 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="hinge-title hinge-desc">
+        <title id="hinge-title">The Hinge Moment: Cannae, 216 BCE</title>
+        <desc id="hinge-desc">A branching timeline showing two divergent paths from the Battle of Cannae: our timeline where Rome recovers, and the alternate timeline where Carthage prevails.</desc>
+        <defs>
+          <linearGradient id="goldFade" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#c9a84c" stop-opacity="0"/><stop offset="50%" stop-color="#c9a84c" stop-opacity="1"/><stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/></linearGradient>
+          <linearGradient id="redPath" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#6b1a1a"/></linearGradient>
+          <linearGradient id="goldPath" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#e8c97a"/></linearGradient>
+          <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+
+        <!-- Background grid lines -->
+        <line x1="80" y1="60" x2="80" y2="380" stroke="#c9a84c" stroke-opacity="0.06" stroke-width="1"/>
+        <line x1="230" y1="60" x2="230" y2="380" stroke="#c9a84c" stroke-opacity="0.06" stroke-width="1"/>
+        <line x1="390" y1="60" x2="390" y2="380" stroke="#c9a84c" stroke-opacity="0.12" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="545" y1="60" x2="545" y2="380" stroke="#c9a84c" stroke-opacity="0.06" stroke-width="1"/>
+        <line x1="700" y1="60" x2="700" y2="380" stroke="#c9a84c" stroke-opacity="0.06" stroke-width="1"/>
+
+        <!-- Date labels -->
+        <text x="80" y="45" fill="#a0917f" font-family="Cinzel,serif" font-size="9" text-anchor="middle" letter-spacing="0.15em">264 BCE</text>
+        <text x="230" y="45" fill="#a0917f" font-family="Cinzel,serif" font-size="9" text-anchor="middle" letter-spacing="0.15em">218 BCE</text>
+        <text x="390" y="40" fill="#c9a84c" font-family="Cinzel,serif" font-size="10" text-anchor="middle" letter-spacing="0.2em" font-weight="700">216 BCE</text>
+        <text x="390" y="54" fill="#e8c97a" font-family="Cormorant Garamond,serif" font-size="11" text-anchor="middle" font-style="italic">CANNAE</text>
+        <text x="545" y="45" fill="#a0917f" font-family="Cinzel,serif" font-size="9" text-anchor="middle" letter-spacing="0.15em">202 BCE</text>
+        <text x="700" y="45" fill="#a0917f" font-family="Cinzel,serif" font-size="9" text-anchor="middle" letter-spacing="0.15em">146 BCE</text>
+
+        <!-- Shared trunk: pre-Cannae events -->
+        <line x1="80" y1="210" x2="385" y2="210" stroke="#c9a84c" stroke-width="2.5" stroke-opacity="0.8"/>
+
+        <!-- Event dots on the trunk -->
+        <circle cx="80" cy="210" r="4" fill="#c9a84c" opacity="0.7"/>
+        <circle cx="155" cy="210" r="3" fill="#c9a84c" opacity="0.5"/>
+        <circle cx="230" cy="210" r="4" fill="#c9a84c" opacity="0.7"/>
+        <circle cx="290" cy="210" r="3" fill="#c9a84c" opacity="0.5"/>
+
+        <!-- Event labels on trunk -->
+        <text x="80" y="235" fill="#c8bba8" font-family="Libre Baskerville,serif" font-size="8" text-anchor="middle">First</text>
+        <text x="80" y="245" fill="#c8bba8" font-family="Libre Baskerville,serif" font-size="8" text-anchor="middle">Punic War</text>
+        <text x="155" y="195" fill="#c8bba8" font-family="Libre Baskerville,serif" font-size="8" text-anchor="middle">Saguntum</text>
+        <text x="230" y="235" fill="#c8bba8" font-family="Libre Baskerville,serif" font-size="8" text-anchor="middle">Alps</text>
+        <text x="230" y="245" fill="#c8bba8" font-family="Libre Baskerville,serif" font-size="8" text-anchor="middle">Crossing</text>
+        <text x="290" y="195" fill="#c8bba8" font-family="Libre Baskerville,serif" font-size="8" text-anchor="middle">Trebia</text>
+
+        <!-- Hinge point: the diamond -->
+        <g filter="url(#glow)">
+          <rect x="380" y="200" width="20" height="20" transform="rotate(45 390 210)" fill="#c9a84c" opacity="0.9"/>
+        </g>
+        <rect x="383" y="203" width="14" height="14" transform="rotate(45 390 210)" fill="none" stroke="#1a130a" stroke-width="1.5"/>
+
+        <!-- UPPER BRANCH: Our Timeline (fading to crimson/stone) -->
+        <path d="M 395 210 C 430 210, 440 135, 470 130" stroke="url(#redPath)" stroke-width="2" fill="none" opacity="0.6"/>
+        <line x1="470" y1="130" x2="720" y2="120" stroke="#6b1a1a" stroke-width="1.5" opacity="0.5" stroke-dasharray="6,3"/>
+        <circle cx="545" cy="126" r="3.5" fill="#6b1a1a" opacity="0.6"/>
+        <circle cx="700" cy="121" r="3.5" fill="#6b1a1a" opacity="0.6"/>
+
+        <!-- Upper branch labels -->
+        <text x="462" y="115" fill="#a0917f" font-family="Cinzel,serif" font-size="8" letter-spacing="0.15em">OUR TIMELINE</text>
+        <text x="545" y="110" fill="#c8bba8" font-family="Libre Baskerville,serif" font-size="8" text-anchor="middle">Zama</text>
+        <text x="700" y="105" fill="#c8bba8" font-family="Libre Baskerville,serif" font-size="8" text-anchor="middle">Carthage</text>
+        <text x="700" y="115" fill="#c8bba8" font-family="Libre Baskerville,serif" font-size="8" text-anchor="middle">Destroyed</text>
+
+        <!-- Upper branch outcome box -->
+        <rect x="560" y="138" width="165" height="52" rx="2" fill="rgba(107,26,26,0.15)" stroke="#6b1a1a" stroke-opacity="0.3" stroke-width="1"/>
+        <text x="643" y="155" fill="#c8bba8" font-family="Cormorant Garamond,serif" font-size="10" font-style="italic" text-anchor="middle">Rome universal empire</text>
+        <text x="643" y="170" fill="#a0917f" font-family="Cormorant Garamond,serif" font-size="10" font-style="italic" text-anchor="middle">Libraries burned · Latin world</text>
+        <text x="643" y="185" fill="#a0917f" font-family="Cormorant Garamond,serif" font-size="10" font-style="italic" text-anchor="middle">Christianity · Our history</text>
+
+        <!-- LOWER BRANCH: Alternate Timeline (gold, brighter) -->
+        <path d="M 395 210 C 430 210, 440 285, 470 290" stroke="url(#goldPath)" stroke-width="2.5" fill="none" opacity="0.85"/>
+        <line x1="470" y1="290" x2="720" y2="300" stroke="#e8c97a" stroke-width="2" opacity="0.7"/>
+        <circle cx="470" cy="290" r="4" fill="#e8c97a" opacity="0.8"/>
+        <circle cx="545" cy="294" r="3.5" fill="#e8c97a" opacity="0.7"/>
+        <circle cx="700" cy="300" r="3.5" fill="#e8c97a" opacity="0.7"/>
+
+        <!-- Lower branch labels -->
+        <text x="462" y="318" fill="#c9a84c" font-family="Cinzel,serif" font-size="8" letter-spacing="0.15em">THIS SIMULATION</text>
+        <text x="470" y="275" fill="#e8c97a" font-family="Libre Baskerville,serif" font-size="8" text-anchor="middle">Treaty</text>
+        <text x="545" y="280" fill="#e8c97a" font-family="Libre Baskerville,serif" font-size="8" text-anchor="middle">Carthage</text>
+        <text x="545" y="290" fill="#ddd0a8" font-family="Libre Baskerville,serif" font-size="7.5" text-anchor="middle">endures</text>
+
+        <!-- Lower branch outcome box -->
+        <rect x="560" y="310" width="165" height="52" rx="2" fill="rgba(201,168,76,0.08)" stroke="#c9a84c" stroke-opacity="0.25" stroke-width="1"/>
+        <text x="643" y="327" fill="#e8c97a" font-family="Cormorant Garamond,serif" font-size="10" font-style="italic" text-anchor="middle">Punic commercial hegemony</text>
+        <text x="643" y="342" fill="#ddd0a8" font-family="Cormorant Garamond,serif" font-size="10" font-style="italic" text-anchor="middle">Libraries survive · Pluralism</text>
+        <text x="643" y="357" fill="#ddd0a8" font-family="Cormorant Garamond,serif" font-size="10" font-style="italic" text-anchor="middle">Science unbroken · Trade world</text>
+
+        <!-- Decorative: divergence annotation -->
+        <line x1="390" y1="68" x2="390" y2="196" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.3" stroke-dasharray="2,4"/>
+        <text x="390" y="400" fill="#a0917f" font-family="Cormorant Garamond,serif" font-size="10" font-style="italic" text-anchor="middle">the hinge</text>
+      </svg>
+      <p class="hinge-caption">The Branching Point — August 216 BCE</p>
+    </div>
+
+    <div class="compare reveal">
+      <div class="compare-cell">
+        <div class="compare-label our">Our Timeline</div>
+        <p>Hannibal waits. Rome recovers. Scipio wins at Zama (202 BCE). Carthage razed (146 BCE). All Carthaginian libraries destroyed. The world proceeds on Roman rails.</p>
+      </div>
+      <div class="compare-cell">
+        <div class="compare-label alt">This Simulation</div>
+        <p>Hannibal secures favorable terms within months of Cannae. A treaty restores Carthaginian Sicily, Sardinia, and Iberian sovereignty. Rome survives as a regional power. Everything that follows is different.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCIPIO -->
+<section class="era" id="scipio">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">Prologue II</span>
+      <div class="era-dates">The Apprentice</div>
+      <p class="era-title">Scipio Africanus: Everything He Knew, He Learned from Hannibal</p>
+      <div class="era-line"></div>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🎓</span> The Student at Cannae <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>Rome's Greatest General Was Hannibal's Greatest Pupil</h3>
+      <p>Scipio was present at Cannae at approximately twenty, one of the few Roman commanders to escape alive. He spent the next fourteen years reverse-engineering Hannibal's methods. At Ilipa (206 BCE) — his tactical masterwork — he defeated the Carthaginians by copying Hannibal's feints and envelopments. The Romans before Scipio fought like a battering ram. He taught them to fight like a trap.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🌊</span> The Masinissa Gambit <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>Alliance-Building as Military Art</h3>
+      <p>Hannibal's most powerful asset was Numidian cavalry — the finest light horse in the ancient world. Their commander, Masinissa, was a Numidian prince originally betrothed to Sophonisba, the niece of Hannibal. When political chaos reshuffled the betrothal, Scipio — having watched Hannibal flip Italian cities through demonstrated power — learned the lesson and applied it in reverse. He courted Masinissa for years, correctly identifying him as the war's pivotable asset.</p>
+      <p>At Zama, Masinissa's horsemen drove Hannibal's flanks from the field, then returned and hammered the Carthaginian infantry from behind — the same hammer-and-anvil that Hannibal had used at Cannae, now executed against its inventor.</p>
+    </div>
+
+    <blockquote class="pullquote reveal">
+      <p>"Scipio defeated Hannibal not because he was stronger but because he was smarter — he studied his enemy, took the war where Hannibal couldn't follow, and used Hannibal's own alliance-building strategy against him."</p>
+      <cite>— Spoken Past, <em>The Battle of Zama</em></cite>
+    </blockquote>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">💬</span> The Meeting at Ephesus <span class="confidence-badge badge-fact">Historical</span></div>
+      <p>Years after the war, Livy records that Scipio met the exiled Hannibal at Ephesus and asked him to name history's greatest commanders. Hannibal said: Alexander first, Pyrrhus second, himself third. And had he won at Zama? Above all others — before Alexander, before everyone. It was the most gracious concession in military history.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT CARTHAGE ACTUALLY WAS -->
+<section class="era" id="foundations">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">Prologue III</span>
+      <div class="era-dates">The Civilization</div>
+      <p class="era-title">What Carthage Actually Was</p>
+      <div class="era-line"></div>
+    </div>
+
+    <div class="source-note">
+      <strong>On Sources</strong><br>
+      Almost everything we "know" about Carthage comes from its enemies. The 2025 <em>Nature</em> study (Ringbauer et al., Max Planck / Harvard) — the largest ancient DNA analysis of Punic populations ever conducted — fundamentally reframes the Punic world at its biological core.
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">⚖</span> Government <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>Aristotle's Favorite Non-Greek Constitution</h3>
+      <p>Aristotle — writing before the Punic Wars with no axe to grind — praised the Carthaginian constitution in his <em>Politics</em> (1272b–1273b25) as one of the finest known: a mixed constitution blending monarchic, aristocratic, and democratic elements. Two annually elected <em>suffetes</em>, a Senate, a Council of 104, and a popular assembly contained genuine checks on concentrated power. Polybius observed that Carthaginian citizens held more sway over their government than Romans did over theirs.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🌍</span> The Cosmopolitan DNA <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>A Mediterranean Highway, Not an Empire</h3>
+      <p>The 2025 <em>Nature</em> study found that Punic people had almost no Levantine ancestors — despite practicing Phoenician culture, language, and religion. Their ancestry derived primarily from Sicily, the Aegean, and North Africa, reflecting "a regular influx of diverse people connected by a Mediterranean highway maintained by trade." Researchers found second cousins buried at sites on opposite ends of the Mediterranean: families scattered across the sea, connected by commerce rather than territory.</p>
+      <p>Phoenician culture spread not through conquest or mass migration, but through voluntary adoption. People joined the network because it was worth joining. This is a structurally different model from Rome, which spread through military subjugation.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">⛵</span> Exploration <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>Hanno the Navigator</h3>
+      <p>Hanno the Navigator reached the West African coast — possibly as far as Cameroon or Gabon — around 500 BCE. His <em>Periplus</em>, the only surviving specimen of Carthaginian literature, records volcanic coastlines, gorillas, and tropical rivers. Pliny reports that gorilla skins from the expedition were displayed in Carthage's temple of Tanit until the Romans destroyed the city. This feat would not be repeated until Portugal in the 15th century — nearly 2,000 years later.</p>
+    </div>
+
+    <blockquote class="pullquote reveal">
+      <p>"The superiority of their constitution is proved by the fact that the common people remain loyal to it."</p>
+      <cite>— Aristotle, <em>Politics</em> (c. 340 BCE)</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ERA I -->
+<section class="era" id="era1">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">Era I</span>
+      <div class="era-dates">216 BCE – 300 CE</div>
+      <p class="era-title">The Punic Settlement and the Scientific Thread</p>
+      <div class="era-line"></div>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">⚗</span> Science <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>The Revolution That Might Never Have Been Suppressed</h3>
+      <p>Lucio Russo, in <em>The Forgotten Revolution</em> (2004), argues that the Hellenistic period produced a genuine scientific revolution — heliocentric models, mathematical mechanics, hydraulics — which decayed after Roman conquest. His claim that Galileo-level discoveries might have come "at least a thousand years earlier" with unbroken development is contested, but the underlying observation is well-documented: Roman intellectual culture was less hospitable to theoretical science than the Hellenistic world it absorbed.</p>
+      <p>Aristarchus proposed heliocentrism by 270 BCE. Archimedes — who sided with Carthage and was killed by a Roman soldier at Syracuse in 212 BCE — had developed calculus-precursor mathematics and mechanical computing. The Antikythera mechanism (~87 BCE) used differential gearing not seen again in Europe until the 14th century.</p>
+      <p>In this simulation, these traditions are not disrupted by Roman conquest. The acceleration they produce is debatable; that they represent a real loss is not.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🙏</span> Religion <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>The Theological Landscape Without Universal Empire</h3>
+      <p>Christianity is, at its institutional core, a Roman phenomenon. The theology is Jewish and Hellenistic; the <em>organization</em> is Roman. The religion spread through Roman roads, was legalized by a Roman emperor (Constantine, 312 CE), was codified by Roman councils (Nicaea, 325 CE), and was enforced as the sole state religion by Roman decree (Theodosius, 380 CE). Without a universal Roman empire, Jesus of Nazareth may still exist as a Jewish reform preacher in Palestine — but the organizational machinery that turned a regional movement into a world religion plausibly never assembles. No Council of Nicaea. No Catholic Church. No papal authority. No canon law.</p>
+      <p>The downstream consequences are enormous. Islam emerges in the 7th century in explicit theological dialogue with Christianity and Judaism — the Quran references Jesus, Mary, Moses, and Abraham extensively. Muhammad's revelation took its specific shape within the pressure cooker of Byzantine-Sassanid warfare, Nestorian Christian communities in Arabia, and Jewish tribal politics in the Hejaz. Without Christianity as a dominant regional force, without the Byzantine empire as a theological and military antagonist, the specific conditions that produced Islam do not exist in the same form. Arabia remains commercially integrated into the Punic trade network, polytheistic, and religiously diverse — but the particular synthesis that Muhammad articulated likely does not crystallize.</p>
+      <p>What fills the space? This cannot be known with certainty, but the ingredients are visible. The most reasonable inference is a world of sustained religious pluralism shaped by several coexisting traditions:</p>
+    </div>
+
+    <div class="timeline-strip reveal">
+      <h4>Plausible Religious Landscape <span class="confidence-badge badge-plausible">Plausible</span></h4>
+      <ol class="tl-list">
+        <li class="tl-item"><span class="tl-date">Punic Cults</span><span class="tl-text">The worship of Tanit, Ba'al Hammon, and Melqart — already syncretic, absorbing local deities wherever Punic culture spread — continues as a dominant Mediterranean tradition. Temple culture, sacred sexuality, and votive practice evolve but are never suppressed by an external theological authority.</span></li>
+        <li class="tl-item"><span class="tl-date">Philosophy</span><span class="tl-text">Stoicism, Epicureanism, and Neo-Platonism — which in our timeline were absorbed, suppressed, or co-opted by Christianity — continue as living philosophical traditions with institutional schools, endowed chairs, and popular followings. They serve many of the ethical and existential functions that monotheism later claimed.</span></li>
+        <li class="tl-item"><span class="tl-date">Judaism</span><span class="tl-text">Without Christianity and Islam, Judaism develops without the centuries of persecution that shaped its diaspora character. Jewish communities remain commercially integrated across the Mediterranean. The rabbinic tradition still develops after the Temple's destruction (which may or may not occur in this timeline), but without the external pressure of Christian antisemitism, its trajectory differs substantially.</span></li>
+        <li class="tl-item"><span class="tl-date">Eastern Traditions</span><span class="tl-text">Buddhism, Hinduism, and Zoroastrianism continue along their own trajectories. With open Silk Road trade, Buddhist ideas plausibly reach the Mediterranean centuries earlier than in our timeline. The encounter between Greek philosophy and Buddhist thought — which historically produced Gandharan art and Greco-Buddhist synthesis — intensifies.</span></li>
+        <li class="tl-item"><span class="tl-date">New Syntheses</span><span class="tl-text">In a world of continuous inter-civilizational contact without imperial theological enforcement, new syncretic traditions plausibly emerge — blending Punic ritual, Greek philosophy, Eastern contemplative practice, and local folk religion. The result is not monotheism but a landscape of competing, overlapping, and mutually influencing traditions.</span></li>
+      </ol>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">✦</span> What This Means <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>No Crusades. No Inquisition. No Systematic Antisemitism.</h3>
+      <p>The institutional consequences of this religious landscape are profound. Without a single universalizing theology claiming exclusive truth, the specific machinery of religious persecution that defined our last 1,700 years never assembles. No Crusades — because there is no papal authority to call them and no single Holy Land to contest. No Inquisition — because there is no orthodoxy to enforce. No systematic antisemitism — which was almost entirely a product of Christian theological claims about Jewish responsibility for the death of Christ. Religious conflict still occurs — humans fight over sacred sites, priestly authority, and theological disagreements — but it lacks the <em>totalizing</em> character that monotheistic exclusivism produced in our world.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🌊</span> Commerce & Economics <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>The Trade Network as Civilizational Operating System</h3>
+      <p>Carthage was not a territorial empire that happened to trade. It was a commercial network that happened to hold territory. The distinction is structural and shapes everything that follows. Rome's wealth derived from conquest, tribute, and slave labor on latifundia — large agricultural estates. Carthage's wealth derived from intermediation: connecting producers and consumers across the Mediterranean, taking margins on volume, and investing in the infrastructure (ports, warehouses, shipyards, standardized weights and measures) that made trade reliable.</p>
+      <p>This model — the commercial network as the primary unit of civilizational organization — has several documented features that distinguish it from the imperial model. Carthaginian commercial treaties, preserved in fragments by Polybius, show sophisticated multilateral trade agreements with defined zones of access, tariff schedules, and dispute resolution mechanisms. The Punic world operated something closer to a regulated free-trade zone than an empire — a network of port cities bound by commercial agreement rather than military subordination.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">💰</span> The Economic Architecture <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>What a Commercial Hegemony Builds</h3>
+      <p>With Hanno's West African route preserved and continuously developed, the Punic commercial network plausibly systematizes three major trade corridors within the first few centuries of the simulation: the established Mediterranean circuit (grain, olive oil, wine, murex dye, metals, ceramics); the West African gold and ivory route running from the Sahel through Morocco to Carthage; and the Indian Ocean connection, linking the Red Sea and Persian Gulf trade to the Mediterranean through overland and canal routes that Roman conquest historically disrupted.</p>
+      <p>The economic implications of maintaining all three corridors simultaneously are significant. The Roman empire's trade with India drained gold eastward at an unsustainable rate — Pliny complained that Rome lost 100 million sesterces annually to the Indian trade. A commercial civilization, rather than a military one, would plausibly develop more balanced trade relationships: exporting manufactured goods (glass, dye, textiles, metalwork) in exchange for Eastern spices and materials, rather than simply shipping bullion.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">⚖</span> Currency, Credit, and Commercial Law <span class="confidence-badge badge-speculative">Speculative</span></div>
+      <h3>The Financial Infrastructure of a Trade World</h3>
+      <p>Carthage already operated a sophisticated monetary system with gold, silver, and bronze coinage calibrated to different trade zones. The Punic commercial tradition also had deep roots in credit, promissory agreements, and contract law — the Phoenician invention of the alphabet itself was likely driven by the need to keep commercial records.</p>
+      <p>In the alternate timeline, a commercial civilization with no feudal interruption plausibly develops financial instruments earlier: standardized bills of exchange, maritime insurance (which in our timeline emerged in 14th-century Italy), and possibly joint-stock investment vehicles for funding long-distance trade expeditions. The specific forms cannot be predicted, but the direction is clear: a civilization whose wealth depends on trade develops the tools to manage trade risk.</p>
+      <p>The Atlantic extension — if and when trans-oceanic contact occurs — transforms this from a Mediterranean system into a genuinely global one. American silver, which in our timeline destabilized the Spanish economy and fueled inflation across Europe, would enter a commercial system better equipped to absorb and distribute commodity flows. The result is plausibly a more integrated and less extractive global economy — though "less extractive" is a relative term, and commercial civilizations are fully capable of exploitation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ERA II -->
+<section class="era" id="era2">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">Era II</span>
+      <div class="era-dates">300 – 700 CE</div>
+      <p class="era-title">Steam, Glass, and the Question of the Americas</p>
+      <div class="era-line"></div>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">⚙</span> Proto-Industrialization <span class="confidence-badge badge-speculative">Speculative</span></div>
+      <h3>The Steam Engine and the Glass Revolution</h3>
+      <p>Hero of Alexandria described his aeolipile — a steam-driven sphere — around 60 CE. In our timeline, it was a curiosity. The standard explanation is that a slave economy had no commercial market for labor-saving machinery. In a commercial civilization where slavery's dominance eroded earlier, the incentive structure differs — though exactly when and how the leap from rotary steam toy to industrial pump occurs is unknowable. The claim is directional: commercial incentive plausibly shortens the gap, even if we cannot specify by how much.</p>
+      <p>A parallel thread: the Phoenician-Punic purple dye industry had been working with brominated organic compounds since 800 BCE — dibromoindigo, requiring controlled reduction and oxidation. This industrial chemistry, seeking better glass for UV manipulation of dye colors, plausibly pulls Alexandrian glassmakers toward clearer optical glass. Clear glass enables lenses; lenses enable telescopes and microscopes. Each step in this chain is reasonable. The specific timeline — optical glass by ~300 CE, microscopes by ~600 CE — is an illustration, not a prediction.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🦠</span> Medicine <span class="confidence-badge badge-speculative">Speculative</span></div>
+      <h3>The Most Consequential What-If in Human Health</h3>
+      <p>Once microscopes exist, someone looks at water and sees organisms. Germ theory — which in our timeline arrived with Pasteur in the 1860s — might reach this world centuries earlier. This is the single intervention with the most transformative potential in the entire simulation.</p>
+      <p>The baseline of ancient medicine was not as primitive as popular imagination suggests. Hippocratic medicine already practiced systematic clinical observation. Galen (129–216 CE) developed anatomical knowledge that remained the Western standard for 1,300 years. Herophilus and Erasistratus in Ptolemaic Alexandria performed human dissection — a practice later suppressed by both Christian and Islamic religious authority — and correctly identified the nervous system, distinguished arteries from veins, and understood the brain as the seat of intelligence. In the alternate timeline, this Alexandrian medical tradition continues without the interruption of religious prohibition on dissection.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🔬</span> From Optics to Epidemiology <span class="confidence-badge badge-speculative">Speculative</span></div>
+      <h3>The Chain from Lenses to Public Health</h3>
+      <p>The chain from optical glass to germ theory is not fanciful — it is the same chain that occurred in our timeline, compressed. In our world: clear glass (Venice, ~1300) → spectacles (~1290) → compound microscope (Janssen, ~1590) → Leeuwenhoek observes bacteria (~1676) → Pasteur establishes germ theory (~1861) → Koch's postulates (~1882) → antiseptic surgery (Lister, ~1867). Each step followed from the last. The argument is simply that this chain begins earlier in a world where optical glass arrives earlier.</p>
+      <p>The downstream consequences of earlier germ theory are staggering in their scope. The Black Death of 1347–1351 killed 30–60% of Europe's population through total ignorance of bacterial transmission. Cholera pandemics killed millions into the 19th century. Puerperal fever killed one in six mothers in some European hospitals before Semmelweis demonstrated that handwashing prevented it — and was institutionally rejected for decades. Smallpox killed an estimated 300 million people in the 20th century alone.</p>
+      <p>A world with germ theory even a few centuries earlier develops: quarantine protocols based on understanding rather than superstition; water sanitation systems designed to prevent specific pathogens; antiseptic surgical practice (plausibly derived from the bromine-based chemistry of the murex dye tradition); and eventually vaccine development. The specific timeline is unknowable, but the direction is not — and the cumulative lives saved, across two millennia of avoided pandemics, may be the single largest humanitarian difference between the two timelines.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🌿</span> Pharmacology and Surgical Practice <span class="confidence-badge badge-speculative">Speculative</span></div>
+      <h3>The Murex-to-Medicine Pipeline</h3>
+      <p>The connection between dye chemistry and medicine deserves emphasis. The murex dye industry's 800 years of working with brominated organic compounds — controlling reduction, oxidation, and enzymatic reactions at industrial scale — represents a chemical knowledge base with direct pharmaceutical applications. Bromine compounds are potent antiseptics. The leap from "this chemical kills the organisms that spoil our dye vats" to "this chemical kills the organisms that infect wounds" is not large.</p>
+      <p>Anaesthesia, which in our timeline arrived with ether in 1846, plausibly emerges from this same organic chemistry tradition. Ancient physicians already used opium, henbane, and mandrake for pain management. A civilization with systematic chemistry adds controlled dosing, purified compounds, and eventually synthetic analgesics. Surgery without pain management was the bottleneck that limited surgical ambition for millennia — remove it, and the entire arc of surgical development accelerates.</p>
+      <p>By the alternate 2026, medicine in this world is plausibly centuries ahead of ours in epidemiology, public health infrastructure, and pharmacology. Average lifespan in developed zones may approach 90–100+ years — not through any single breakthrough, but through the compound interest of two millennia of avoided pandemics, earlier antiseptics, and uninterrupted anatomical research.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🌎</span> The Americas <span class="confidence-badge badge-speculative">Speculative</span></div>
+      <h3>Commercial Contact, Not Conquest</h3>
+      <p>If trans-Atlantic contact occurs centuries earlier — a large if — one thing is reasonably clear about its character. A commercial maritime civilization with no Christian missionary mandate and no nation-state colonial ambition would approach the Americas differently than 15th-century Spain did. The civilizations of the Americas would be met as potential trading partners, not as pagans to convert. The demographic catastrophe that killed an estimated 50–90 million Indigenous people after 1492 would plausibly not occur at the same scale — though disease transmission between populations remains a wild card that no amount of good intentions can fully control.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ERA III -->
+<section class="era" id="era3">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">Era III</span>
+      <div class="era-dates">700 – 1500 CE</div>
+      <p class="era-title">Integration Without Domination</p>
+      <div class="era-line"></div>
+    </div>
+
+    <div class="timeline-strip reveal">
+      <h4>Possible Developments <span class="confidence-badge badge-speculative">Speculative</span></h4>
+      <ol class="tl-list">
+        <li class="tl-item"><span class="tl-date">~700 CE</span><span class="tl-text">Atlantic trade corridors between West Africa, the Mediterranean, and possibly the Caribbean. Mesoamerican cities may begin receiving Mediterranean goods.</span></li>
+        <li class="tl-item"><span class="tl-date">~800 CE</span><span class="tl-text">Steam-assisted manufacturing across the Mediterranean. Indian decimal notation circulating through an unblocked Silk Road — centuries earlier than its transmission to medieval Europe.</span></li>
+        <li class="tl-item"><span class="tl-date">~1000 CE</span><span class="tl-text">No Crusades. Jerusalem a pluralistic trading city. Germ theory may have produced quarantine protocols and water sanitation reducing epidemic mortality.</span></li>
+        <li class="tl-item"><span class="tl-date">~1200 CE</span><span class="tl-text">Scientific development plausibly equivalent to our 17th century, though the specific emphases would differ profoundly.</span></li>
+      </ol>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🏙</span> Urban Design <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>Carthage's Architectural DNA</h3>
+      <p>Appian described Punic houses as six stories high. Archaeological evidence from the Byrsa Hill excavations confirms multi-story construction with organized cistern-based water systems: gravity-fed flow, sand filtration, and evaporative cooling built into the structural DNA of buildings. The housing blocks were separated by a standardized street grid — an urban planning discipline that predates the Roman grid by centuries. The impluvium-compluvium system collected rainwater through roof openings, filtered it through sand, stored it in subterranean cisterns, and used evaporative cooling to regulate interior temperature. This was passive environmental management designed into the building's architecture, not added after the fact.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🏗</span> The Vertical City Tradition <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>Building as Integrated Environmental System</h3>
+      <p>In an alternate timeline where this tradition develops continuously across 2,000 years without interruption, the direction is clear. Punic urbanism was already solving problems that our cities are only now rediscovering: rainwater harvesting at the building level, waste separation from potable water, passive solar heating, and multi-story vertical density that supports large populations without sprawl.</p>
+      <p>With clear glass available centuries earlier (pulled forward by the murex-driven optics chain), glazed atria enable passive solar heating in northern climates. With germ theory informing sanitation design, waste-water systems are engineered to prevent contamination rather than merely to remove visible filth — the distinction that separates a Roman sewer (which moved waste but understood nothing about pathogens) from a modern sanitation system. With steam power arriving gradually from ~400 CE onward, pressurized water distribution and district heating become feasible extensions of the passive heating tradition.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🌊</span> Port Cities as Civilizational Model <span class="confidence-badge badge-speculative">Speculative</span></div>
+      <h3>What a 2,000-Year-Old Commercial Urbanism Produces</h3>
+      <p>The Punic civilizational unit was the port city — not the capital, not the province, not the nation-state. Each port was a node in a network: self-governing, commercially interdependent, architecturally adapted to its local climate and geography, but connected to every other node by trade. Carthage, Utica, Hadrumetum, Leptis, Gades, Cartagena, Palermo, Motya — each developed its own urban character within a shared architectural grammar.</p>
+      <p>Scaled forward, this model plausibly produces cities that are denser, more climatically responsive, and more infrastructurally sophisticated than our own — but organized around harbor and market rather than cathedral and palace. The monumental architecture of this world is commercial and civic: shipyards, market halls, exchange buildings, and public baths, not churches and castles. By the alternate 2026, cities in the Punic tradition have had two millennia to refine the integration of water management, passive climate control, vertical density, and harbor infrastructure into a coherent urban system. The result would likely make our most advanced sustainable-design projects look like tentative first drafts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE MONGOLS -->
+<section class="era" id="mongols">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">Special Analysis</span>
+      <div class="era-dates">The Mongols</div>
+      <p class="era-title">The One Force Largely Independent of Rome's Fate</p>
+      <div class="era-line"></div>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🏇</span> The Steppe Variable <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>What Changes — and What Doesn't</h3>
+      <p>The Mongol expansion originates in Eurasian steppe ecology and Genghis Khan's genius as a tribal unifier. None of those conditions are altered by Hannibal winning at Cannae. The Mongols happen. The question is what they encounter.</p>
+      <p>In our timeline, the Mongols' most devastating western campaign culminated in the sack of Baghdad in 1258, ending the Islamic Golden Age. The destruction was so complete because the target was a single civilizational structure with a single intellectual capital that could be beheaded.</p>
+      <p>In a world of distributed Punic-Hellenistic port cities, there is no single capital to sack. Knowledge is stored everywhere. A distributed network is more resilient to decapitation — this is a structural observation, not a guarantee of survival. The Mongol campaigns would plausibly be longer, costlier, and shallower in westward penetration, but the steppe cavalry remains a formidable force against any civilization.</p>
+    </div>
+
+    <div class="compare reveal">
+      <div class="compare-cell">
+        <div class="compare-label our">Our Timeline</div>
+        <p>Baghdad sacked 1258. Islamic Golden Age ended. Abbasid Caliphate destroyed. Black Death transmitted west along Mongol trade routes.</p>
+      </div>
+      <div class="compare-cell">
+        <div class="compare-label alt">Alternate Timeline</div>
+        <p>No single civilizational capital to sack. Distributed commercial network harder to decapitate. Mongols plausibly absorbed as aggressive trade facilitators rather than terminal destroyers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE BROADER WORLD -->
+<section class="era" id="world">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">Special Analysis</span>
+      <div class="era-dates">The Broader World</div>
+      <p class="era-title">Asia, Africa, and the Americas Without Western Domination</p>
+      <div class="era-line"></div>
+    </div>
+
+    <p class="section-intro reveal">The simulation so far has focused on the Mediterranean basin — where the branching point occurs. But the ripple effects propagate outward. Every major civilization on Earth was eventually reshaped by Rome's legacy: Christianity, colonialism, the nation-state, and industrial warfare all originated in the Greco-Roman inheritance and were exported globally. Remove that inheritance and every civilization's trajectory shifts — some dramatically, some subtly, some in ways that cannot be anticipated from the initial conditions.</p>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🐉</span> China <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>The Civilization Least Changed — and Most Changed</h3>
+      <p>China's internal dynamics — the Warring States period, the Qin unification (221 BCE), the Han dynasty's consolidation — are largely independent of Mediterranean events. The Qin and Han arise from Chinese internal pressures: the logic of interstate competition, Legalist administrative philosophy, and the geographic unity of the Yellow and Yangtze river systems. In the first centuries of the simulation, China develops on roughly the same trajectory regardless of what happens at Cannae.</p>
+      <p>The divergence begins with trade. In our timeline, the Silk Road was periodically disrupted by political instability in Central Asia and by the Roman empire's inability to offer China goods of equivalent value — Rome shipped gold and silver eastward and received silk and spice in return, a structural trade deficit that Pliny lamented. In the alternate timeline, a commercially sophisticated Punic-Hellenistic world has more to trade: advanced glass, optical instruments, synthetic dyes, precision-engineered components, and — critically — a tradition of open exchange of technical knowledge rather than imperial hoarding of it.</p>
+      <p>The result is plausibly a deeper, more balanced, and earlier integration between Mediterranean and Chinese technical traditions. Chinese innovations that historically took centuries to reach Europe — paper (invented ~100 CE, reached Europe ~1150), the compass (documented ~1040, reached Europe ~1190), gunpowder (9th century, reached Europe ~1280), movable type (Bi Sheng, ~1040, Gutenberg ~1440) — would plausibly flow westward faster through an unobstructed commercial network. In return, Hellenistic mathematics, astronomical models, and optical technology flow eastward. The synthesis is impossible to predict in specifics, but the direction is clear: two of history's most inventive civilizations in sustained technical dialogue centuries earlier than in our timeline.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🕉</span> India <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>The Subcontinent as Peer, Not Prize</h3>
+      <p>India's relationship with the Mediterranean was already deep by 216 BCE. The Maurya Empire (322–185 BCE) was in direct diplomatic contact with the Seleucid Greeks. Ashoka's edicts reference Greek kings by name. The Indo-Greek kingdoms (180 BCE–10 CE) produced genuine cultural fusion: Gandharan art, Greco-Buddhist philosophy, bilingual coinage. The Indian Ocean trade connected the Malabar Coast to Egypt through a monsoon-driven sailing system that was ancient and reliable.</p>
+      <p>In our timeline, India became the ultimate prize of European colonialism — the British Raj extracted an estimated $45 trillion in wealth (Utsa Patnaik's calculation, debated but directionally significant). The East India Company's conquest began not as a military campaign but as a commercial operation that metastasized into empire. This sequence requires the specific European institutional framework — joint-stock corporations, naval gunnery, mercantilist ideology, and the willingness to use military force to enforce commercial monopoly — that the alternate timeline does not produce.</p>
+      <p>Without European colonialism, India's internal dynamics — the Gupta golden age, the Delhi Sultanate, the Mughal synthesis — unfold differently. The Islamic influence on India may be shallower (without the same Islam developing), though Central Asian nomadic pressures continue regardless. What is most plausible is that India remains a peer civilization in continuous commercial exchange with the Mediterranean world: exporting mathematics (the decimal system, zero, trigonometry), metallurgy (wootz steel, the Delhi iron pillar), textiles, and spices; importing Mediterranean glass, chemistry, and navigational instruments. The relationship is trade between equals, not extraction by conquerors.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🏯</span> Japan, Korea, and Southeast Asia <span class="confidence-badge badge-speculative">Speculative</span></div>
+      <h3>The Pacific Rim Without Western Intrusion</h3>
+      <p>Japan's development through the Yayoi, Kofun, and classical periods is driven primarily by Chinese cultural influence and internal dynamics — rice agriculture, clan competition, the importation and adaptation of Chinese writing, Buddhism, and administrative models. These forces are largely independent of Mediterranean events. The Tokugawa shogunate's decision to close Japan (1639) was specifically a response to European — particularly Portuguese and Spanish — missionary activity and colonial ambition. Without European colonial pressure, Japan never closes. The question is what it opens to.</p>
+      <p>In a world where maritime trade networks extend from the Mediterranean through the Indian Ocean to Southeast Asia and onward, Japanese and Korean civilizations encounter global commerce on different terms — as trading partners in an existing network rather than as targets of gunboat diplomacy. The Meiji Restoration (1868), which was explicitly a response to Western military superiority, never occurs in this form. Japan modernizes — but on its own timetable, in its own way, absorbing what it chooses from the global network rather than scrambling to match Western industrial-military capacity under existential threat.</p>
+      <p>Southeast Asia — the Khmer Empire, Srivijaya, Majapahit, the Vietnamese kingdoms — sits at the intersection of the Indian Ocean and Pacific trade systems. In our timeline, these civilizations were subordinated first by European colonial powers and then by Cold War great-power competition. Without either force, they develop as what geography suggests they should be: the connective tissue between the Indian Ocean and Pacific commercial worlds, prosperous and culturally hybrid, shaped by trade rather than by occupation.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🌍</span> Africa <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>The Continent That Was Never Interrupted</h3>
+      <p>Africa's relationship to the Punic world is not hypothetical — it is foundational. Carthage was an African city. The Punic commercial network included the entire North African coast, extended down the Atlantic seaboard to at least Senegal (Hanno's route), and connected through trans-Saharan trade to the West African gold-producing regions that funded Mediterranean commerce for centuries. The Kingdom of Kush, Axum, and the Swahili Coast civilizations were already integrated into Indian Ocean trade networks by the early centuries CE.</p>
+      <p>In our timeline, Africa's trajectory was catastrophically interrupted by two forces: the Arab slave trade (7th–20th century, affecting primarily East Africa) and the transatlantic slave trade (15th–19th century, devastating West Africa). The transatlantic trade alone forcibly removed an estimated 12.5 million people; the demographic, political, and social consequences — the destruction of existing state structures, the incentivization of inter-African warfare for captive production, the loss of productive population — have been extensively documented by historians including Joseph Inikori and Patrick Manning.</p>
+      <p>Without the transatlantic slave trade — which required European naval technology, plantation colonial economics, and Christian theological frameworks that dehumanized African peoples — West African civilizations continue their documented trajectory. The Ghana Empire (c. 300–1200 CE), Mali Empire (1235–1600 CE), and Songhai Empire (1430–1591 CE) were historically sophisticated states with organized administration, long-distance trade, and — in the case of Mali — the University of Sankore at Timbuktu, which was a genuine center of learning attracting scholars from across the Islamic world. In the alternate timeline, these states develop in continuous commercial partnership with the Mediterranean network rather than being gutted by the slave trade.</p>
+      <p>East Africa, connected to the Indian Ocean trade system since antiquity, follows a parallel trajectory: the Swahili Coast cities as cosmopolitan trading hubs, Axum and its Ethiopian successors as highland civilizations integrated into global commerce, the Great Zimbabwe tradition as evidence of sophisticated indigenous urbanism. Without colonial partition (the Berlin Conference of 1884–85 divided Africa among European powers with no African representation), the political geography of Africa in 2026 would bear no resemblance to the arbitrary borders drawn by European diplomats who had never visited the territories they were dividing.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🌎</span> The Americas <span class="confidence-badge badge-speculative">Speculative</span></div>
+      <h3>Civilizations with 1,600 More Years of Uninterrupted Development</h3>
+      <p>The civilizations of the Americas — the Hopewell and Mississippian cultures in North America, the Maya and later Aztec in Mesoamerica, the Moche, Nazca, and later Inca in South America — were developing along trajectories that were interrupted by European contact in 1492. The Maya had independently invented zero, developed a vigesimal mathematical system, built the most accurate pre-telescopic astronomical observations in the world, and created a fully functional written language. The Inca administered an empire of 12 million people across 2,500 miles of mountain terrain without a writing system, using instead the quipu — a knotted-string information technology whose full decoding remains incomplete.</p>
+      <p>If trans-Atlantic contact occurs in the alternate timeline — centuries earlier, through a commercial civilization rather than a conquering one — the critical variable is disease. Smallpox, measles, influenza, and other Eurasian pathogens killed an estimated 90% of Indigenous populations after 1492, not because Europeans intended genocide (though some did) but because millennia of separate disease evolution had produced no immunity in American populations. Earlier contact does not eliminate this problem — but it changes its character. Gradual commercial contact, involving small numbers of traders rather than armies of conquistadors, produces slower disease transmission with time for partial adaptation. A civilization with earlier germ theory may also be capable of recognizing and managing epidemic disease at the point of contact. The demographic catastrophe is plausibly reduced in scale — though not eliminated — and the surviving civilizations retain their political and cultural integrity.</p>
+      <p>The result, by the alternate 2026, is an Americas home to 1.5–2 billion people in civilizations that have had 1,600 additional years of development and centuries of Eurasian peer exchange — importing metallurgy, glass, and wheeled transport (which the Americas historically lacked) while exporting rubber, quinine, chocolate, potatoes, maize, and tomatoes, all of which transformed the Old World when they finally arrived. These are not "developing nations." They are peer civilizations with their own mathematical, astronomical, architectural, and agricultural traditions, enriched by exchange rather than destroyed by conquest.</p>
+    </div>
+
+    <div class="compare reveal">
+      <div class="compare-cell">
+        <div class="compare-label our">Our Timeline: The Colonial World</div>
+        <p>European colonialism subjugated Asia, Africa, and the Americas over 500 years. 12.5 million Africans enslaved. 50–90 million Indigenous Americans dead. $45 trillion extracted from India. Africa partitioned by diplomats who never visited it. The entire non-European world reorganized to serve European interests.</p>
+      </div>
+      <div class="compare-cell">
+        <div class="compare-label alt">Alternate Timeline: Peer Civilizations</div>
+        <p>No colonial project. No transatlantic slave trade. Asia, Africa, and the Americas develop as peer civilizations in a commercial network. Trade between equals, not extraction by conquerors. Disease transmission remains a risk at every point of contact, but without the machinery of conquest behind it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section class="era" id="technology">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">Deep Dive</span>
+      <div class="era-dates">Technology</div>
+      <p class="era-title">From Murex Chemistry to the Shape of a Different Science</p>
+      <div class="era-line"></div>
+    </div>
+
+    <p class="section-intro reveal">Technology in this alternate timeline advances along a different gradient — shaped by commercial incentive rather than military demand, by distributed networks rather than imperial monoculture, and by chemistry seeded by the ancient world's most sophisticated industrial process: the murex dye industry.</p>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🐚</span> The Murex Thread <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>Chemistry's True Industrial Origin</h3>
+      <p>Tyrian purple was produced from murex snail mucus through controlled enzymatic reduction, oxidation, and photo-chemical transformation — the actual chemistry involves 6,6'-dibromoindigo. The Phoenicians and Carthaginians had been industrially working with brominated organic compounds since at least 800 BCE. Production was at staggering scale: at Sidon, discarded shells created a mound 40 metres high. In a 301 CE price edict, one pound of dye cost the equivalent of three pounds of gold.</p>
+      <p>This is organized industrial chemistry operating continuously for centuries, with every commercial incentive to understand and improve the process. In the alternate timeline, the question is whether this tradition — unburdened by Roman intellectual stagnation — accelerates the development of optical glass and organic chemistry. The answer is plausibly yes, though the magnitude of acceleration is where honest uncertainty begins.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🧭</span> Navigation <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>Clocks, Charts, and the Open Ocean</h3>
+      <p>The Antikythera tradition of precision gearing, combined with Eratosthenes' calculation of Earth's circumference (accurate to within 1%) and systematic stellar navigation, provides the theoretical foundation for trans-oceanic navigation. Whether this translates to routine open-ocean sailing centuries earlier is a question of engineering pace — but the necessary ingredients are all present in the Hellenistic world.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">⚡</span> The Shape of 2026 <span class="confidence-badge badge-speculative">Speculative</span></div>
+      <h3>A Different Emphasis, Not Simply "More Advanced"</h3>
+      <p>This world's science would likely be weighted toward medicine, materials, agriculture, and energy — rather than the weapons-driven trajectory of our own. The explosive growth of military technology in our timeline was driven by religious wars, nationalist warfare, and colonial conquest. Without those specific drivers, the commercial incentive for industrialized killing never fully assembles.</p>
+      <p>This world likely has no nuclear weapons — not because it is peaceful, but because industrialized mass killing required an ideological infrastructure this world never built. It is plausibly ahead of ours in biology and medicine, comparable in mathematics and computing, and behind in destructive capacity. Whether that constitutes "progress" depends on what you value.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WARFARE -->
+<section class="era" id="warfare">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">Deep Dive</span>
+      <div class="era-dates">Warfare</div>
+      <p class="era-title">The Art of War Along a Different Gradient</p>
+      <div class="era-line"></div>
+    </div>
+
+    <p class="section-intro reveal">Warfare is the one domain where the alternate world is plausibly <em>behind</em> ours — and where that deficit may constitute an advantage. The explosive arms races that defined our history required specific institutional drivers: religious mandates to conquer, nationalist competition between peer states, and colonial extraction economies that funded permanent military establishments. Without those drivers, warfare still evolves — humans fight — but along a fundamentally different gradient.</p>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">⚔</span> The Carthaginian Military Model <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>Mercenaries, Specialists, and the Anti-Legion</h3>
+      <p>Carthage's military was the inverse of Rome's. Where Rome built a citizen army — homogeneous, drilled, interchangeable, and expendable — Carthage assembled specialist mercenary forces drawn from across the Mediterranean. Numidian light cavalry, Balearic slingers, Libyan heavy infantry, Iberian swordsmen, Celtic warriors, and Ligurian javelin troops each fought in their own style under unified command. Hannibal's genius was orchestrating this diversity into coherent tactical systems.</p>
+      <p>This is a military philosophy built on integration of difference rather than uniformity of mass. It produced Cannae — the most tactically perfect battle in ancient history. It also produced a structural vulnerability: mercenary armies are expensive, require constant payment, and can mutiny catastrophically when pay fails, as the Truceless War (241–238 BCE) demonstrated.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🏛</span> Innovation by Necessity <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>Hannibal's Tactical Revolution</h3>
+      <p>Hannibal did not merely win battles — he invented tactical concepts that remained in military textbooks for two millennia. The double envelopment at Cannae was studied by Schlieffen, Schwarzkopf, and every staff college in between. His use of terrain at Lake Trasimene — hiding 30,000 men in morning fog along a narrow lakeside defile — was the most perfectly executed ambush in ancient history. His crossing of the Alps with war elephants was a logistical feat that demonstrated the capacity to project force across barriers considered impassable.</p>
+      <p>But the innovations were not limited to the field. Hannibal was also a sophisticated practitioner of intelligence warfare, alliance-building, and what modern doctrine would call "information operations" — flipping Italian cities through demonstrated power and promised autonomy rather than siege and slaughter. His approach to war was systemic, not merely tactical.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🛡</span> The Alternate Military Trajectory <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>Commerce Shapes the Tools of Violence</h3>
+      <p>In a world where the dominant civilization is commercial rather than imperial, the military incentive structure shifts. The primary threats to a distributed trade network are piracy, regional disruption of routes, and opportunistic raiding — not peer-state existential warfare. The military that develops to meet those threats is plausibly: a powerful navy optimized for route protection rather than amphibious conquest; garrison forces at chokepoints and port cities; and diplomatic capacity to manage conflict without total war.</p>
+      <p>Siege warfare — where Carthage was historically weakest — remains a secondary art. Fortification improves alongside materials science, but the arms race between cannon and wall that consumed Europe from 1400–1700 never reaches the same intensity. Naval gunnery, if gunpowder arrives through the Silk Road on a similar timeline, develops for commerce protection rather than line-of-battle dominance.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">💥</span> What Never Gets Built <span class="confidence-badge badge-speculative">Speculative</span></div>
+      <h3>The Weapons That Required Specific Ideologies</h3>
+      <p>The industrialization of killing in our timeline followed a specific path: gunpowder → firearms → artillery → rifling → machine guns → chemical weapons → nuclear weapons. Each step was funded by nation-states in existential competition, driven by ideologies that framed mass killing as legitimate or even glorious. The American Civil War's industrial slaughter, the Western Front's machine-gun wastelands, the Manhattan Project — each required not just technical capacity but institutional will to invest in maximizing lethality.</p>
+      <p>A commercial civilization plausibly develops gunpowder applications — mining, demolition, naval signaling, perhaps defensive weapons — without the relentless escalation cycle that took our world from cannon to atomic bomb in 500 years. The specific claim is not that this world is peaceful. It is that the machinery of <em>industrialized</em> mass killing — weapons designed to kill thousands per hour, tens of thousands per detonation — requires drivers this world lacks. Conflict in the alternate 2026 is fought with tools that would look sophisticated to us in some respects and primitive in others: advanced materials, superior medicine, effective intelligence networks — but nothing equivalent to a nuclear arsenal.</p>
+    </div>
+
+    <div class="compare reveal">
+      <div class="compare-cell">
+        <div class="compare-label our">Our Military Trajectory</div>
+        <p>Citizen armies → feudal levies → professional standing armies → conscript nation-states → industrial total war → nuclear deterrence. Each stage funded by territorial competition and ideological mandate. Endpoint: weapons capable of ending civilization.</p>
+      </div>
+      <div class="compare-cell">
+        <div class="compare-label alt">Alternate Trajectory</div>
+        <p>Mercenary specialists → naval route protection → garrison networks → commercial dispute resolution → regional security compacts. Each stage shaped by trade protection rather than territorial expansion. Endpoint: sophisticated but non-existential military capacity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CULTURE -->
+<section class="era" id="culture">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">Deep Dive</span>
+      <div class="era-dates">Culture</div>
+      <p class="era-title">Music, Art, and the Umami Civilization</p>
+      <div class="era-line"></div>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🎵</span> Music <span class="confidence-badge badge-speculative">Speculative</span></div>
+      <h3>A World Without the Diatonic Straightjacket</h3>
+      <p>Music in our timeline was shaped by Christian liturgy, Islamic musical theory, and European classical notation. Remove all three and the result is unknowable in its specifics — but the <em>direction</em> is not. The pre-Christian Mediterranean tradition was already a synthesis of Greek modal scales, microtonality, and Near Eastern and Berber rhythmic structures. Without a single religious authority flattening this into uniformity, 2,200 years of continuous cross-pollination produces a musical world whose very foundations — scales, rhythm, the relationship between melody and harmony — evolved differently.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🍽</span> Cuisine <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>Garum, Fermentation, and the Global Spice Palette</h3>
+      <p>The earliest mention of garum fish sauce appears in the agricultural writings of Mago of Carthage (6th–5th century BCE). The largest garum factory at Lixus in Morocco had a salting capacity of over 1,000,000 litres. This was the universal flavor foundation of the ancient Mediterranean: fermented fish producing glutamate-rich umami.</p>
+      <p>With fermentation science understood from first principles — plausible in a world with earlier microbiology — and a spice palette expanded by the trade network's reach (including, potentially, American chili peppers centuries before Columbus), the result is a food culture whose depth and global integration would make our own look parochial. The garum tradition alone — ancestor of fish sauce, Worcestershire sauce, and Southeast Asian nước mắm — suggests a flavor world built on umami as its base note.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="era" id="education">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">Deep Dive</span>
+      <div class="era-dates">Education</div>
+      <p class="era-title">Knowledge Without Gatekeepers</p>
+      <div class="era-line"></div>
+    </div>
+
+    <p class="section-intro reveal">Education in the alternate timeline develops without the two forces that most shaped — and constrained — its trajectory in ours: the Christian Church's monopoly on literacy and institutional learning for a thousand years, and the European nation-state's subsequent monopoly on credentialing and curriculum. The result is a system built on different foundations, serving different ends, with different assumptions about who deserves to learn what.</p>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">📜</span> The Hellenistic Foundation <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>The World's First Open Knowledge Culture</h3>
+      <p>The Hellenistic world already had a functioning education infrastructure. The Library of Alexandria — founded ~283 BCE — was not merely a book repository but a research university: the Mouseion housed scholars on state stipends, conducting original research in mathematics, astronomy, geography, medicine, and literary criticism. Parallel institutions existed at Pergamon, Antioch, and Athens. The philosophical schools — Plato's Academy, Aristotle's Lyceum, the Stoa, the Garden of Epicurus — operated as tuition-funded institutions with structured curricula, lasting in some cases for centuries.</p>
+      <p>Crucially, these institutions were not controlled by a religious authority. Admission was based on interest and ability (within the social constraints of the ancient world — free males, primarily). The curriculum was determined by the internal logic of the discipline, not by theological orthodoxy. A student at the Mouseion studied what the evidence and argument demanded, not what a bishop or caliph approved.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">📕</span> What Our Timeline Lost <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>Two Theological Ceilings, Not One</h3>
+      <p>The standard narrative of intellectual suppression focuses on the Christian Church — and rightly so. The closure of the philosophical schools (Justinian shuttered the Academy of Athens in 529 CE) and the Church's assumption of educational authority produced a specific and well-documented outcome: for roughly a thousand years, literacy in Western Europe was overwhelmingly confined to clergy. Education served theology. The liberal arts existed as preparation for scriptural study. The <em>trivium</em> and <em>quadrivium</em> were preserved, but subordinated to divine purpose. Natural philosophy was permitted insofar as it revealed God's design and suppressed insofar as it contradicted scripture.</p>
+      <p>The medieval university — Bologna (1088), Paris (~1150), Oxford (1096) — was a genuine intellectual achievement, but it operated under ecclesiastical charter and papal authority. Academic freedom existed within bounds defined by the Church. Scholars who crossed those bounds — Roger Bacon imprisoned, Galileo silenced, Bruno burned — learned where the lines were.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">☾</span> The Islamic Parallel — al-Ghazali vs. Ibn Rushd <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>The Schism That Closed the Door on Islamic Rationalism</h3>
+      <p>But the Christian ceiling was not the only one. The Islamic world imposed its own — and the moment it crystallized is precisely datable. In the late 11th century, the Persian theologian Abu Hamid al-Ghazali published <em>Tahāfut al-Falāsifa</em> — <em>The Incoherence of the Philosophers</em> — a systematic attack on the Aristotelian rationalist tradition within Islam. Al-Ghazali argued that philosophy and rational inquiry, when they contradicted revealed truth, were not merely wrong but spiritually dangerous. Causality itself, he claimed, was an illusion: what appeared to be natural cause and effect was merely God's continuous direct intervention. Fire does not burn cotton; God burns cotton each time, and could choose not to.</p>
+      <p>The implications for science were devastating. If natural causality is an illusion, then systematic inquiry into natural laws is not merely futile but theologically presumptuous. Al-Ghazali did not oppose all learning — he was a brilliant scholar himself — but he drew a line that subordinated rational inquiry to revealed truth, and the line held. His influence reshaped Islamic education for centuries, channeling intellectual energy toward jurisprudence, theology, and Quranic exegesis and away from the natural philosophy that had produced the Islamic Golden Age.</p>
+      <p>A century later, the Andalusian polymath Ibn Rushd (Averroes) — jurist, physician, and the most important Aristotelian commentator in history — wrote <em>Tahāfut al-Tahāfut</em> (<em>The Incoherence of the Incoherence</em>), a point-by-point rebuttal. Ibn Rushd argued that philosophy and religion were two distinct paths to the same truth — the "double truth" doctrine — and that rational inquiry into the natural world was not merely permitted but obligated by the Quran's own injunction to study God's creation. He defended natural causality, the eternity of the universe, and the primacy of demonstrated proof over theological assertion.</p>
+      <p>Ibn Rushd lost. Not on the merits of the argument, but institutionally. His books were burned in Córdoba in 1195. He was briefly exiled. More importantly, al-Ghazali's position became the dominant framework of Islamic education — the <em>madrasa</em> system that spread across the Islamic world was oriented toward religious sciences, not natural philosophy. The Averroist tradition was not extinguished, but it was marginalized within Islam. Ironically, it was <em>Latin</em> Christendom that preserved and transmitted Ibn Rushd's commentaries on Aristotle — they became foundational texts at Paris and Padua, helping to seed the very rationalist tradition that would eventually challenge the Church's own theological ceiling. The man Islam rejected became one of the architects of European modernity.</p>
+    </div>
+
+    <blockquote class="pullquote reveal">
+      <p>"If the activity of philosophy is nothing more than the study of existing beings and reflection on them as indications of the Artisan... then the Law has called upon people to engage in rational study."</p>
+      <cite>— Ibn Rushd, <em>Faṣl al-Maqāl</em> (Decisive Treatise), c. 1179 CE</cite>
+    </blockquote>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🏛</span> The Alternate Model <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>Commercially Funded, Philosophically Governed</h3>
+      <p>In the alternate timeline, the Hellenistic educational infrastructure never collapses. The Mouseion and its sister institutions continue, funded by a combination of state endowment and commercial patronage — the same model that historically sustained them until Roman and then Christian disruption. Without a religious authority claiming jurisdiction over knowledge, the curriculum evolves according to the demands of the disciplines themselves and the commercial civilization they serve.</p>
+      <p>The practical demands of a trade network shape what gets taught. Navigation requires astronomy and mathematics. Commerce requires literacy, numeracy, contract law, and multilingual competence. Medicine requires anatomy and empirical method. Shipbuilding requires engineering. Dye production requires chemistry. Each of these practical needs creates institutional demand for the corresponding theoretical discipline — and the theoretical disciplines, unburdened by theological gatekeeping, develop according to their own logic.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🌍</span> Literacy and Access <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>Who Gets Educated — and in What</h3>
+      <p>Phoenician culture invented the alphabet — the single most consequential educational technology in human history. The alphabet was developed specifically to make writing accessible to merchants, not to keep it confined to priestly scribes (as Egyptian hieroglyphics and Mesopotamian cuneiform effectively were). This is an educational philosophy embedded in the writing system itself: literacy as commercial tool, available to anyone who trades.</p>
+      <p>In the alternate timeline, this commercial orientation toward broad literacy plausibly produces higher baseline literacy rates much earlier than our own. In our world, mass literacy was not achieved in most European countries until the 19th century — and even then, it was driven by nation-state needs (conscript armies need literate soldiers; industrial economies need literate workers) rather than by any philosophical commitment to universal education.</p>
+      <p>A commercial civilization has its own literacy incentive: every trading partner who can read a contract, navigate a manifest, and calculate an exchange rate is a more valuable node in the network. This does not produce universal education out of idealism — it produces it out of commercial self-interest, which is historically a more reliable engine. The result is plausibly a world where functional literacy reaches a majority of the urban population centuries before ours, though the content of that literacy is weighted toward practical competence rather than humanistic cultivation.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🔬</span> The Shape of Higher Learning <span class="confidence-badge badge-speculative">Speculative</span></div>
+      <h3>Research Without Theological Ceiling</h3>
+      <p>The most consequential difference may be at the top of the educational pyramid. In our timeline, both of the world's dominant intellectual civilizations independently imposed theological ceilings on rational inquiry — the Christian Church from Justinian through the Counter-Reformation, and Islamic orthodoxy from al-Ghazali through the madrasa system's displacement of natural philosophy. The specific disciplines that were suppressed or delayed — human dissection (banned by the Church until the 14th century, practiced freely in Ptolemaic Alexandria), heliocentric astronomy (Copernicus delayed publication; Galileo silenced), natural causality (denied by al-Ghazali's occasionalism), evolutionary biology (Darwin waited twenty years) — represent precisely the fields with the greatest potential to transform human welfare.</p>
+      <p>In the alternate timeline, neither ceiling is ever constructed. The Averroist position — that rational inquiry and spiritual life are distinct domains, and that demonstrated proof takes precedence over theological assertion when investigating the natural world — is not a heresy to be burned in Córdoba but the default epistemology of a civilization descended from Aristotle's intellectual heirs. Ibn Rushd's argument that the study of existing beings is not merely permitted but <em>obligated</em> by the desire to understand creation does not need to be made, because no al-Ghazali ever frames the counter-position. The research university tradition that began at the Mouseion continues without interruption — not because this world lacks religious feeling, but because no single religious authority ever acquires the institutional power to define the boundaries of permissible inquiry.</p>
+      <p>Anatomical research proceeds from the Herophilus-Erasistratus tradition without interruption. Astronomical observation proceeds from Aristarchus without needing to be rediscovered by Copernicus. The specific pace of discovery cannot be known — scientific progress is not linear, and institutional support does not guarantee breakthroughs. But the systematic removal of the single largest institutional barrier to inquiry — not one but <em>two</em> theological ceilings, imposed independently by the only civilizations with the institutional reach to enforce them — plausibly produces a research culture that reaches our 17th-century level of empirical sophistication centuries earlier.</p>
+    </div>
+
+    <div class="compare reveal">
+      <div class="compare-cell">
+        <div class="compare-label our">Our Educational Trajectory</div>
+        <p>Hellenistic schools → Church monopoly on literacy → al-Ghazali closes the door on Islamic rationalism → medieval university under dual theological ceilings → Enlightenment struggle for academic freedom → nation-state mass education → modern research university. Each transition required overcoming the previous era's gatekeepers.</p>
+      </div>
+      <div class="compare-cell">
+        <div class="compare-label alt">Alternate Trajectory</div>
+        <p>Hellenistic schools → commercially funded academies → network of discipline-specific institutions → Averroist epistemology as default → trade-driven mass literacy → research tradition without theological ceiling. No thousand-year detour through ecclesiastical or theological control.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIETY: IMMIGRATION & SEXUALITY -->
+<section class="era" id="society">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">Deep Dive</span>
+      <div class="era-dates">Society</div>
+      <p class="era-title">Movement, Identity, and the Chains Never Forged</p>
+      <div class="era-line"></div>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🧬</span> Immigration <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>Culture Without Conquest</h3>
+      <p>The 2025 <em>Nature</em> study's conclusion was unambiguous: Phoenician culture spread "not through large-scale mass migration, but through a dynamic process of cultural transmission and assimilation." People from Sicily, Greece, North Africa, and Iberia chose to adopt the commercial culture while contributing their own biological and cultural identities. You joined the network. You kept your identity. You were useful to the system precisely <em>because</em> of your local knowledge.</p>
+      <p>Scaled forward through a world system that valued participant diversity, this model plausibly produces a different framework for human movement — organized around commerce and contribution rather than racial hierarchy. Whether this prevents all forms of xenophobia and exploitation is another matter; humans organize hierarchies with whatever material is at hand. But the specific institutional machinery that racialized movement in our timeline — the transatlantic slave trade, colonial nation-states, racial immigration law — required preconditions this world never assembles.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">⚖</span> Sexuality <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>The Institutionalization of Persecution That Never Happened</h3>
+      <p>The first European law criminalizing same-sex sexuality was issued in 342 CE by Constantius and Constans — Christian Roman emperors. Before that date, no European law criminalized it. The causal chain from that edict — through Theodosius (390 CE), Justinian (533 CE), Catholic canon law, England's Buggery Act (1533), and colonial export — to laws still on the books in 64 countries today is documented at every link.</p>
+      <p>In the pre-Christian Mediterranean, the distinction that structured sexuality was not <em>who</em> you desired but what <em>role</em> you took. No Latin words for "homosexual" or "heterosexual" exist, because those concepts did not organize ancient thought about desire. The Phoenician-Punic religious world was specifically hospitable to gender diversity: the priests of Inanna were bisexual and transgender, and sacred sexuality involving people of all genders was liturgical practice, not taboo.</p>
+      <p>In a world where the 342 CE edict never occurs, the entire 1,661-year chain of institutionalized persecution — from Constantine to <em>Lawrence v. Texas</em> — is never forged. This does not produce a world without sexual complexity or social hierarchy around desire. It produces a world without the <em>specific</em> institutional apparatus that made certain forms of love a crime. The distinction between "having rights" and "never having had them taken away" is the point.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE SHADOW LEDGER -->
+<section class="era" id="shadows">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">The Counter-Argument</span>
+      <div class="era-dates">Shadows</div>
+      <p class="era-title">What the Alternate Timeline Loses, Fails, or Produces on Its Own</p>
+      <div class="era-line"></div>
+    </div>
+
+    <p class="section-intro reveal">Intellectual honesty requires examining what the alternate timeline does not solve, what it might make worse, and what it loses by never having Rome. A civilization built on different foundations produces different failures — and some of them are severe. The alternate world is not a paradise. It is a different set of trade-offs, and the ledger has a debit column.</p>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">⚖</span> The Carthaginian Model Had Real Deficiencies <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>Plutocracy, Child Sacrifice, and the Mercenary Problem</h3>
+      <p>A commercial civilization governed by wealthy merchant families is, at its core, a plutocracy — and plutocracies produce their own forms of oppression. Aristotle praised the Carthaginian constitution but also noted its tendency toward oligarchy: wealth bought political influence, and the gap between the commercial elite and the laboring population was stark. A world built on the Punic model does not escape class hierarchy; it merely organizes it around capital rather than land or lineage. The exploitation of labor by capital is not a problem that requires Rome to invent.</p>
+      <p>The question of child sacrifice — the <em>tophet</em> — remains genuinely contested among scholars. Roman and Greek sources unanimously attest to it. Some modern archaeologists (notably Stager and Wolff) found evidence consistent with infant sacrifice at Carthaginian tophets; others (Schwartz, 2010; Quinn, 2013) argue that the remains are primarily stillborn or naturally deceased infants given sacred burial. The honest assessment is that we do not know with certainty — but the possibility cannot be dismissed simply because our enemies reported it. A surviving Carthage must reckon with whatever this practice actually was.</p>
+      <p>The mercenary military model, while tactically brilliant under Hannibal, was structurally fragile. The Truceless War (241–238 BCE) — in which unpaid mercenaries revolted and nearly destroyed Carthage — demonstrated that an army held together by pay rather than citizenship can disintegrate catastrophically when payment fails. A surviving Carthaginian hegemony must solve this problem. The plausible solution is professionalization — standing naval and garrison forces funded by trade revenue — but this creates its own risks: a professional military class with commercial interests to protect is not inherently more virtuous than a citizen army with imperial ambitions.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">⚠</span> Slavery Persists <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>The Absence of Abolition's Specific Moral Architecture</h3>
+      <p>Slavery existed in every ancient Mediterranean civilization, including Carthage. The simulation argues that the <em>transatlantic</em> slave trade — racialized, industrialized, and ideologically justified by Christian theology — does not occur. This is a defensible claim. But the institution of slavery itself does not disappear simply because its worst historical form is prevented.</p>
+      <p>The abolition movement in our timeline drew its moral energy from specific sources: Quaker theology, Evangelical Christianity, Enlightenment natural-rights philosophy, and — critically — the testimony of enslaved people themselves. The Christian argument that all humans possess equal dignity before God was deployed both to justify slavery (the Curse of Ham) and to condemn it (the abolitionists). Without Christianity, the specific moral vocabulary of abolition does not develop in the same form.</p>
+      <p>What replaces it? Stoic philosophy already contained the germ of universal human dignity — Seneca argued that slaves were moral equals. A philosophical tradition unbroken from the Stoa plausibly develops its own anti-slavery arguments. But "plausibly develops" is not "certainly develops," and the commercial incentive structure of a trade civilization is ambivalent toward slavery: slave labor is cheap, and commercial civilizations follow profit. The honest assessment is that slavery persists longer in some form in the alternate timeline, even if its worst industrialized expression is avoided. The alternate world may eventually reach abolition — but it arrives through different arguments, on a different timeline, and there is no guarantee it arrives at all.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🏴</span> Commercial Exploitation as Its Own Form of Violence <span class="confidence-badge badge-plausible">Plausible</span></div>
+      <h3>The East India Company Without the East India Company</h3>
+      <p>The simulation argues that the alternate world avoids colonial extraction. But commercial hegemony has its own modes of domination. A civilization whose power derives from controlling trade chokepoints, setting terms of exchange, and monopolizing key commodities can exploit weaker trading partners without ever sending an army. The Punic world already practiced this: Carthaginian commercial treaties, as preserved by Polybius, included exclusion zones that prevented rival traders from accessing certain markets. This is soft power — but it is still power, and it concentrates wealth at the center of the network at the expense of the periphery.</p>
+      <p>The alternate world plausibly produces its own forms of economic imperialism: port cities extracting favorable terms from interior producers, trade networks pricing out local artisans, commercial monopolies on critical goods (murex dye, advanced glass, navigational instruments) creating dependency relationships. The mechanisms differ from colonial extraction — no governor-generals, no plantation slavery, no Berlin Conference — but the outcome for communities at the periphery of the network may be, in some cases, materially similar. Exploitation does not require a flag.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🔥</span> What Rome Actually Gave the World <span class="confidence-badge badge-fact">Historical</span></div>
+      <h3>The Losses Are Real</h3>
+      <p>The simulation's focus on what Rome destroyed risks obscuring what Rome built. The Roman legal tradition — from the Twelve Tables through Justinian's <em>Corpus Juris Civilis</em> — is the foundation of civil law systems used by half the world today. Concepts now taken as universal — legal personhood, due process, the distinction between public and private law, the right of appeal — were Roman innovations. A world without Rome must reinvent these concepts from different materials, and there is no guarantee it does so as effectively.</p>
+      <p>Roman infrastructure — roads, aqueducts, bridges, harbors — was built to a standard of engineering that was not matched in Europe for a thousand years after the empire's fall. The Roman road network connected Britain to Mesopotamia and enabled the movement of people, goods, and ideas at a scale the ancient world had never seen. The Punic commercial network was impressive, but it was maritime and coastal; Rome's achievement was connecting interiors — and the administrative capacity to maintain those connections across centuries.</p>
+      <p>Roman political philosophy — the concept of <em>res publica</em>, the mixed constitution, the tension between republic and empire — directly informed the American and French revolutions. The Enlightenment thinkers who built modern democratic theory were reading Cicero, Livy, and Tacitus. The specific political vocabulary of liberty, tyranny, republic, and citizen derives from Roman thought. The alternate world develops its own political philosophy — but it loses the Roman contribution, and that contribution was substantial.</p>
+    </div>
+
+    <div class="category reveal">
+      <div class="cat-label"><span class="cat-icon">🌫</span> The Unknown Unknowns <span class="confidence-badge badge-speculative">Speculative</span></div>
+      <h3>The Failures We Cannot Predict</h3>
+      <p>The deepest limitation of any counterfactual is that it can only imagine the problems it can foresee. Every civilization produces pathologies specific to its own structure — and a Punic-Hellenistic commercial civilization running for 2,200 years would produce pathologies we cannot anticipate from the outside. A world organized around trade may develop its own forms of environmental devastation (industrial-scale murex harvesting already depleted snail populations in antiquity). A world without monotheistic authority may develop cult-based social control that is oppressive in ways we cannot recognize because we have no experience of it. A world with earlier technology but no world wars may develop complacency rather than the urgency that drove our most ambitious collective projects.</p>
+      <p>The honest conclusion is not that the alternate world is better. It is that the alternate world is <em>different</em> — with different strengths, different failures, and different forms of suffering. The value of the exercise is not the moral ledger but the recognition that our world's specific failures were not inevitable, and that other configurations of human civilization were possible. What those configurations would actually produce, in their full complexity, exceeds the reach of any simulation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="conclusion" id="conclusion">
+  <div class="container">
+    <div class="era-header">
+      <span class="era-number">The Reckoning</span>
+      <div class="era-dates">2026 CE</div>
+      <p class="era-title">Portrait of the Alternate World</p>
+      <div class="era-line"></div>
+    </div>
+
+    <div class="category reveal" style="text-align: left;">
+      <p>The alternate 2026 is not a paradise. It is a world with the ordinary suffering of human nature — greed, conflict, disease, loss. What it plausibly lacks are the specific catastrophes that required specific preconditions our timeline assembled and theirs did not: a universalizing theology with a mandate to persecute, a colonial project to export it, and an industrial killing machinery to enforce it.</p>
+      <p>The Americas are home to sophisticated civilizations with centuries of Eurasian contact and co-development, not the ruins of conquest. Sub-Saharan Africa is commercially integrated into a global network since the 5th century BCE. Medicine is centuries ahead. Weapons technology is likely behind. The atmosphere is cleaner. The music sounds nothing like ours.</p>
+      <p>How much of this is real? The historical foundations are solid. The first-order counterfactual — Carthage survives, Rome becomes regional — is a well-examined branch point. The downstream consequences grow less certain with every century. By 2026, we are painting with the broadest brush available. The value of the exercise is not the specifics of the portrait, but the recognition it forces: the world we inherited was not the only world possible. Almost none of what we take for granted was inevitable.</p>
+    </div>
+
+    <div class="compare reveal">
+      <div class="compare-cell">
+        <div class="compare-label our">Our 2026</div>
+        <p>Two world wars. The Holocaust. The transatlantic slave trade. The destruction of the Americas. Nuclear arsenals capable of ending human life. 64 countries still criminalizing same-sex love.</p>
+      </div>
+      <div class="compare-cell">
+        <div class="compare-label alt">Alternate 2026</div>
+        <p>Regional conflicts, inequality, the permanent features of human nature. But plausibly no machinery of industrialized mass murder, no racialized colonial project, and no theological infrastructure of sexual persecution.</p>
+      </div>
+    </div>
+
+    <div class="final-line reveal">
+      The deepest irony of history is not that Carthage fell. It is that the civilization that defeated it wrote the history, buried its libraries, salted its fields — and called it civilization.
+    </div>
+
+    <div class="reveal" style="margin-top: 5rem; padding-top: 3rem; border-top: 1px solid rgba(201,168,76,0.15);">
+      <p style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; color:var(--stone-light); text-align:center; text-transform:uppercase; line-height: 2.5;">
+        Ancient Sources: Aristotle, <em>Politics</em> · Polybius, <em>Histories</em> · Livy, <em>Ab Urbe Condita</em> XXII · Hanno, <em>Periplus</em><br>
+        Modern Sources: Miles, <em>Carthage Must Be Destroyed</em> (2010) · Russo, <em>The Forgotten Revolution</em> (2004) · Hoyos, <em>Hannibal's Dynasty</em> (2003) · Goldsworthy, <em>The Fall of Carthage</em> (2003)<br>
+        Scientific: Ringbauer et al., <em>Nature</em> (2025) — 210 Phoenician-Punic ancient DNA samples · Tyrian Purple chemistry: PMC 6236399 (2018)
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  A Counterfactual Historical Simulation · Projections Are Speculative Extrapolations from Documented Evidence
+</footer>
+
+<script>
+  // Smooth scrolling
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Active nav state via IntersectionObserver
+  const sections = document.querySelectorAll('.era, .conclusion');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -75% 0px' });
+  sections.forEach(s => navObserver.observe(s));
+
+  // Reveal-on-scroll with CSS classes, unobserve after reveal
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  }
+</script>
+</body>
+</html>
