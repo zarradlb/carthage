@@ -304,6 +304,87 @@
   .lang-btn.active { color: var(--gold-light); border-color: rgba(201,168,76,0.4); }
   .lang-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
+  /* Premium toggle */
+  .premium-toggle {
+    display: flex; align-items: center; gap: 0.4rem;
+    margin-left: 0.5rem; padding-left: 0.5rem;
+    border-left: 1px solid rgba(201,168,76,0.15);
+  }
+  .premium-label {
+    font-family: 'Cinzel', serif; font-size: 0.46rem; letter-spacing: 0.1em;
+    color: var(--stone); text-transform: uppercase; white-space: nowrap;
+    cursor: default;
+  }
+  .premium-label.unlocked { color: var(--gold); }
+  .premium-switch {
+    position: relative; width: 28px; height: 16px;
+    background: rgba(201,168,76,0.15); border-radius: 8px;
+    cursor: pointer; border: 1px solid rgba(201,168,76,0.2);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .premium-switch::after {
+    content: ''; position: absolute; top: 2px; left: 2px;
+    width: 10px; height: 10px; background: var(--stone);
+    border-radius: 50%; transition: transform 0.3s, background 0.3s;
+  }
+  .premium-switch.on { background: rgba(201,168,76,0.3); border-color: var(--gold); }
+  .premium-switch.on::after { transform: translateX(12px); background: var(--gold); }
+  .premium-switch:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* Passcode modal */
+  .passcode-modal {
+    position: fixed; inset: 0; z-index: 300;
+    background: rgba(26,19,10,0.95);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .passcode-modal.active { opacity: 1; pointer-events: auto; }
+  .passcode-box {
+    background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.2);
+    padding: 2.5rem; max-width: 380px; width: 90%; text-align: center;
+  }
+  .passcode-box h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
+    font-weight: 300; color: var(--gold-light); margin-bottom: 0.5rem;
+  }
+  .passcode-box p {
+    font-family: 'Libre Baskerville', serif; font-size: 0.78rem;
+    color: var(--stone-light); margin-bottom: 1.5rem; line-height: 1.6;
+  }
+  .passcode-input {
+    width: 100%; padding: 0.6rem 0.8rem;
+    background: rgba(26,19,10,0.8); border: 1px solid rgba(201,168,76,0.25);
+    color: var(--sand); font-family: 'Cinzel', serif; font-size: 0.8rem;
+    letter-spacing: 0.15em; text-align: center; text-transform: uppercase;
+    outline: none; transition: border-color 0.3s;
+  }
+  .passcode-input:focus { border-color: var(--gold); }
+  .passcode-input.error { border-color: var(--crimson); }
+  .passcode-submit {
+    display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem;
+    background: none; border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold); font-family: 'Cinzel', serif; font-size: 0.6rem;
+    letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .passcode-submit:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+  .passcode-close {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    background: none; border: none; color: var(--stone); font-size: 1.2rem;
+    cursor: pointer; transition: color 0.3s; padding: 0.5rem;
+  }
+  .passcode-close:hover { color: var(--gold); }
+  .passcode-error {
+    font-family: 'Libre Baskerville', serif; font-size: 0.72rem;
+    color: var(--crimson); margin-top: 0.75rem; min-height: 1rem;
+  }
+  .passcode-mode-label {
+    font-family: 'Cinzel', serif; font-size: 0.48rem; letter-spacing: 0.15em;
+    color: var(--stone); text-transform: uppercase; margin-top: 0.5rem;
+    display: inline-block;
+  }
+  .passcode-mode-label.premium { color: var(--gold); }
+
   /* Translation loading overlay */
   .translate-overlay {
     position: fixed; inset: 0; z-index: 200;
@@ -352,6 +433,7 @@
     .method-tier { flex-direction: column; gap: 0.4rem; }
     .hinge-diagram { padding: 1.5rem 0; margin: 2rem 0; overflow-x: auto; }
     .lang-switcher { margin-left: 0; padding-left: 0; border-left: none; border-top: 1px solid rgba(201,168,76,0.15); padding-top: 0.4rem; width: 100%; justify-content: center; }
+    .premium-toggle { border-left: none; border-top: 1px solid rgba(201,168,76,0.15); margin-left: 0; padding-left: 0; padding-top: 0.35rem; margin-top: 0.2rem; }
   }
 </style>
 </head>
@@ -363,6 +445,18 @@
   <div class="spinner"></div>
   <p>Translating…</p>
   <div class="progress" id="translateProgress"></div>
+  <span class="passcode-mode-label" id="translationModeLabel"></span>
+</div>
+
+<div class="passcode-modal" id="passcodeModal">
+  <button class="passcode-close" id="passcodeClose" aria-label="Close">✕</button>
+  <div class="passcode-box">
+    <h3>Literary Translation</h3>
+    <p>AI-powered scholarly translation that preserves the literary voice, tone, and nuance of the original. Enter your access code below.</p>
+    <input type="text" class="passcode-input" id="passcodeInput" placeholder="ACCESS CODE" autocomplete="off" spellcheck="false">
+    <div class="passcode-error" id="passcodeError"></div>
+    <button class="passcode-submit" id="passcodeSubmit">Unlock</button>
+  </div>
 </div>
 
 <section class="hero" aria-label="Introduction">
@@ -398,6 +492,10 @@
     <button class="lang-btn" data-lang="ar" aria-pressed="false">عر</button>
     <button class="lang-btn" data-lang="ru" aria-pressed="false">РУ</button>
     <button class="lang-btn" data-lang="zh" aria-pressed="false">中</button>
+    <div class="premium-toggle">
+      <div class="premium-switch" id="premiumSwitch" role="switch" aria-checked="false" aria-label="Literary translation mode" tabindex="0"></div>
+      <span class="premium-label" id="premiumLabel">Literary</span>
+    </div>
   </div>
 </nav>
 
@@ -1282,13 +1380,30 @@
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   }
 
-  // === TRANSLATION SYSTEM ===
+  // === TRANSLATION SYSTEM (DUAL MODE) ===
   const translationCache = {};
   const originalContent = {};
   let currentLang = 'en';
+  let premiumUnlocked = false;
+  let premiumMode = false;
+  let completed = 0;
+  let totalEls = 0;
+
+  // ---- VALID PASSCODES (edit these as needed) ----
+  const validCodes = ['CARTHAGO', 'HANNIBAL', 'PUNICA', 'TANIT2026', 'BARCA'];
 
   const overlay = document.getElementById('translateOverlay');
   const progressEl = document.getElementById('translateProgress');
+  const modeLabel = document.getElementById('translationModeLabel');
+  const premiumSwitch = document.getElementById('premiumSwitch');
+  const premiumLabelEl = document.getElementById('premiumLabel');
+  const passcodeModal = document.getElementById('passcodeModal');
+  const passcodeInput = document.getElementById('passcodeInput');
+  const passcodeError = document.getElementById('passcodeError');
+  const passcodeSubmit = document.getElementById('passcodeSubmit');
+  const passcodeClose = document.getElementById('passcodeClose');
+
+  const langCodes = { fr: 'fr', ar: 'ar', ru: 'ru', zh: 'zh-CN' };
 
   function getTranslatableElements() {
     return document.querySelectorAll(
@@ -1306,13 +1421,9 @@
     );
   }
 
-  // Save originals on load
   function saveOriginals() {
     getTranslatableElements().forEach((el, i) => {
-      if (!originalContent[i]) {
-        originalContent[i] = el.innerHTML;
-        el.dataset.ti = i;
-      }
+      if (!originalContent[i]) { originalContent[i] = el.innerHTML; el.dataset.ti = i; }
     });
   }
 
@@ -1324,12 +1435,11 @@
     document.documentElement.setAttribute('lang', 'en');
   }
 
-  // Call Google Translate (free, no API key needed)
-  async function translateText(text, lang) {
+  // --- GOOGLE TRANSLATE (free) ---
+  async function googleTranslateText(text, lang) {
     const url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=' + lang + '&dt=t&q=' + encodeURIComponent(text);
     const res = await fetch(url);
     const data = await res.json();
-    // Google returns nested arrays: [[["translated text","original text",...],...],...]
     let result = '';
     if (data && data[0]) {
       for (let i = 0; i < data[0].length; i++) {
@@ -1339,38 +1449,74 @@
     return result;
   }
 
-  async function translateElements(elements, lang) {
-    // Translate all elements, 5 at a time to avoid hammering
+  async function googleTranslateAll(elements, lang) {
     const concurrency = 5;
     for (let i = 0; i < elements.length; i += concurrency) {
+      if (currentLang === 'en') return;
       const batch = elements.slice(i, i + concurrency);
       await Promise.all(batch.map(async (el) => {
         const idx = el.dataset.ti;
-        const original = originalContent[idx] || el.innerHTML;
-        // Extract just the text content, translate it, but preserve simple HTML
         try {
-          const translated = await translateText(original, lang);
-          el.innerHTML = translated;
-        } catch (err) {
-          // Silent fail — keep original
-        }
+          el.innerHTML = await googleTranslateText(originalContent[idx] || el.innerHTML, lang);
+        } catch (e) { /* keep original */ }
       }));
       completed += batch.length;
       progressEl.textContent = Math.min(100, Math.round((completed / totalEls) * 100)) + '%';
     }
   }
 
-  let completed = 0;
-  let totalEls = 0;
+  // --- ANTHROPIC (premium, via serverless proxy) ---
+  async function anthropicTranslateBatch(texts, lang) {
+    const res = await fetch('/api/translate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ texts, lang })
+    });
+    const data = await res.json();
+    if (data.translations) return data.translations;
+    throw new Error(data.error || 'Translation failed');
+  }
 
-  // Google Translate language codes
-  const langCodes = { fr: 'fr', ar: 'ar', ru: 'ru', zh: 'zh-CN' };
+  async function anthropicTranslateAll(elements, lang) {
+    const allTexts = elements.map((el, i) => originalContent[el.dataset.ti] || el.innerHTML);
+    // 6 batches, 2 at a time
+    const batchSize = Math.ceil(allTexts.length / 6);
+    const batches = [];
+    for (let i = 0; i < allTexts.length; i += batchSize) {
+      batches.push({ start: i, texts: allTexts.slice(i, i + batchSize) });
+    }
+    const allResults = [];
+    for (let i = 0; i < batches.length; i += 2) {
+      if (currentLang === 'en') return;
+      const pair = batches.slice(i, i + 2);
+      const pairResults = await Promise.all(pair.map(async (batch) => {
+        try {
+          const t = await anthropicTranslateBatch(batch.texts, lang);
+          completed += batch.texts.length;
+          progressEl.textContent = Math.min(100, Math.round((completed / totalEls) * 100)) + '%';
+          return { start: batch.start, translations: t };
+        } catch (err) {
+          console.error('Premium batch failed:', err);
+          completed += batch.texts.length;
+          progressEl.textContent = Math.min(100, Math.round((completed / totalEls) * 100)) + '%';
+          return { start: batch.start, translations: batch.texts };
+        }
+      }));
+      allResults.push(...pairResults);
+    }
+    // Apply
+    allResults.forEach(r => {
+      r.translations.forEach((t, j) => {
+        if (elements[r.start + j]) elements[r.start + j].innerHTML = t;
+      });
+    });
+  }
 
+  // --- MAIN SWITCH ---
   async function switchLanguage(lang) {
     if (lang === currentLang) return;
     currentLang = lang;
 
-    // Update buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
       const active = btn.dataset.lang === lang;
       btn.classList.toggle('active', active);
@@ -1384,9 +1530,13 @@
 
     saveOriginals();
 
-    // Check full cache
-    if (translationCache[lang]) {
-      const cached = translationCache[lang];
+    // Determine mode and cache key
+    const mode = premiumMode && premiumUnlocked ? 'premium' : 'standard';
+    const cacheKey = lang + '::' + mode;
+
+    // Check cache
+    if (translationCache[cacheKey]) {
+      const cached = translationCache[cacheKey];
       getTranslatableElements().forEach((el, i) => {
         if (cached[i]) el.innerHTML = cached[i];
       });
@@ -1395,24 +1545,27 @@
 
     // Show overlay
     overlay.classList.add('active');
+    modeLabel.textContent = mode === 'premium' ? 'Literary Translation' : '';
+    modeLabel.className = 'passcode-mode-label' + (mode === 'premium' ? ' premium' : '');
     completed = 0;
 
     const els = Array.from(getTranslatableElements());
     totalEls = els.length;
     progressEl.textContent = '0%';
 
-    const gLang = langCodes[lang] || lang;
-
     try {
-      await translateElements(els, gLang);
+      if (mode === 'premium') {
+        await anthropicTranslateAll(els, lang);
+      } else {
+        await googleTranslateAll(els, langCodes[lang] || lang);
+      }
 
       if (currentLang !== lang) { overlay.classList.remove('active'); return; }
 
-      // Cache the results
+      // Cache
       const cached = {};
       els.forEach((el, i) => { cached[i] = el.innerHTML; });
-      translationCache[lang] = cached;
-
+      translationCache[cacheKey] = cached;
     } catch (err) {
       console.error('Translation error:', err);
     }
@@ -1420,11 +1573,65 @@
     overlay.classList.remove('active');
   }
 
-  // Initialize
+  // --- PREMIUM TOGGLE ---
+  function togglePremium() {
+    if (!premiumUnlocked) {
+      // Show passcode modal
+      passcodeModal.classList.add('active');
+      passcodeInput.value = '';
+      passcodeError.textContent = '';
+      setTimeout(() => passcodeInput.focus(), 100);
+      return;
+    }
+    premiumMode = !premiumMode;
+    premiumSwitch.classList.toggle('on', premiumMode);
+    premiumSwitch.setAttribute('aria-checked', premiumMode);
+    premiumLabelEl.classList.toggle('unlocked', premiumMode);
+
+    // If currently viewing a translation, re-translate with new mode
+    if (currentLang !== 'en') {
+      const lang = currentLang;
+      currentLang = 'en'; // reset so switchLanguage doesn't bail
+      switchLanguage(lang);
+    }
+  }
+
+  function submitPasscode() {
+    const code = passcodeInput.value.trim().toUpperCase();
+    if (validCodes.indexOf(code) !== -1) {
+      premiumUnlocked = true;
+      premiumMode = true;
+      premiumSwitch.classList.add('on');
+      premiumSwitch.setAttribute('aria-checked', 'true');
+      premiumLabelEl.classList.add('unlocked');
+      passcodeModal.classList.remove('active');
+
+      // If currently viewing a translation, re-translate
+      if (currentLang !== 'en') {
+        const lang = currentLang;
+        currentLang = 'en';
+        switchLanguage(lang);
+      }
+    } else {
+      passcodeError.textContent = 'Invalid code';
+      passcodeInput.classList.add('error');
+      setTimeout(() => { passcodeInput.classList.remove('error'); passcodeError.textContent = ''; }, 2000);
+    }
+  }
+
+  // --- EVENT LISTENERS ---
   saveOriginals();
+
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
   });
+
+  premiumSwitch.addEventListener('click', togglePremium);
+  premiumSwitch.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePremium(); } });
+
+  passcodeSubmit.addEventListener('click', submitPasscode);
+  passcodeInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') submitPasscode(); });
+  passcodeClose.addEventListener('click', () => passcodeModal.classList.remove('active'));
 </script>
 </body>
 </html>
