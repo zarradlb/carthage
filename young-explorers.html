@@ -150,6 +150,21 @@ body {
 }
 .illustration svg { max-width: 100%; height: auto; }
 
+/* Chapter images */
+.chapter-img {
+  margin: 1.5rem -1.5rem; overflow: hidden; border-radius: 8px;
+  border: 1px solid rgba(201,168,76,0.15);
+}
+.chapter-img img {
+  display: block; width: 100%; height: auto;
+  max-height: 400px; object-fit: cover;
+}
+.chapter-img figcaption {
+  font-family: 'Cinzel', serif; font-size: 0.52rem; letter-spacing: 0.15em;
+  color: var(--gold-dark); text-transform: uppercase; text-align: center;
+  padding: 0.5rem; background: var(--parchment-dark);
+}
+
 /* Quote */
 .kid-quote {
   border-left: 3px solid var(--tyrian-light); padding: 0.75rem 1.25rem;
@@ -253,6 +268,11 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <h2>Wait — What Was <em>Rome?</em></h2>
   </div>
 
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/rome-panorama.png" alt="Ancient Rome at its peak — the Colosseum, temples, aqueducts, and straight roads stretching to the horizon" loading="lazy">
+    <figcaption>Ancient Rome at the height of its power</figcaption>
+  </figure>
+
   <p class="big-idea reveal-kid">Before we talk about what might have been different, you need to understand how much of your everyday life was shaped by one ancient city.</p>
 
   <p class="reveal-kid">Rome started with a legend. According to the story, twin brothers named <strong>Romulus and Remus</strong> were abandoned as babies and raised by a wolf. When they grew up, they decided to build a city — but argued about where to build it. Romulus killed his brother and named the city after himself: <em>Roma</em>. Whether or not the story is true (probably not!), it tells you something about Rome from the very beginning: they were willing to fight even each other to win.</p>
@@ -264,6 +284,11 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <div class="fun-fact-body">The legend says that Romulus and Remus were the sons of Mars, the god of war. They were thrown into the River Tiber as babies but survived, washed up on shore, and were nursed by a she-wolf. Later, a shepherd found them and raised them. The famous bronze statue of the wolf nursing the twins is one of the most recognizable images from the ancient world — you've probably seen it without knowing what it was! Rome's founding date is traditionally given as April 21, 753 BCE.</div>
   </div>
 
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/romulus-remus.png" alt="The she-wolf nursing the infant twins Romulus and Remus by the River Tiber at dawn" loading="lazy">
+    <figcaption>The legend of Romulus and Remus</figcaption>
+  </figure>
+
   <div class="fun-fact reveal-kid">
     <div class="fun-fact-header">🗺️ How Big Was Rome? <span class="arrow">›</span></div>
     <div class="fun-fact-body">At its largest, the Roman Empire stretched across three continents. In the north, Roman soldiers guarded <strong>Hadrian's Wall</strong> in Britain (you can still visit it today in northern England). In the east, they controlled <strong>Mesopotamia</strong> — modern Iraq. In the south, they ruled <strong>Egypt</strong> and the entire North African coast. In the west, they held all of Spain and Portugal. The Mediterranean Sea was literally called <em>Mare Nostrum</em> — "Our Sea" — because Rome controlled every inch of coastline around it.</div>
@@ -273,6 +298,11 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <div class="fun-fact-header">⚔️ The Legionnaire <span class="arrow">›</span></div>
     <div class="fun-fact-body">Roman soldiers — called <strong>legionnaires</strong> — were the most disciplined fighting force in the ancient world. Every legionnaire carried about 30 kilograms (66 pounds) of equipment and could march 30 kilometres (18 miles) in five hours. They built a complete fortified camp <em>every single night</em> when on campaign — with ditches, walls, and gates — then tore it down the next morning and marched on. A full legion had about 5,000 soldiers, and at its peak, Rome had 30 legions. They were so well-organized that the word "legion" still means "a huge number" today.</div>
   </div>
+
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/legionnaire.png" alt="A Roman legionnaire in full armor marching along a straight Roman road stretching to the horizon" loading="lazy">
+    <figcaption>A Roman legionnaire on the march</figcaption>
+  </figure>
 
   <p class="reveal-kid">But here's the really wild part: <strong>Rome never really went away.</strong> Even though the Roman Empire fell in 476 CE, its ideas are still everywhere around you — right now, today. You just don't notice because they feel so normal.</p>
 
@@ -353,6 +383,11 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <div class="fun-fact-body">What kind of elephants did Hannibal use? Historians have debated this for centuries! Most of his elephants were probably <strong>North African forest elephants</strong> — a now-extinct species smaller than the African elephants you see in zoos (about 2.5 metres tall vs. 3.5 metres). Ancient coins from Carthage show these smaller elephants with big ears and curved backs. But Hannibal's personal elephant — named <strong>Surus</strong>, meaning "the Syrian" — was likely a <strong>Syrian elephant</strong>, a subspecies of the Asian elephant that also went extinct around this time. Surus was bigger than the others and had one broken tusk. Sadly, North Africa was once home to many amazing animals — including these elephants and the mighty Barbary lion — that were eventually hunted to extinction, partly because Romans used them in arena games.</div>
   </div>
 
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/surus-elephant.png" alt="Surus, Hannibal's personal war elephant, with a howdah tower and red cloth, crossing an alpine mountain pass" loading="lazy">
+    <figcaption>Surus — Hannibal's personal elephant, likely a Syrian elephant with one broken tusk</figcaption>
+  </figure>
+
   <div class="fun-fact reveal-kid">
     <div class="fun-fact-header">🗣️ The Language Master <span class="arrow">›</span></div>
     <div class="fun-fact-body">Hannibal spoke at least five languages fluently: Punic (the language of Carthage), Greek, Latin, Iberian (from Spain where he grew up), and likely Numidian (from his North African cavalry allies). This wasn't just impressive — it was a military weapon. He could speak directly to soldiers from different cultures, negotiate with foreign kings, and read captured Roman messages.</div>
@@ -363,23 +398,15 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <div class="fun-fact-body">Here's something incredible: the ancient historian Polybius tells us that Hannibal <strong>had a collection of wigs made, each designed to make him look like a man of a different age</strong>. He would constantly change his appearance — different hair, different clothing — to blend in with his troops and make it nearly impossible for Roman spies or assassins to identify and target him. Imagine: the most wanted man in the ancient world, walking through his own camp, and nobody knowing which one he was!</div>
   </div>
 
-  <div class="illustration reveal-kid">
-    <svg width="400" height="160" viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 140 L60 100 L120 60 L160 80 L200 40 L240 70 L300 50 L340 90 L400 140" fill="none" stroke="#a08030" stroke-width="2" opacity="0.4"/>
-      <path d="M0 140 L60 100 L120 60 L160 80 L200 40 L240 70 L300 50 L340 90 L400 140 L400 160 L0 160Z" fill="#c9a84c" opacity="0.06"/>
-      <path d="M115 60 L120 50 L125 60" fill="white" opacity="0.3"/>
-      <path d="M195 40 L200 28 L205 40" fill="white" opacity="0.3"/>
-      <path d="M295 50 L300 38 L305 50" fill="white" opacity="0.3"/>
-      <g transform="translate(178,36) scale(0.25)" opacity="0.5">
-        <ellipse cx="40" cy="40" rx="25" ry="18" fill="#4a3a28"/>
-        <circle cx="18" cy="30" r="10" fill="#4a3a28"/>
-        <path d="M10 32 Q6 50 12 55" stroke="#4a3a28" stroke-width="3" fill="none"/>
-        <rect x="25" y="55" width="6" height="14" rx="2" fill="#4a3a28"/>
-        <rect x="45" y="55" width="6" height="14" rx="2" fill="#4a3a28"/>
-      </g>
-      <text x="200" y="155" font-family="Cinzel,serif" font-size="8" fill="#a08030" text-anchor="middle" letter-spacing="0.2em">THE ALPS</text>
-    </svg>
-  </div>
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/hannibal-disguise.png" alt="Hannibal studying a map by lamplight in his tent, with three different wigs on stands behind him — his disguises" loading="lazy">
+    <figcaption>Hannibal in his tent — with his collection of disguise wigs visible behind him</figcaption>
+  </figure>
+
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/alps-crossing.png" alt="Hannibal's multinational army crossing the Alps — war elephants, cavalry, and infantry from many nations marching through snow-covered mountain passes" loading="lazy">
+    <figcaption>Hannibal's army crosses the Alps — elephants, cavalry, and soldiers from across the ancient world</figcaption>
+  </figure>
 </section>
 
 <!-- THE BIG BATTLE -->
@@ -404,6 +431,11 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
   </div>
 
   <p class="reveal-kid">To put that number in perspective: Cannae is believed to be the <strong>highest loss of human life in a single day of battle in all of recorded history</strong>. More people died in those few hours than on the first day of the Battle of the Somme in World War I (1916), which is considered one of the bloodiest days in modern warfare. And this was done with swords, spears, and bare hands — not guns or bombs.</p>
+
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/cannae-aerial.png" alt="Aerial view of the Battle of Cannae showing the Roman army trapped inside Hannibal's double envelopment — cavalry and infantry closing in from all sides" loading="lazy">
+    <figcaption>The Battle of Cannae — Hannibal's trap closes around the Roman army</figcaption>
+  </figure>
 
   <div class="fun-fact reveal-kid">
     <div class="fun-fact-header">🤔 Maharbal's Famous Words <span class="arrow">›</span></div>
@@ -435,6 +467,11 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <div class="fun-fact-body">Archimedes built a giant crane-like machine mounted on the city walls. When a Roman ship came close, the Claw would swing out over the wall, drop a grappling hook onto the ship's bow, <strong>lift the entire front of the ship out of the water</strong>, and then drop it — capsizing or sinking it. Roman sailors were so terrified that if they saw a piece of rope or wood appear over the wall, they would turn and flee. The Roman general Marcellus reportedly joked that Archimedes was using his ships "to ladle seawater" like soup bowls.</div>
   </div>
 
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/archimedes-claw.png" alt="The Claw of Archimedes lifting a Roman warship out of the water at the siege of Syracuse" loading="lazy">
+    <figcaption>The Claw of Archimedes lifts a Roman warship at Syracuse</figcaption>
+  </figure>
+
   <div class="fun-fact reveal-kid">
     <div class="fun-fact-header">🔥 The Death Ray (Maybe!) <span class="arrow">›</span></div>
     <div class="fun-fact-body">Ancient writers claimed Archimedes used giant mirrors to focus sunlight onto Roman ships and set them on fire. Is it true? Scientists have argued about this for centuries! The TV show <em>MythBusters</em> tried it and said it was "busted." But MIT students tried it in 2005 and managed to set a wooden boat on fire from 100 feet away using 127 mirrors. The truth is probably somewhere in between — Archimedes may have used mirrors to blind and disorient sailors rather than actually set ships ablaze.</div>
@@ -448,6 +485,11 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
   <p class="reveal-kid">Syracuse eventually fell in 212 BCE — not because Rome beat the machines, but because they found an unguarded section of wall during a festival. Roman soldiers flooded into the city. Archimedes was reportedly working on a math problem when a soldier found him. According to legend, his last words were: <em>"Don't disturb my circles"</em> — he was drawing geometric diagrams in the sand.</p>
 
   <p class="reveal-kid">The Roman general Marcellus was reportedly furious that his soldiers had killed Archimedes. He had wanted to capture the genius alive. But it was too late.</p>
+
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/archimedes-circles.png" alt="Archimedes drawing geometric circles in the sand under olive trees as a Roman soldier approaches" loading="lazy">
+    <figcaption>"Don't disturb my circles" — Archimedes' legendary last words</figcaption>
+  </figure>
 
   <div class="kid-quote reveal-kid">
     <p>"Give me a lever long enough and a place to stand, and I shall move the world."</p>
@@ -464,6 +506,11 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
   </div>
 
   <p class="big-idea reveal-kid">Ancient warfare wasn't just swords and shields. Hannibal and others used some truly creative (and sometimes gross) tactics.</p>
+
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/weapons-layout.png" alt="Carthaginian weapons laid out on a wooden table: curved falcata sword, sling with lead bullets, shield with Tanit symbol, spears, and a Gallic longsword" loading="lazy">
+    <figcaption>Weapons of Hannibal's army — falcata, sling, shield with Tanit symbol, and spears</figcaption>
+  </figure>
 
   <div class="fun-fact reveal-kid">
     <div class="fun-fact-header">🐍 Hannibal's Snake Bombs <span class="arrow">›</span></div>
@@ -485,10 +532,20 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <div class="fun-fact-body">Carthage was the greatest naval power in the Mediterranean. Their warships — called <span class="vocab" data-def="An ancient warship powered by five rows of oars on each side">quinquiremes</span> — were powered by five rows of oars on each side, with up to 300 rowers. Carthaginian shipyards could build an entire warship in as little as <strong>six days</strong>. The harbor at Carthage had a secret inner circular basin where 220 warships could be stored, hidden from enemy view, ready to launch at a moment's notice.</div>
   </div>
 
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/quinquireme.png" alt="A Carthaginian quinquireme warship at full speed with Tyrian purple sails bearing the symbol of Tanit" loading="lazy">
+    <figcaption>A Carthaginian quinquireme — the mightiest warship in the Mediterranean</figcaption>
+  </figure>
+
   <div class="fun-fact reveal-kid">
     <div class="fun-fact-header">🏹 The Balearic Slingers <span class="arrow">›</span></div>
     <div class="fun-fact-body">Some of Hannibal's most feared soldiers weren't swordsmen — they were slingers from the Balearic Islands (modern Mallorca and Menorca, off the coast of Spain). They could hurl lead bullets with deadly accuracy at ranges of up to 400 meters — farther than most ancient bows. Balearic boys were trained from childhood; legend says their mothers wouldn't let them eat breakfast until they hit their target. A lead sling bullet traveling at over 100 mph could crack a helmet or break bones even through armor.</div>
   </div>
+
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/balearic-slingers.png" alt="Balearic slingers in action — three men whirling leather slings on a dusty Mediterranean hillside" loading="lazy">
+    <figcaption>Balearic slingers — the ancient world's deadliest sharpshooters</figcaption>
+  </figure>
 </section>
 
 <!-- WHAT IF? -->
@@ -526,6 +583,11 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <span class="chapter-number">Chapter 7</span>
     <h2>What Was <em>Carthage?</em></h2>
   </div>
+
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/carthage-city.png" alt="Ancient Carthage — six-story stone buildings with rooftop gardens, a bustling harbor with ships, colorful market stalls, and clean water channels" loading="lazy">
+    <figcaption>Carthage — six-story buildings, rooftop gardens, and the busiest harbor in the ancient world</figcaption>
+  </figure>
 
   <p class="big-idea reveal-kid">Carthage wasn't just a city. It was a massive trading network that connected the entire Mediterranean Sea.</p>
 
@@ -571,15 +633,30 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <div class="fun-fact-body">Hannibal's secret weapon wasn't elephants — it was <strong>Numidian cavalry</strong>, the finest horsemen in the ancient world. They came from North Africa (modern Algeria and Tunisia) and rode small, incredibly tough horses <em>without saddles or bridles</em>. They controlled their horses using just their knees and a small stick. They could throw javelins at full gallop, wheel around in an instant, and harass enemy armies for hours without getting caught. At Cannae, it was the Numidian cavalry that closed the trap.</div>
   </div>
 
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/numidian-cavalry.png" alt="Numidian cavalry at full gallop — riders on small horses without saddles, throwing javelins" loading="lazy">
+    <figcaption>Numidian cavalry — riding without saddles, the finest horsemen in the ancient world</figcaption>
+  </figure>
+
   <div class="fun-fact reveal-kid">
     <div class="fun-fact-header">🦁 Barbary Lions <span class="arrow">›</span></div>
     <div class="fun-fact-body">North Africa was once home to the <strong>Barbary lion</strong> — the largest lion subspecies ever known, with magnificent dark manes that extended to their bellies. Carthaginians encountered them regularly. Roman arenas later slaughtered thousands of them for entertainment, and the last wild Barbary lion was shot in Morocco in 1920. They survive only in a few zoos today. In the alternate timeline, without Roman arena games driving them to extinction, Barbary lions might still roam North Africa.</div>
   </div>
 
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/barbary-lion.png" alt="A majestic Barbary lion with an enormous dark mane standing on a rocky outcrop in the Atlas Mountains at sunset" loading="lazy">
+    <figcaption>The Barbary lion — the largest lion ever known, now functionally extinct</figcaption>
+  </figure>
+
   <div class="fun-fact reveal-kid">
     <div class="fun-fact-header">🐚 The Murex Snail <span class="arrow">›</span></div>
     <div class="fun-fact-body">The tiny <strong>murex snail</strong> was the most economically important animal in Carthage. Each snail produces just a single drop of mucus that can be processed into purple dye. To make enough dye for one garment, you needed about <strong>12,000 snails</strong>. At one dye factory in Sidon (modern Lebanon), the discarded shells formed a hill 40 meters high — roughly as tall as a 13-story building. That's a LOT of snails.</div>
   </div>
+
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/murex-snail.png" alt="A murex sea snail shell on a Mediterranean rocky shore — spiny, spiraled, with a purple-tinged interior" loading="lazy">
+    <figcaption>The murex snail — this tiny creature produced the most valuable substance in the ancient world</figcaption>
+  </figure>
 
   <div class="fun-fact reveal-kid">
     <div class="fun-fact-header">🦍 Hanno's Gorillas <span class="arrow">›</span></div>
@@ -594,6 +671,11 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <span class="chapter-number">Chapter 9</span>
     <h2>The Greatest <em>Explorers</em> You've Never Heard Of</h2>
   </div>
+
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/hanno-voyage.png" alt="Hanno the Navigator's Carthaginian fleet sailing past a tropical African coast with an erupting volcano, under Tyrian purple sails with the symbol of Tanit" loading="lazy">
+    <figcaption>Hanno's fleet sails the African coast — volcanoes, jungles, and the unknown</figcaption>
+  </figure>
 
   <p class="big-idea reveal-kid">Carthaginians were exploring the world nearly 2,000 years before Columbus — and they went further than you'd believe.</p>
 
@@ -641,6 +723,11 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <div class="fun-fact-header">⚙️ The Ancient Computer <span class="arrow">›</span></div>
     <div class="fun-fact-body">In 1901, divers found a corroded lump of metal in a shipwreck near the Greek island of Antikythera. It turned out to be a <strong>2,100-year-old computer</strong> — a device with 37 interlocking bronze gears that could track the movements of the Sun, Moon, and planets, predict eclipses, and even calculate the dates of the Olympic Games. Nobody in Europe built anything this complex again for over 1,400 years. Scientists are still figuring out exactly how it worked.</div>
   </div>
+
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/antikythera.png" alt="The Antikythera mechanism — an ancient bronze device with interlocking gears, open on a workbench with scrolls and tools, stars visible through the window" loading="lazy">
+    <figcaption>The Antikythera mechanism — a 2,100-year-old computer</figcaption>
+  </figure>
 
   <div class="fun-fact reveal-kid">
     <div class="fun-fact-header">🐚 The Magic Snail → Microscopes <span class="arrow">›</span></div>
@@ -704,6 +791,11 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <h2>What Would the <em>Food</em> Taste Like?</h2>
   </div>
 
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/carthage-feast.png" alt="An ancient Carthaginian feast — grilled fish, pomegranates, olives, bread, cheese, and wine on a stone table in a Mediterranean courtyard" loading="lazy">
+    <figcaption>A Carthaginian feast — grilled fish, pomegranates, olives, bread, and cheese</figcaption>
+  </figure>
+
   <p class="big-idea reveal-kid">The alternate world's food would be built on three things: fermented fish sauce, snail chemistry, and spices from every continent.</p>
 
   <p class="reveal-kid">The Carthaginians made something called <strong>garum</strong> — a fermented fish sauce that was the ketchup of the ancient world. People put it on <em>everything</em>. It was rich, salty, and full of <span class="vocab" data-def="A savory, deep flavor found in foods like soy sauce, parmesan cheese, and mushrooms">umami</span> — that deep, satisfying flavor you taste in soy sauce, parmesan cheese, and ramen broth.</p>
@@ -748,9 +840,19 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
 
   <p class="reveal-kid">And some things would be much further ahead: medicine, clean cities, and a world where different civilizations traded with each other as equals instead of one group conquering everybody else.</p>
 
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/split-comparison.png" alt="Split comparison: left side shows a dark, muddy medieval European city; right side shows a bright, clean alternate Carthaginian city with stone buildings, water channels, and colorful markets" loading="lazy">
+    <figcaption>Same year, different worlds — medieval Europe vs. the alternate Carthaginian city</figcaption>
+  </figure>
+
   <p class="reveal-kid">But here's the most important idea: <strong>almost nothing about our world was inevitable.</strong> The world you're growing up in is the result of specific decisions, specific accidents, and specific moments where history could have gone another way. One of those moments was a hot afternoon in southern Italy, 2,200 years ago, when a general decided not to march.</p>
 
   <p class="reveal-kid">Now you know the story. And here's the question only you can answer: <strong>if you could change one moment in history, what would you change?</strong></p>
+
+  <figure class="chapter-img reveal-kid">
+    <img src="kids-img/alt-carthage-2026.png" alt="An imagined alternate Carthage in 2026 — golden towers rising from ancient harbor architecture, bustling markets, sailing vessels alongside modern boats" loading="lazy">
+    <figcaption>The world that might have been — alternate Carthage, 2026</figcaption>
+  </figure>
 
   <div class="kid-quote reveal-kid">
     <p>"The deepest lesson of history is not that Carthage fell. It is that the civilization that defeated it wrote the history, burned its libraries — and taught us for two thousand years that this was civilization."</p>
