@@ -23,7 +23,7 @@
 <meta name="twitter:image" content="https://murexx.com/og-image.png">
 
 <!-- Favicon (inline SVG as data URI) -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231a130a'/><text x='16' y='23' font-size='20' text-anchor='middle' fill='%23c9a84c'>☽</text></svg>">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231a130a'/%3E%3Cpath d='M16 6 C20 5 24 9 25 14 C26 20 22 25 18 28 L16 31' stroke='%23c9a84c' stroke-width='1.5' fill='none'/%3E%3Cpath d='M16 10 C19 9 21 12 21 15 C21 18 19 21 17 23' stroke='%237a3a6a' stroke-width='1' fill='none' opacity='0.7'/%3E%3C/svg%3E">
 <meta name="theme-color" content="#1a130a">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
@@ -33,6 +33,7 @@
     --parchment: #f7f0de; --ink: #1a130a; --ink-light: #2d2015;
     --sea: #1a3a4a; --sea-light: #2a5a6e; --stone: #a0917f; --stone-light: #c8bba8;
     --badge-fact: #4a7a5a; --badge-plausible: #7a6a3a; --badge-speculative: #6a4a5a;
+    --tyrian: #5c2751; --tyrian-light: #7a3a6a; --tyrian-glow: rgba(92,39,81,0.15);
   }
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -57,7 +58,8 @@
     min-height: 100vh;
     background:
       radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 70%, rgba(107,26,26,0.25) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(92,39,81,0.2) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 80%, rgba(107,26,26,0.15) 0%, transparent 50%),
       linear-gradient(180deg, #0a0805 0%, #150e06 40%, #1a130a 100%);
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; padding: 4rem 2rem; position: relative;
@@ -65,15 +67,15 @@
   }
   .hero::before {
     content: ''; position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c9a84c' stroke-opacity='0.025' stroke-width='0.5'%3E%3Cpath d='M40 20 C45 20 50 25 50 30 C50 38 44 42 40 45 C36 42 30 38 30 30 C30 25 35 20 40 20Z'/%3E%3Cpath d='M40 25 C43 25 46 27 46 30 C46 35 42 38 40 40 C38 38 34 35 34 30 C34 27 37 25 40 25Z'/%3E%3Cpath d='M40 30 C41.5 30 43 31 43 32.5 C43 35 41 37 40 38 C39 37 37 35 37 32.5 C37 31 38.5 30 40 30Z'/%3E%3Cpath d='M40 45 L40 60'/%3E%3Cpath d='M37 48 C38 46 40 45 40 45 C40 45 42 46 43 48'/%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
   }
   .hero-symbol { font-family: 'Cinzel', serif; font-size: 3.5rem; color: var(--gold); opacity: 0.6; letter-spacing: 0.5em; margin-bottom: 2rem; }
   .hero-eyebrow { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0.8; }
   .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 7vw, 6rem); font-weight: 300; color: var(--sand); line-height: 1.1; margin-bottom: 1rem; }
   .hero-title em { font-style: italic; color: var(--gold-light); }
   .hero-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-style: italic; color: var(--stone-light); max-width: 620px; margin: 1.5rem auto 3rem; }
-  .hero-divider { width: 200px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto 2rem; }
+  .hero-divider { width: 200px; height: 1px; background: linear-gradient(90deg, transparent, var(--tyrian-light), var(--gold), var(--tyrian-light), transparent); margin: 0 auto 2rem; }
   .hero-premise { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--stone-light); max-width: 720px; line-height: 1.9; }
   .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.3em; color: var(--gold); opacity: 0.5; }
 
@@ -144,7 +146,10 @@
   .era-number { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.5em; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 0.5rem; opacity: 0.7; }
   .era-dates { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 300; color: var(--gold-light); line-height: 1; margin-bottom: 0.75rem; }
   .era-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--sand); margin-bottom: 1.5rem; }
-  .era-line { width: 120px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto; }
+  .era-line {
+    width: 160px; height: 20px; margin: 0 auto; position: relative; opacity: 0.5;
+    background: url("data:image/svg+xml,%3Csvg width='160' height='20' viewBox='0 0 160 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='0' y1='10' x2='60' y2='10' stroke='%23c9a84c' stroke-opacity='0.4' stroke-width='0.5'/%3E%3Cline x1='100' y1='10' x2='160' y2='10' stroke='%23c9a84c' stroke-opacity='0.4' stroke-width='0.5'/%3E%3Cpath d='M72 4 C76 3 79 6 80 8 C81 6 84 3 88 4 C86 6 84 8 83 10 C84 12 86 14 88 16 C84 17 81 14 80 12 C79 14 76 17 72 16 C74 14 76 12 77 10 C76 8 74 6 72 4Z' fill='none' stroke='%23c9a84c' stroke-width='0.7' stroke-opacity='0.5'/%3E%3Ccircle cx='80' cy='10' r='1.5' fill='%23c9a84c' fill-opacity='0.4'/%3E%3C/svg%3E") no-repeat center;
+  }
 
   .category { margin-bottom: 2.75rem; }
   .cat-label {
@@ -162,8 +167,8 @@
   .category p:last-child { margin-bottom: 0; }
 
   blockquote.pullquote {
-    border-left: 3px solid var(--crimson); padding: 1.2rem 1.5rem;
-    margin: 2rem 0; background: rgba(107,26,26,0.12);
+    border-left: 3px solid var(--tyrian-light); padding: 1.2rem 1.5rem;
+    margin: 2rem 0; background: linear-gradient(135deg, rgba(92,39,81,0.1) 0%, rgba(107,26,26,0.08) 100%);
   }
   blockquote.pullquote p {
     font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
@@ -419,7 +424,7 @@
   [dir="rtl"] .confidence-badge { margin-left: 0; margin-right: 0.75rem; }
   [dir="rtl"] .tl-item { flex-direction: row-reverse; text-align: right; }
   [dir="rtl"] .source-note { border-left: none; border-right: 3px solid var(--gold); }
-  [dir="rtl"] blockquote.pullquote { border-left: none; border-right: 3px solid var(--crimson); }
+  [dir="rtl"] blockquote.pullquote { border-left: none; border-right: 3px solid var(--tyrian-light); }
 
   /* Focus states */
   :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
@@ -460,13 +465,44 @@
 </div>
 
 <section class="hero" aria-label="Introduction">
-  <div class="hero-symbol" aria-hidden="true">☽ ✦ ☽</div>
+  <div class="hero-symbol" aria-hidden="true">
+    <svg width="120" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" style="opacity:0.55">
+      <defs>
+        <linearGradient id="murexGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e8c97a"/>
+          <stop offset="60%" stop-color="#c9a84c"/>
+          <stop offset="100%" stop-color="#7a3a6a"/>
+        </linearGradient>
+      </defs>
+      <!-- Left murex shell -->
+      <g transform="translate(15,8) scale(0.7)">
+        <path d="M20 10 C28 8 36 14 38 22 C40 32 34 40 28 46 C24 50 20 55 20 62 L20 68" stroke="url(#murexGrad)" stroke-width="1.5" fill="none"/>
+        <path d="M20 15 C26 14 32 18 33 24 C34 30 30 36 26 40 C23 43 21 47 21 52" stroke="#c9a84c" stroke-width="1" fill="none" opacity="0.5"/>
+        <path d="M20 20 C24 19 27 22 28 26 C29 30 26 34 24 36" stroke="#c9a84c" stroke-width="0.7" fill="none" opacity="0.3"/>
+        <path d="M16 44 C18 42 20 43 22 46" stroke="#c9a84c" stroke-width="0.8" fill="none" opacity="0.4"/>
+        <path d="M14 38 C17 36 20 37 23 40" stroke="#c9a84c" stroke-width="0.8" fill="none" opacity="0.35"/>
+      </g>
+      <!-- Center star -->
+      <g transform="translate(60,35)">
+        <path d="M0 -8 L1.5 -2 L8 -2 L2.5 1.5 L4 8 L0 4 L-4 8 L-2.5 1.5 L-8 -2 L-1.5 -2 Z" fill="#c9a84c" opacity="0.5"/>
+      </g>
+      <!-- Right murex shell (mirrored) -->
+      <g transform="translate(105,8) scale(-0.7,0.7)">
+        <path d="M20 10 C28 8 36 14 38 22 C40 32 34 40 28 46 C24 50 20 55 20 62 L20 68" stroke="url(#murexGrad)" stroke-width="1.5" fill="none"/>
+        <path d="M20 15 C26 14 32 18 33 24 C34 30 30 36 26 40 C23 43 21 47 21 52" stroke="#c9a84c" stroke-width="1" fill="none" opacity="0.5"/>
+        <path d="M20 20 C24 19 27 22 28 26 C29 30 26 34 24 36" stroke="#c9a84c" stroke-width="0.7" fill="none" opacity="0.3"/>
+        <path d="M16 44 C18 42 20 43 22 46" stroke="#c9a84c" stroke-width="0.8" fill="none" opacity="0.4"/>
+        <path d="M14 38 C17 36 20 37 23 40" stroke="#c9a84c" stroke-width="0.8" fill="none" opacity="0.35"/>
+      </g>
+    </svg>
+  </div>
   <p class="hero-eyebrow">Historical Simulation · Primary Source Analysis</p>
   <h1 class="hero-title">If Hannibal Had Taken <em>Rome</em></h1>
   <p class="hero-subtitle">A Counterfactual History of the World Under Carthaginian Hegemony, 216 BCE – 2026 CE</p>
   <div class="hero-divider" aria-hidden="true"></div>
   <p class="hero-premise">On August 2, 216 BCE, Hannibal Barca annihilated eight Roman legions at Cannae. He did not march on Rome. He spent fourteen more years in Italy, undefeated in the field, waiting for a peace Rome refused to grant. This simulation asks: what if the weeks after Cannae had gone differently? Drawing on Aristotle, Polybius, Livy, Hanno's <em>Periplus</em>, and modern scholarship including a 2025 <em>Nature</em> genomics study on Punic populations, it reconstructs — with clearly marked tiers of confidence — the world that might have been.</p>
   <p class="scroll-hint" aria-hidden="true">↓ SCROLL ↓</p>
+  <a href="/timeline.html" style="position:absolute; bottom:4.5rem; left:50%; transform:translateX(-50%); font-family:'Cinzel',serif; font-size:0.55rem; letter-spacing:0.2em; color:var(--tyrian-light); text-decoration:none; text-transform:uppercase; border:1px solid rgba(122,58,106,0.3); padding:0.4rem 1rem; transition: color 0.3s, border-color 0.3s, background 0.3s;" onmouseover="this.style.color='var(--gold)';this.style.borderColor='rgba(201,168,76,0.4)';this.style.background='rgba(201,168,76,0.05)'" onmouseout="this.style.color='';this.style.borderColor='';this.style.background=''">Explore the Interactive Timeline →</a>
 </section>
 
 <nav class="nav-bar" aria-label="Section navigation">
@@ -1339,7 +1375,15 @@
 </main>
 
 <footer>
+  <svg width="24" height="32" viewBox="0 0 24 32" xmlns="http://www.w3.org/2000/svg" style="display:block; margin: 0 auto 0.75rem; opacity: 0.35;">
+    <path d="M12 3 C16 2 20 6 21 11 C22 17 18 22 14 26 C13 27.5 12 29 12 31" stroke="#c9a84c" stroke-width="1" fill="none"/>
+    <path d="M12 6 C15 5.5 18 8 18.5 12 C19 16 16 20 13.5 23 C12.5 24.5 12 26 12 28" stroke="#7a3a6a" stroke-width="0.8" fill="none" opacity="0.6"/>
+    <path d="M12 9 C14 8.5 16 10 16 13 C16 15.5 14 18 13 19.5" stroke="#c9a84c" stroke-width="0.6" fill="none" opacity="0.3"/>
+    <path d="M9 20 C10 19 11.5 19.5 13 21" stroke="#c9a84c" stroke-width="0.6" fill="none" opacity="0.3"/>
+    <path d="M8 16 C10 15 11.5 15.5 13.5 18" stroke="#c9a84c" stroke-width="0.6" fill="none" opacity="0.25"/>
+  </svg>
   A Counterfactual Historical Simulation · Projections Are Speculative Extrapolations from Documented Evidence
+  <br><a href="/young-explorers.html" style="display:inline-block; margin-top:0.75rem; color:var(--stone-light); text-decoration:none; border-bottom:1px solid rgba(201,168,76,0.2); transition: color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color=''">🐘 Young Explorers Edition (Ages 6–13)</a>
 </footer>
 
 <script>
