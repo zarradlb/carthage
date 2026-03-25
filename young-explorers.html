@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What If Hannibal Won? — History for Young Explorers</title>
+<meta name="description" content="What if Hannibal defeated Rome? A kid-friendly journey through an alternate history of the world, from ancient Carthage to 2026.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f0e6c8'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle'%3E🐘%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --parchment: #f7f0de; --parchment-dark: #ede4cc;
+  --ink: #2d2015; --ink-light: #4a3a28;
+  --gold: #c9a84c; --gold-dark: #a08030; --gold-light: #e8c97a;
+  --tyrian: #7a3a6a; --tyrian-light: #9a5a8a;
+  --sea: #2a6a7a; --sea-light: #3a8a9a;
+  --sand: #d4c49a; --warm: #c4764a;
+  --green: #5a8a5a;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px; line-height: 1.75;
+}
+
+/* === HEADER === */
+.hero {
+  text-align: center; padding: 3rem 1.5rem 2rem;
+  background: linear-gradient(180deg, #ede4cc 0%, var(--parchment) 100%);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23c9a84c' fill-opacity='0.08'/%3E%3C/svg%3E");
+}
+.hero-badge {
+  display: inline-block; font-family: 'Cinzel', serif; font-size: 0.65rem;
+  letter-spacing: 0.25em; color: var(--tyrian); text-transform: uppercase;
+  background: rgba(122,58,106,0.08); border: 1px solid rgba(122,58,106,0.15);
+  padding: 0.3rem 0.8rem; border-radius: 20px; margin-bottom: 1rem;
+  position: relative;
+}
+.hero-elephant {
+  font-size: 3.5rem; margin-bottom: 0.5rem; display: block;
+  animation: elephantBounce 3s ease-in-out infinite;
+}
+@keyframes elephantBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 600; color: var(--ink); line-height: 1.2; margin-bottom: 0.5rem;
+  position: relative;
+}
+.hero h1 em { font-style: italic; color: var(--tyrian); }
+.hero-sub {
+  font-size: 1.05rem; color: var(--ink-light); max-width: 600px;
+  margin: 0 auto 1.5rem; position: relative;
+}
+.hero-nav {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;
+  position: relative;
+}
+.hero-nav a {
+  font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+  color: var(--ink-light); text-decoration: none; text-transform: uppercase;
+  padding: 0.35rem 0.7rem; border: 1px solid rgba(45,32,21,0.12);
+  border-radius: 4px; transition: all 0.3s;
+}
+.hero-nav a:hover { background: var(--gold); color: white; border-color: var(--gold); }
+.adult-link {
+  display: inline-block; margin-top: 1rem; font-size: 0.75rem;
+  color: var(--gold-dark); text-decoration: none; position: relative;
+  font-family: 'Cinzel', serif; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: color 0.3s;
+}
+.adult-link:hover { color: var(--tyrian); }
+
+/* === MAIN === */
+.container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* Section styles */
+.chapter {
+  padding: 2.5rem 0; border-bottom: 2px dashed rgba(201,168,76,0.2);
+}
+.chapter-header { text-align: center; margin-bottom: 2rem; }
+.chapter-icon { font-size: 2.5rem; margin-bottom: 0.5rem; display: block; }
+.chapter-number {
+  font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.35em;
+  color: var(--gold-dark); text-transform: uppercase; display: block; margin-bottom: 0.25rem;
+}
+.chapter h2 {
+  font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 600; color: var(--ink); line-height: 1.2;
+}
+.chapter h2 em { color: var(--tyrian); font-style: italic; }
+
+.chapter p { margin-bottom: 1rem; color: var(--ink-light); }
+.chapter p:last-child { margin-bottom: 0; }
+
+.big-idea {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;
+  font-style: italic; color: var(--ink); text-align: center;
+  max-width: 560px; margin: 0 auto 1.5rem; line-height: 1.6;
+}
+
+/* Fun fact cards */
+.fun-fact {
+  background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 8px; padding: 1rem 1.25rem; margin: 1.25rem 0;
+  cursor: pointer; transition: background 0.3s;
+}
+.fun-fact:hover { background: rgba(201,168,76,0.12); }
+.fun-fact-header {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.15em;
+  color: var(--gold-dark); text-transform: uppercase; font-weight: 700;
+}
+.fun-fact-header .arrow { transition: transform 0.3s; font-size: 0.8rem; margin-left: auto; }
+.fun-fact.open .arrow { transform: rotate(90deg); }
+.fun-fact-body {
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+  font-size: 0.92rem; color: var(--ink-light); line-height: 1.65;
+}
+.fun-fact.open .fun-fact-body { max-height: 300px; padding-top: 0.75rem; }
+
+/* "What If" comparison cards */
+.what-if {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  background: rgba(201,168,76,0.2); border-radius: 8px; overflow: hidden;
+  margin: 1.5rem 0;
+}
+.what-if-card { padding: 1rem 1.25rem; }
+.what-if-card.ours { background: rgba(107,26,26,0.04); }
+.what-if-card.alt { background: rgba(201,168,76,0.06); }
+.what-if-label {
+  font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.2em;
+  text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 700;
+}
+.what-if-card.ours .what-if-label { color: #a04040; }
+.what-if-card.alt .what-if-label { color: var(--gold-dark); }
+.what-if-card p { font-size: 0.88rem; color: var(--ink-light); line-height: 1.55; margin: 0; }
+
+/* Inline illustrations */
+.illustration {
+  text-align: center; margin: 2rem 0; opacity: 0.7;
+}
+.illustration svg { max-width: 100%; height: auto; }
+
+/* Quote */
+.kid-quote {
+  border-left: 3px solid var(--tyrian-light); padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0; background: rgba(122,58,106,0.04); border-radius: 0 6px 6px 0;
+}
+.kid-quote p {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+  font-style: italic; color: var(--ink); line-height: 1.5; margin: 0;
+}
+.kid-quote cite {
+  display: block; font-family: 'Cinzel', serif; font-size: 0.55rem;
+  letter-spacing: 0.15em; color: var(--gold-dark); margin-top: 0.4rem;
+  font-style: normal; text-transform: uppercase;
+}
+
+/* Number callouts */
+.big-number {
+  text-align: center; margin: 1.5rem 0;
+}
+.big-number .num {
+  font-family: 'Cormorant Garamond', serif; font-size: 3rem;
+  font-weight: 600; color: var(--tyrian); line-height: 1;
+}
+.big-number .label {
+  font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.2em;
+  color: var(--gold-dark); text-transform: uppercase; margin-top: 0.25rem;
+}
+
+/* Vocabulary popup */
+.vocab {
+  color: var(--sea); border-bottom: 1px dotted var(--sea);
+  cursor: help; position: relative;
+}
+.vocab:hover::after {
+  content: attr(data-def);
+  position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+  background: var(--ink); color: var(--parchment); font-size: 0.78rem;
+  padding: 0.4rem 0.7rem; border-radius: 4px; white-space: nowrap;
+  max-width: 250px; white-space: normal; z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+footer {
+  text-align: center; padding: 2.5rem 1.5rem;
+  font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.2em;
+  color: var(--gold-dark); text-transform: uppercase;
+}
+footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .what-if { grid-template-columns: 1fr; }
+  .hero-nav a { font-size: 0.52rem; padding: 0.3rem 0.5rem; }
+}
+
+/* Scroll reveal */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-kid { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal-kid.visible { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-kid { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <span class="hero-badge">For Young Explorers · Ages 6–13</span>
+  <span class="hero-elephant" aria-hidden="true">🐘</span>
+  <h1>What If Hannibal <em>Won?</em></h1>
+  <p class="hero-sub">2,200 years ago, a brilliant general almost changed the entire world. This is the story of what might have happened if he did.</p>
+  <nav class="hero-nav">
+    <a href="#rome">Rome</a>
+    <a href="#who">Hannibal</a>
+    <a href="#battle">The Battle</a>
+    <a href="#archimedes">Archimedes</a>
+    <a href="#whatif">What If?</a>
+    <a href="#carthage">Carthage</a>
+    <a href="#weapons">Weapons</a>
+    <a href="#animals">Animals</a>
+    <a href="#science">Science</a>
+    <a href="#exploration">Exploration</a>
+    <a href="#world">The World</a>
+    <a href="#food">Food!</a>
+    <a href="#today">Today</a>
+  </nav>
+  <a class="adult-link" href="/">Read the Full Scholarly Edition →</a>
+</section>
+
+<main>
+<div class="container">
+
+<!-- WHAT WAS ROME? -->
+<section class="chapter" id="rome">
+  <div class="chapter-header">
+    <span class="chapter-icon">🏛️</span>
+    <span class="chapter-number">Chapter 1</span>
+    <h2>Wait — What Was <em>Rome?</em></h2>
+  </div>
+
+  <p class="big-idea reveal-kid">Before we talk about what might have been different, you need to understand how much of your everyday life was shaped by one ancient city.</p>
+
+  <p class="reveal-kid">Rome started with a legend. According to the story, twin brothers named <strong>Romulus and Remus</strong> were abandoned as babies and raised by a wolf. When they grew up, they decided to build a city — but argued about where to build it. Romulus killed his brother and named the city after himself: <em>Roma</em>. Whether or not the story is true (probably not!), it tells you something about Rome from the very beginning: they were willing to fight even each other to win.</p>
+
+  <p class="reveal-kid">From that tiny village on a hill, Rome grew into the most powerful empire the world had ever seen. At its peak, Rome controlled <strong>everything</strong> from Britain in the cold north to Egypt in the scorching south, from Spain in the west all the way to Iraq in the east. About 60 million people — one in every four humans alive at the time — lived under Roman rule.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🐺 Romulus and Remus <span class="arrow">›</span></div>
+    <div class="fun-fact-body">The legend says that Romulus and Remus were the sons of Mars, the god of war. They were thrown into the River Tiber as babies but survived, washed up on shore, and were nursed by a she-wolf. Later, a shepherd found them and raised them. The famous bronze statue of the wolf nursing the twins is one of the most recognizable images from the ancient world — you've probably seen it without knowing what it was! Rome's founding date is traditionally given as April 21, 753 BCE.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🗺️ How Big Was Rome? <span class="arrow">›</span></div>
+    <div class="fun-fact-body">At its largest, the Roman Empire stretched across three continents. In the north, Roman soldiers guarded <strong>Hadrian's Wall</strong> in Britain (you can still visit it today in northern England). In the east, they controlled <strong>Mesopotamia</strong> — modern Iraq. In the south, they ruled <strong>Egypt</strong> and the entire North African coast. In the west, they held all of Spain and Portugal. The Mediterranean Sea was literally called <em>Mare Nostrum</em> — "Our Sea" — because Rome controlled every inch of coastline around it.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">⚔️ The Legionnaire <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Roman soldiers — called <strong>legionnaires</strong> — were the most disciplined fighting force in the ancient world. Every legionnaire carried about 30 kilograms (66 pounds) of equipment and could march 30 kilometres (18 miles) in five hours. They built a complete fortified camp <em>every single night</em> when on campaign — with ditches, walls, and gates — then tore it down the next morning and marched on. A full legion had about 5,000 soldiers, and at its peak, Rome had 30 legions. They were so well-organized that the word "legion" still means "a huge number" today.</div>
+  </div>
+
+  <p class="reveal-kid">But here's the really wild part: <strong>Rome never really went away.</strong> Even though the Roman Empire fell in 476 CE, its ideas are still everywhere around you — right now, today. You just don't notice because they feel so normal.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">📅 The Calendar on Your Wall <span class="arrow">›</span></div>
+    <div class="fun-fact-body">The months are Roman! January is named after Janus, the Roman god of beginnings. March is named after Mars, the god of war. July is named after Julius Caesar himself. August is named after Emperor Augustus. Even the word "calendar" comes from the Latin word <em>kalendae</em>. Every time you check the date, you're using a Roman system.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🔤 The Letters You're Reading <span class="arrow">›</span></div>
+    <div class="fun-fact-body">The alphabet you're reading right now is called the <strong>Latin alphabet</strong> — and Latin was the language of Rome. The letters A, B, C, D... all of them come from Roman writing. English, French, Spanish, Portuguese, Italian, Romanian — they're all descended from Latin. When you text your friends, you're using Roman letters.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">⚖️ Laws and Courts <span class="arrow">›</span></div>
+    <div class="fun-fact-body">The idea that you're "innocent until proven guilty"? Roman. The idea that laws should be written down so everyone can see them? Roman (they carved their first laws, the Twelve Tables, in 450 BCE). The word "justice" comes from Latin. "Legal" comes from Latin. "Constitution" comes from Latin. Most of the legal system that protects your rights was built on a Roman foundation.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🏗️ Roads, Bridges, and Concrete <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Romans built 250,000 miles of roads — enough to wrap around the Earth ten times. They invented concrete (and some Roman concrete buildings are still standing 2,000 years later, while our concrete starts crumbling after 50 years!). They built aqueducts that carried fresh water for miles using nothing but gravity. The saying "all roads lead to Rome" was literally true.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">⛪ Christianity <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Christianity — the world's largest religion, with over 2 billion followers — spread through the Roman Empire. Jesus lived in Roman-controlled Palestine. The Bible's New Testament was written in Greek (the Roman Empire's second language). Emperor Constantine made Christianity legal in 312 CE, and Emperor Theodosius made it the <em>official</em> religion in 380 CE. Without Rome, Christianity as we know it probably doesn't exist.</div>
+  </div>
+
+  <p class="reveal-kid">So when we say "What if Hannibal won?" we're really asking: <strong>what if all of this — the calendar, the alphabet, the laws, the roads, the religion — had developed completely differently?</strong> That's why this is such a big question.</p>
+
+  <div class="what-if reveal-kid">
+    <div class="what-if-card ours">
+      <div class="what-if-label">Rome's Legacy Today</div>
+      <p>Our alphabet, our calendar, our legal system, our road networks, Christianity, the idea of "Western civilization" itself — all built on Roman foundations.</p>
+    </div>
+    <div class="what-if-card alt">
+      <div class="what-if-label">Without Rome?</div>
+      <p>Different writing systems, different calendars, different laws, different religions, different ideas about how to organize society. A world we can barely imagine because Rome is in everything we see.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WAS HANNIBAL? -->
+<section class="chapter" id="who">
+  <div class="chapter-header">
+    <span class="chapter-icon">⚔️</span>
+    <span class="chapter-number">Chapter 2</span>
+    <h2>Who Was <em>Hannibal?</em></h2>
+  </div>
+
+  <p class="big-idea reveal-kid">Imagine the greatest strategist in history — someone so clever that military schools still study his battles 2,200 years later.</p>
+
+  <p class="reveal-kid">Hannibal Barca was a general from <span class="vocab" data-def="An ancient city in North Africa, in what is now Tunisia">Carthage</span>, an ancient city in North Africa. His father, Hamilcar, was also a famous general. When Hannibal was just a boy — probably around nine years old — his father made him swear a solemn oath: he would never be a friend of Rome.</p>
+
+  <p class="reveal-kid">He kept that promise for his entire life.</p>
+
+  <p class="reveal-kid">When Hannibal was 26, he did something nobody thought was possible. He gathered an army of 50,000 soldiers, 9,000 cavalry, and <strong>37 war elephants</strong> — and marched them over the Alps, the biggest mountain range in Europe, in the middle of autumn. Snow. Ice. Cliffs. Elephants slipping on frozen rocks. He lost nearly half his army on the crossing.</p>
+
+  <p class="reveal-kid">But he made it. And when he came down the other side into Italy, he started winning battles that Rome had never imagined losing.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🐘 The Elephant Mystery <span class="arrow">›</span></div>
+    <div class="fun-fact-body">What kind of elephants did Hannibal use? Historians have debated this for centuries! Most of his elephants were probably <strong>North African forest elephants</strong> — a now-extinct species smaller than the African elephants you see in zoos (about 2.5 metres tall vs. 3.5 metres). Ancient coins from Carthage show these smaller elephants with big ears and curved backs. But Hannibal's personal elephant — named <strong>Surus</strong>, meaning "the Syrian" — was likely a <strong>Syrian elephant</strong>, a subspecies of the Asian elephant that also went extinct around this time. Surus was bigger than the others and had one broken tusk. Sadly, North Africa was once home to many amazing animals — including these elephants and the mighty Barbary lion — that were eventually hunted to extinction, partly because Romans used them in arena games.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🗣️ The Language Master <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Hannibal spoke at least five languages fluently: Punic (the language of Carthage), Greek, Latin, Iberian (from Spain where he grew up), and likely Numidian (from his North African cavalry allies). This wasn't just impressive — it was a military weapon. He could speak directly to soldiers from different cultures, negotiate with foreign kings, and read captured Roman messages.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🥸 The Master of Disguise <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Here's something incredible: the ancient historian Polybius tells us that Hannibal <strong>had a collection of wigs made, each designed to make him look like a man of a different age</strong>. He would constantly change his appearance — different hair, different clothing — to blend in with his troops and make it nearly impossible for Roman spies or assassins to identify and target him. Imagine: the most wanted man in the ancient world, walking through his own camp, and nobody knowing which one he was!</div>
+  </div>
+
+  <div class="illustration reveal-kid">
+    <svg width="400" height="160" viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 140 L60 100 L120 60 L160 80 L200 40 L240 70 L300 50 L340 90 L400 140" fill="none" stroke="#a08030" stroke-width="2" opacity="0.4"/>
+      <path d="M0 140 L60 100 L120 60 L160 80 L200 40 L240 70 L300 50 L340 90 L400 140 L400 160 L0 160Z" fill="#c9a84c" opacity="0.06"/>
+      <path d="M115 60 L120 50 L125 60" fill="white" opacity="0.3"/>
+      <path d="M195 40 L200 28 L205 40" fill="white" opacity="0.3"/>
+      <path d="M295 50 L300 38 L305 50" fill="white" opacity="0.3"/>
+      <g transform="translate(178,36) scale(0.25)" opacity="0.5">
+        <ellipse cx="40" cy="40" rx="25" ry="18" fill="#4a3a28"/>
+        <circle cx="18" cy="30" r="10" fill="#4a3a28"/>
+        <path d="M10 32 Q6 50 12 55" stroke="#4a3a28" stroke-width="3" fill="none"/>
+        <rect x="25" y="55" width="6" height="14" rx="2" fill="#4a3a28"/>
+        <rect x="45" y="55" width="6" height="14" rx="2" fill="#4a3a28"/>
+      </g>
+      <text x="200" y="155" font-family="Cinzel,serif" font-size="8" fill="#a08030" text-anchor="middle" letter-spacing="0.2em">THE ALPS</text>
+    </svg>
+  </div>
+</section>
+
+<!-- THE BIG BATTLE -->
+<section class="chapter" id="battle">
+  <div class="chapter-header">
+    <span class="chapter-icon">💥</span>
+    <span class="chapter-number">Chapter 3</span>
+    <h2>The Biggest Battle <em>Ever</em></h2>
+  </div>
+
+  <p class="big-idea reveal-kid">On one afternoon in 216 BCE, more soldiers died than in almost any battle in history.</p>
+
+  <p class="reveal-kid">After crossing the Alps, Hannibal kept beating Roman armies. Rome was scared. They gathered the biggest army they had <strong>ever</strong> created: 86,000 soldiers, led by two <span class="vocab" data-def="The top leaders of Rome. Two were elected each year.">consuls</span>. Their mission: destroy Hannibal once and for all.</p>
+
+  <p class="reveal-kid">The two armies met at a place called <strong>Cannae</strong> (say it like "CAN-eye") on August 2, 216 BCE.</p>
+
+  <p class="reveal-kid">What happened next was the most famous trap in military history. Hannibal put his weakest soldiers in the middle and his strongest on the sides. When the Romans charged forward and pushed the middle back, they thought they were winning. But Hannibal's center was bending on purpose — like a net closing around a fish. His cavalry swept behind them. The Roman army got squeezed tighter and tighter until soldiers couldn't even lift their swords.</p>
+
+  <div class="big-number reveal-kid">
+    <div class="num">70,000</div>
+    <div class="label">Roman soldiers killed in a single afternoon</div>
+  </div>
+
+  <p class="reveal-kid">To put that number in perspective: Cannae is believed to be the <strong>highest loss of human life in a single day of battle in all of recorded history</strong>. More people died in those few hours than on the first day of the Battle of the Somme in World War I (1916), which is considered one of the bloodiest days in modern warfare. And this was done with swords, spears, and bare hands — not guns or bombs.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🤔 Maharbal's Famous Words <span class="arrow">›</span></div>
+    <div class="fun-fact-body">After winning this incredible battle, Hannibal's cavalry commander Maharbal begged him to march straight to Rome and finish the war. When Hannibal said no — he needed time to think — Maharbal said something people still remember 2,200 years later: <em>"You know how to win a victory, Hannibal. You just don't know how to use one."</em> Hannibal never marched on Rome. He spent 14 more years in Italy, winning battle after battle, but the war slowly slipped away. Was Maharbal right? That's the question this whole story is about.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🏅 Still Studied Today <span class="arrow">›</span></div>
+    <div class="fun-fact-body">The Battle of Cannae is still taught at military academies like West Point (in the United States) and Sandhurst (in England). General Norman Schwarzkopf studied Hannibal's tactics before planning Operation Desert Storm in 1991. The German military strategist Alfred von Schlieffen based his entire World War I plan on Cannae's double envelopment. 2,200 years later, generals are still trying to copy Hannibal's homework!</div>
+  </div>
+</section>
+
+<!-- ARCHIMEDES -->
+<section class="chapter" id="archimedes">
+  <div class="chapter-header">
+    <span class="chapter-icon">🔧</span>
+    <span class="chapter-number">Chapter 4</span>
+    <h2>Archimedes: The <em>Genius</em> Who Fought Rome</h2>
+  </div>
+
+  <p class="big-idea reveal-kid">The smartest person in the ancient world tried to help Hannibal — and built war machines that terrified the Roman army for two years.</p>
+
+  <p class="reveal-kid"><span class="vocab" data-def="A Greek mathematician, inventor, and engineer (287-212 BCE), widely considered one of the greatest scientists of all time">Archimedes</span> lived in Syracuse, a Greek city on the island of Sicily that sided with Carthage during the war. He was a mathematician, inventor, and engineer — and he may have been the smartest person who ever lived up to that point. He figured out the math behind levers, pulleys, and buoyancy ("Eureka!" — that was him). He calculated the value of pi. He came incredibly close to inventing calculus, 1,800 years before Newton and Leibniz.</p>
+
+  <p class="reveal-kid">But when Rome sent a fleet to capture Syracuse in 214 BCE, Archimedes turned his genius to war — and the results were <em>terrifying.</em></p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🏗️ The Claw of Archimedes <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Archimedes built a giant crane-like machine mounted on the city walls. When a Roman ship came close, the Claw would swing out over the wall, drop a grappling hook onto the ship's bow, <strong>lift the entire front of the ship out of the water</strong>, and then drop it — capsizing or sinking it. Roman sailors were so terrified that if they saw a piece of rope or wood appear over the wall, they would turn and flee. The Roman general Marcellus reportedly joked that Archimedes was using his ships "to ladle seawater" like soup bowls.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🔥 The Death Ray (Maybe!) <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Ancient writers claimed Archimedes used giant mirrors to focus sunlight onto Roman ships and set them on fire. Is it true? Scientists have argued about this for centuries! The TV show <em>MythBusters</em> tried it and said it was "busted." But MIT students tried it in 2005 and managed to set a wooden boat on fire from 100 feet away using 127 mirrors. The truth is probably somewhere in between — Archimedes may have used mirrors to blind and disorient sailors rather than actually set ships ablaze.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🪨 Catapults and Stone Throwers <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Archimedes designed catapults calibrated to different ranges — some for ships far away, some for ships up close, some that fired through narrow slits in the walls. The Roman fleet couldn't find a safe distance. Too far away and the long-range catapults hit them. Too close and the short-range ones smashed them. The siege that was supposed to take weeks lasted <strong>two years</strong> because of one man's inventions.</div>
+  </div>
+
+  <p class="reveal-kid">Syracuse eventually fell in 212 BCE — not because Rome beat the machines, but because they found an unguarded section of wall during a festival. Roman soldiers flooded into the city. Archimedes was reportedly working on a math problem when a soldier found him. According to legend, his last words were: <em>"Don't disturb my circles"</em> — he was drawing geometric diagrams in the sand.</p>
+
+  <p class="reveal-kid">The Roman general Marcellus was reportedly furious that his soldiers had killed Archimedes. He had wanted to capture the genius alive. But it was too late.</p>
+
+  <div class="kid-quote reveal-kid">
+    <p>"Give me a lever long enough and a place to stand, and I shall move the world."</p>
+    <cite>Archimedes</cite>
+  </div>
+</section>
+
+<!-- HANNIBAL'S SECRET WEAPONS -->
+<section class="chapter" id="weapons">
+  <div class="chapter-header">
+    <span class="chapter-icon">🛡️</span>
+    <span class="chapter-number">Chapter 5.5</span>
+    <h2>Cool Tools, Wild Weapons, <em>& Snake Bombs</em></h2>
+  </div>
+
+  <p class="big-idea reveal-kid">Ancient warfare wasn't just swords and shields. Hannibal and others used some truly creative (and sometimes gross) tactics.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🐍 Hannibal's Snake Bombs <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Years after leaving Italy, Hannibal was working as a military advisor for King Prusias of Bithynia (in modern Turkey). During a naval battle against King Eumenes of Pergamon, Hannibal ordered his sailors to fill clay pots with <strong>live venomous snakes</strong> and hurl them onto the enemy ships. The pots shattered on deck, releasing the snakes among the terrified sailors. It worked — Eumenes' fleet panicked and retreated. This is one of the earliest recorded uses of <span class="vocab" data-def="Using living things like bacteria, insects, or animals as weapons">biological warfare</span> in history!</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🔥 Vinegar on Rocks <span class="arrow">›</span></div>
+    <div class="fun-fact-body">During the Alpine crossing, Hannibal's army ran into massive boulders blocking the mountain paths. According to the historian Livy, Hannibal ordered his soldiers to build huge fires against the rocks, get them blazing hot, and then pour <strong>sour wine (vinegar)</strong> on them. The sudden temperature change caused the rocks to crack and crumble, letting the army pass. Modern geologists say this actually works — it's called thermal shock fracturing!</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🐂 The Flaming Oxen Trick <span class="arrow">›</span></div>
+    <div class="fun-fact-body">When Hannibal was trapped in a valley by a Roman army blocking the only pass, he tied burning torches to the horns of 2,000 oxen and drove them up the hillside at night. The Romans, seeing thousands of moving lights in the darkness, thought Hannibal's entire army was escaping through the mountains. They rushed to block the lights — leaving the actual pass unguarded. Hannibal walked his real army straight through.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">⛵ Carthaginian Super-Ships <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Carthage was the greatest naval power in the Mediterranean. Their warships — called <span class="vocab" data-def="An ancient warship powered by five rows of oars on each side">quinquiremes</span> — were powered by five rows of oars on each side, with up to 300 rowers. Carthaginian shipyards could build an entire warship in as little as <strong>six days</strong>. The harbor at Carthage had a secret inner circular basin where 220 warships could be stored, hidden from enemy view, ready to launch at a moment's notice.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🏹 The Balearic Slingers <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Some of Hannibal's most feared soldiers weren't swordsmen — they were slingers from the Balearic Islands (modern Mallorca and Menorca, off the coast of Spain). They could hurl lead bullets with deadly accuracy at ranges of up to 400 meters — farther than most ancient bows. Balearic boys were trained from childhood; legend says their mothers wouldn't let them eat breakfast until they hit their target. A lead sling bullet traveling at over 100 mph could crack a helmet or break bones even through armor.</div>
+  </div>
+</section>
+
+<!-- WHAT IF? -->
+<section class="chapter" id="whatif">
+  <div class="chapter-header">
+    <span class="chapter-icon">🔮</span>
+    <span class="chapter-number">Chapter 6</span>
+    <h2>What If the Story <em>Changed?</em></h2>
+  </div>
+
+  <p class="big-idea reveal-kid">History isn't something that had to happen the way it did. Tiny changes can make enormous differences.</p>
+
+  <p class="reveal-kid">In real history, Hannibal didn't march on Rome. He waited. Rome rebuilt. Eventually, a young Roman general named Scipio — who had survived the Battle of Cannae as a teenager — took the war to Africa and beat Hannibal there. Carthage lost. And eventually, Rome destroyed the city completely, burned all its books, and became the most powerful civilization in the world.</p>
+
+  <p class="reveal-kid">But what if things had gone a tiny bit differently? What if Hannibal had marched? Or what if Carthage's government had sent him the siege equipment he kept asking for? Or what if Rome had agreed to make peace?</p>
+
+  <p class="reveal-kid"><strong>That's what the rest of this story imagines.</strong> Not a fairy tale — a serious "what if" based on what we actually know.</p>
+
+  <div class="what-if reveal-kid">
+    <div class="what-if-card ours">
+      <div class="what-if-label">What Really Happened</div>
+      <p>Rome wins. Carthage destroyed. All Carthaginian books burned. The world develops on Roman foundations — the calendar, the alphabet, the laws, Christianity, and eventually the world we live in today.</p>
+    </div>
+    <div class="what-if-card alt">
+      <div class="what-if-label">In Our Alternate Story</div>
+      <p>Carthage wins. Rome becomes a small local power. Everything — science, religion, food, music, medicine — develops along a completely different path. Even the alphabet might be different!</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WAS CARTHAGE? -->
+<section class="chapter" id="carthage">
+  <div class="chapter-header">
+    <span class="chapter-icon">🌍</span>
+    <span class="chapter-number">Chapter 7</span>
+    <h2>What Was <em>Carthage?</em></h2>
+  </div>
+
+  <p class="big-idea reveal-kid">Carthage wasn't just a city. It was a massive trading network that connected the entire Mediterranean Sea.</p>
+
+  <p class="reveal-kid">Most of what we "know" about Carthage was written by their enemies — the Romans and Greeks. That's like learning about your school from the kid who hates it most. So we have to be careful.</p>
+
+  <p class="reveal-kid">Here's what we <strong>do</strong> know: Carthage was incredibly diverse. A huge scientific study in 2025 looked at the DNA of ancient Carthaginian people and found something amazing — they came from everywhere. Sicily, Greece, North Africa, Spain. People from all around the Mediterranean joined because it was a good deal. You could keep your own language, your own customs, your own identity — but you got access to the richest trade routes in the world.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🏗️ Skyscraper City <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Ancient writers describe Carthaginian buildings as six stories tall — basically skyscrapers in the ancient world. They had a clever water system that collected rainwater from the roof, filtered it through sand to make it clean, stored it underground, and even used evaporation to cool the building. Engineers today are rediscovering these same ideas and calling them "green architecture." Carthage was doing it 2,300 years ago.</div>
+  </div>
+
+  <p class="reveal-kid">Carthage also had a government that the famous Greek philosopher <span class="vocab" data-def="An ancient Greek philosopher (384-322 BCE) who studied everything from animals to politics">Aristotle</span> called one of the best in the world. They had elected leaders, a senate, and a people's assembly — similar to some modern democracies, but 2,300 years ago.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">💰 Ancient Money Masters <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Carthaginians were so good at trade that they invented a kind of "silent trading" with African tribes. They'd leave goods on a beach, retreat to their ships, and the locals would come out and leave gold next to the goods. The Carthaginians would come back — if there was enough gold, they'd take it and leave the goods. If not, they'd wait. Back and forth until both sides were happy. No shared language needed! The Greek historian Herodotus wrote about this with amazement.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🟣 The Color of Kings <span class="arrow">›</span></div>
+    <div class="fun-fact-body">The word "Phoenician" (the culture Carthage came from) literally means <strong>"purple people"</strong> in Greek — because they were famous for making Tyrian purple dye from murex sea snails. This dye was so expensive that only kings and emperors could afford it. One pound of dye cost the same as three pounds of gold! The phrase "born to the purple" (meaning born royal) comes from this tradition. Cleopatra's royal sails were dyed Tyrian purple.</div>
+  </div>
+</section>
+
+<!-- ANIMALS -->
+<section class="chapter" id="animals">
+  <div class="chapter-header">
+    <span class="chapter-icon">🦁</span>
+    <span class="chapter-number">Chapter 8</span>
+    <h2>Animals of the <em>Ancient World</em></h2>
+  </div>
+
+  <p class="big-idea reveal-kid">The ancient Mediterranean was full of animals that are now rare, endangered, or completely extinct — and they played huge roles in history.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🐘 The War Elephants of Carthage <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Most of Hannibal's elephants were probably <strong>North African forest elephants</strong> — a now-extinct species about 2.5 metres at the shoulder (compared to 3.5 metres for the African bush elephants in zoos today). Ancient coins from Carthage show these smaller elephants. But his personal elephant, <strong>Surus</strong> ("the Syrian"), was likely a <strong>Syrian elephant</strong> — a subspecies of the Asian elephant that also went extinct around this time. Surus was larger, had one broken tusk, and wore a red cloth. Some accounts say he carried a small wooden tower on his back so Hannibal could see the battlefield (Hannibal had lost sight in one eye from an infection). Both species were driven to extinction — the North African elephant disappeared during Roman times, partly from being captured for arena games.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🐎 The Numidian Horse <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Hannibal's secret weapon wasn't elephants — it was <strong>Numidian cavalry</strong>, the finest horsemen in the ancient world. They came from North Africa (modern Algeria and Tunisia) and rode small, incredibly tough horses <em>without saddles or bridles</em>. They controlled their horses using just their knees and a small stick. They could throw javelins at full gallop, wheel around in an instant, and harass enemy armies for hours without getting caught. At Cannae, it was the Numidian cavalry that closed the trap.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🦁 Barbary Lions <span class="arrow">›</span></div>
+    <div class="fun-fact-body">North Africa was once home to the <strong>Barbary lion</strong> — the largest lion subspecies ever known, with magnificent dark manes that extended to their bellies. Carthaginians encountered them regularly. Roman arenas later slaughtered thousands of them for entertainment, and the last wild Barbary lion was shot in Morocco in 1920. They survive only in a few zoos today. In the alternate timeline, without Roman arena games driving them to extinction, Barbary lions might still roam North Africa.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🐚 The Murex Snail <span class="arrow">›</span></div>
+    <div class="fun-fact-body">The tiny <strong>murex snail</strong> was the most economically important animal in Carthage. Each snail produces just a single drop of mucus that can be processed into purple dye. To make enough dye for one garment, you needed about <strong>12,000 snails</strong>. At one dye factory in Sidon (modern Lebanon), the discarded shells formed a hill 40 meters high — roughly as tall as a 13-story building. That's a LOT of snails.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🦍 Hanno's Gorillas <span class="arrow">›</span></div>
+    <div class="fun-fact-body">When the Carthaginian explorer Hanno sailed down the African coast around 500 BCE, he encountered large, hairy creatures that his translators called "gorillai." He tried to capture some but they fought back fiercely, biting and scratching. He brought three skins back to Carthage and hung them in the temple of Tanit. The English word <strong>"gorilla"</strong> actually comes from Hanno's report! When scientists named the great apes in 1847, they borrowed his word.</div>
+  </div>
+</section>
+
+<!-- EXPLORATION -->
+<section class="chapter" id="exploration">
+  <div class="chapter-header">
+    <span class="chapter-icon">🧭</span>
+    <span class="chapter-number">Chapter 9</span>
+    <h2>The Greatest <em>Explorers</em> You've Never Heard Of</h2>
+  </div>
+
+  <p class="big-idea reveal-kid">Carthaginians were exploring the world nearly 2,000 years before Columbus — and they went further than you'd believe.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">⛵ Hanno's African Expedition <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Around 500 BCE, a Carthaginian commander named <strong>Hanno the Navigator</strong> set out with 60 ships and 30,000 colonists to explore the west coast of Africa. He sailed past the Sahara desert coastline, through tropical rivers, past erupting volcanoes ("a great fire that seemed to touch the stars"), and possibly as far as modern Cameroon or Gabon. Nobody from Europe would go that far again until the Portuguese, almost <strong>2,000 years later</strong>. Hanno wrote about everything he saw, and his report — the <em>Periplus</em> — is the only Carthaginian text that survived Rome's destruction.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🇬🇧 Himilco Reaches Britain <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Around the same time as Hanno's African voyage, another Carthaginian explorer named <strong>Himilco</strong> sailed north — up the Atlantic coast of Europe all the way to Britain and possibly Ireland. He was looking for tin, which was essential for making bronze. He reported "vast seaweed" (probably the Sargasso Sea currents), sea creatures, fog, and shallow waters. The Carthaginians kept these trade routes secret so nobody else could access the tin supply.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🗺️ Secret Maps <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Carthage deliberately kept its navigation knowledge <strong>secret</strong>. Ancient sources say that Carthaginian captains were ordered to deliberately wreck their ships rather than let enemies capture their charts and sailing directions. One captain who accidentally led a Roman ship to a secret trade route was rewarded by the Carthaginian government — for sinking his own ship before the Romans could figure out where they were going! Trade secrets were serious business.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🌊 Could They Have Reached America? <span class="arrow">›</span></div>
+    <div class="fun-fact-body">This is one of history's great "maybes." We have no proof that Carthaginians reached the Americas. But we know they had the ships, the navigation skills, and the Atlantic sailing experience to make it possible. The trade winds from West Africa to the Caribbean are steady and reliable — Columbus used them in 1492. Some researchers have pointed to ancient coins and pottery found in the Americas that <em>might</em> be Phoenician, but nothing is proven. In our alternate story, we imagine this happens — but honestly, it's a big "what if" on top of a "what if."</div>
+  </div>
+
+  <div class="big-number reveal-kid">
+    <div class="num">~2,000</div>
+    <div class="label">Years before Portugal repeated Hanno's African voyage</div>
+  </div>
+</section>
+
+<!-- SCIENCE -->
+<section class="chapter" id="science">
+  <div class="chapter-header">
+    <span class="chapter-icon">🔬</span>
+    <span class="chapter-number">Chapter 10</span>
+    <h2>Science That <em>Could Have Been</em></h2>
+  </div>
+
+  <p class="big-idea reveal-kid">The ancient world was smarter than you think. And Rome may have slowed science down by centuries.</p>
+
+  <p class="reveal-kid">Here's something wild: a Greek scientist named <span class="vocab" data-def="A Greek astronomer who figured out the Earth goes around the Sun, 1,800 years before Copernicus">Aristarchus</span> figured out that the Earth goes around the Sun in 270 BCE. That's almost <strong>1,800 years</strong> before Copernicus got credit for the same idea!</p>
+
+  <p class="reveal-kid">And Archimedes — the genius from Syracuse — was working on math incredibly close to calculus. He was killed by a Roman soldier. His work survived only in bits and pieces.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">⚙️ The Ancient Computer <span class="arrow">›</span></div>
+    <div class="fun-fact-body">In 1901, divers found a corroded lump of metal in a shipwreck near the Greek island of Antikythera. It turned out to be a <strong>2,100-year-old computer</strong> — a device with 37 interlocking bronze gears that could track the movements of the Sun, Moon, and planets, predict eclipses, and even calculate the dates of the Olympic Games. Nobody in Europe built anything this complex again for over 1,400 years. Scientists are still figuring out exactly how it worked.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🐚 The Magic Snail → Microscopes <span class="arrow">›</span></div>
+    <div class="fun-fact-body">The Carthaginians made Tyrian purple dye from murex snails using complex chemistry — controlling reactions that scientists today call organic chemistry. In our alternate story, this 800-year tradition of snail chemistry leads to better glass (because dye-makers needed clear glass to control color with UV light), which leads to lenses, which leads to microscopes, which leads to discovering germs — possibly 1,200 years before Pasteur did in our world!</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">💨 The First Steam Engine <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Around 60 CE, a Greek inventor named Hero built a device called an <strong>aeolipile</strong> — a metal ball that spun when steam shot out of two nozzles. It was the world's first steam engine! But in the ancient world, where slaves did most of the hard labor, nobody needed a machine to do work. The aeolipile was treated as a cool toy. In our alternate world — where a trading civilization needs efficiency more than slave labor — someone might have turned this toy into an engine centuries before the Industrial Revolution.</div>
+  </div>
+
+  <div class="what-if reveal-kid">
+    <div class="what-if-card ours">
+      <div class="what-if-label">Our World</div>
+      <p>Germ theory discovered in 1861. Before that, nobody knew why people got sick. The Black Death killed 30–60% of Europe because nobody understood bacteria. Doctors didn't wash their hands before surgery until the 1860s.</p>
+    </div>
+    <div class="what-if-card alt">
+      <div class="what-if-label">Alternate World</div>
+      <p>With microscopes centuries earlier, someone looks at water and sees tiny organisms. Germs are understood much sooner. Doctors wash their hands. Clean water systems are designed to prevent disease. The Black Death might never happen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE WIDER WORLD -->
+<section class="chapter" id="world">
+  <div class="chapter-header">
+    <span class="chapter-icon">🌏</span>
+    <span class="chapter-number">Chapter 11</span>
+    <h2>A <em>Different</em> World</h2>
+  </div>
+
+  <p class="big-idea reveal-kid">If Carthage won instead of Rome, the ripples would have reached every corner of the planet.</p>
+
+  <p class="reveal-kid"><strong>No Christianity or Islam</strong> — at least not in the forms we know. Remember, Christianity spread through the Roman Empire. No Roman Empire, no roads to spread it on, no emperor to make it official. Instead, the world would probably have lots of smaller, local religions and philosophical schools. Imagine hundreds of different belief systems instead of just a few giant ones.</p>
+
+  <p class="reveal-kid"><strong>The Americas</strong> — In our world, Europeans reached the Americas in 1492 and brought diseases that killed tens of millions of Indigenous people. In the alternate world, if Carthaginian traders arrived centuries earlier as friends wanting to trade (not as conquerors), the Maya, Aztec, Inca, and other civilizations might have survived and thrived.</p>
+
+  <p class="reveal-kid"><strong>Africa</strong> — Carthage was an African city! Without the transatlantic slave trade (which took 12.5 million Africans from their homes) and without European colonization, African civilizations would have developed on their own terms. The great university at Timbuktu, the gold of the Mali Empire, the stone cities of Great Zimbabwe — all continuing to grow.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🌶️ Chili Peppers, 1,000 Years Early! <span class="arrow">›</span></div>
+    <div class="fun-fact-body">In our world, chili peppers didn't reach Europe until Columbus brought them back in the 1490s. In the alternate world, if Carthaginian traders reached the Americas around 400 CE, chili peppers could have entered Mediterranean cooking more than a <strong>thousand years</strong> earlier. Also: tomatoes, potatoes, chocolate, and vanilla. Imagine ancient Carthaginian <em>chocolate</em>!</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🇨🇳 What About China? <span class="arrow">›</span></div>
+    <div class="fun-fact-body">China's big inventions — paper, the compass, gunpowder, and printing — all happen regardless of events in the Mediterranean. But the <strong>trade</strong> changes a lot. Chinese inventions might reach the West much faster through an unbroken trade network, and Mediterranean glass and optical technology would flow east. Imagine Chinese astronomers with Mediterranean telescopes in 600 CE!</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🇯🇵 Japan Never Closes <span class="arrow">›</span></div>
+    <div class="fun-fact-body">In our world, Japan closed its borders to almost all foreigners in 1639 because they were worried about European missionaries and colonizers. Without European colonial pressure, Japan never needs to close. Instead, Japanese culture develops in open exchange with the world — trading samurai swords for Mediterranean glass, sharing art techniques, and blending musical traditions. The result might be something nobody in our world has ever experienced.</div>
+  </div>
+</section>
+
+<!-- FOOD -->
+<section class="chapter" id="food">
+  <div class="chapter-header">
+    <span class="chapter-icon">🍽️</span>
+    <span class="chapter-number">Chapter 12</span>
+    <h2>What Would the <em>Food</em> Taste Like?</h2>
+  </div>
+
+  <p class="big-idea reveal-kid">The alternate world's food would be built on three things: fermented fish sauce, snail chemistry, and spices from every continent.</p>
+
+  <p class="reveal-kid">The Carthaginians made something called <strong>garum</strong> — a fermented fish sauce that was the ketchup of the ancient world. People put it on <em>everything</em>. It was rich, salty, and full of <span class="vocab" data-def="A savory, deep flavor found in foods like soy sauce, parmesan cheese, and mushrooms">umami</span> — that deep, satisfying flavor you taste in soy sauce, parmesan cheese, and ramen broth.</p>
+
+  <div class="big-number reveal-kid">
+    <div class="num">1,000,000</div>
+    <div class="label">Litres of fish sauce · one factory in Morocco</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">📚 28 Books About Farming <span class="arrow">›</span></div>
+    <div class="fun-fact-body">A Carthaginian writer named <strong>Mago</strong> wrote 28 entire books about farming — covering everything from when to plant, how to graft fruit trees, how to keep bees, and how to make wine. When Rome destroyed Carthage, they burned the entire library — except Mago's farming books. They translated all 28 volumes into Latin because the farming advice was too good to destroy. That tells you how smart Carthaginian agriculture was!</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🍫 Ancient Chocolate? <span class="arrow">›</span></div>
+    <div class="fun-fact-body">If Carthaginian traders reached the Americas, they would have encountered cacao — the plant that chocolate comes from. The Maya were already making chocolate drinks by 600 BCE. In the alternate world, chocolate might have reached the Mediterranean by ~400 CE — over a thousand years before Europeans tasted it. Imagine Carthaginian hot chocolate, sweetened with honey and spiced with cinnamon from Sri Lanka!</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🧀 Cheese From Everywhere <span class="arrow">›</span></div>
+    <div class="fun-fact-body">With an understanding of microbiology from germ theory (in the alternate world), cheese-making goes from an art to a science. Instead of discovering good cheese cultures by accident (which is how most of our favorite cheeses were invented), alternate-world cheesemakers would understand <em>why</em> certain bacteria make certain flavors. The cheese selection in the alternate 2026 would make a fancy French cheese shop look like a beginner's practice run.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">😋 A Taste Test <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Imagine a meal in the alternate 2026: <strong>A bowl of spiced grain</strong> with garum-based sauce perfected over 2,500 years. <strong>Grilled fish</strong> with chili peppers that arrived from the Americas 1,600 years ago. <strong>Cheese</strong> cultured with precision microbiology. <strong>Bread</strong> made with sourdough understood at the molecular level. <strong>Chocolate</strong> for dessert, spiced with cardamom from India. All of it more complex, more layered, and more delicious than anything in our world — because the flavor traditions had 1,000+ extra years to develop.</div>
+  </div>
+</section>
+
+<!-- TODAY -->
+<section class="chapter" id="today">
+  <div class="chapter-header">
+    <span class="chapter-icon">🌟</span>
+    <span class="chapter-number">Chapter 13</span>
+    <h2>What Does It All <em>Mean?</em></h2>
+  </div>
+
+  <p class="big-idea reveal-kid">The point isn't that the alternate world would be perfect. It's that the world we live in didn't have to be this way.</p>
+
+  <p class="reveal-kid">The alternate 2026 isn't paradise. People still argue, compete, and sometimes fight — that's just human nature. But some of the worst things in our history might never have happened.</p>
+
+  <p class="reveal-kid">And some things would be much further ahead: medicine, clean cities, and a world where different civilizations traded with each other as equals instead of one group conquering everybody else.</p>
+
+  <p class="reveal-kid">But here's the most important idea: <strong>almost nothing about our world was inevitable.</strong> The world you're growing up in is the result of specific decisions, specific accidents, and specific moments where history could have gone another way. One of those moments was a hot afternoon in southern Italy, 2,200 years ago, when a general decided not to march.</p>
+
+  <p class="reveal-kid">Now you know the story. And here's the question only you can answer: <strong>if you could change one moment in history, what would you change?</strong></p>
+
+  <div class="kid-quote reveal-kid">
+    <p>"The deepest lesson of history is not that Carthage fell. It is that the civilization that defeated it wrote the history, burned its libraries — and taught us for two thousand years that this was civilization."</p>
+    <cite>From the full essay</cite>
+  </div>
+
+  <p class="reveal-kid" style="text-align:center; margin-top: 2rem;">
+    <a href="/" style="color: var(--tyrian); font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(122,58,106,0.3); padding: 0.5rem 1.25rem; border-radius: 4px; transition: all 0.3s;" onmouseover="this.style.background='var(--tyrian)';this.style.color='white'" onmouseout="this.style.background='';this.style.color=''">Read the Full Scholarly Edition →</a>
+  </p>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <span class="elephant" aria-hidden="true">🐘</span>
+  A Historical Imagination for Young Explorers · Based on Primary Sources · Part of the Murexx Collection
+</footer>
+
+<script>
+// Fun fact toggles
+document.querySelectorAll('.fun-fact').forEach(fact => {
+  fact.addEventListener('click', () => fact.classList.toggle('open'));
+});
+
+// Scroll reveal
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal-kid').forEach(el => obs.observe(el));
+}
+</script>
+</body>
+</html>
