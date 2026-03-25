@@ -491,7 +491,7 @@
   <a class="nav-link" href="#society">Society</a>
   <a class="nav-link" href="#shadows">Shadows</a>
   <a class="nav-link" href="#conclusion">2026</a>
-  <a class="nav-link" href="/young-explorers.html" style="color:var(--tyrian-light);">🐘 Kids</a>
+  <a class="nav-link nav-external" href="/young-explorers.html" style="color:var(--tyrian-light);">🐘 Kids</a>
   <div class="lang-switcher" role="group" aria-label="Language">
     <button class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
     <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
@@ -1357,8 +1357,8 @@
 </footer>
 
 <script>
-  // Smooth scrolling
-  document.querySelectorAll('.nav-link').forEach(link => {
+  // Smooth scrolling (skip external links)
+  document.querySelectorAll('.nav-link:not(.nav-external)').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute('href'));
