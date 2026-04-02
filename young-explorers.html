@@ -214,6 +214,54 @@ footer {
 }
 footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
 
+/* Cold open */
+.cold-open {
+  background: var(--ink-light); color: var(--parchment);
+  padding: 2.5rem 1.5rem; margin: 0 -1.5rem 2.5rem; border-radius: 8px;
+  font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+  line-height: 1.7; text-align: center; position: relative;
+}
+.cold-open p { margin-bottom: 0.75rem; }
+.cold-open .cold-hook { font-size: 1.35rem; font-weight: 600; color: var(--gold-light); }
+.cold-open .cold-pivot { font-style: italic; color: rgba(255,255,255,0.7); font-size: 1rem; margin-top: 1rem; }
+
+/* Part headers */
+.part-header {
+  text-align: center; padding: 2.5rem 0 1.5rem; margin-top: 1rem;
+  border-top: 3px solid var(--tyrian);
+}
+.part-header .part-label {
+  font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.4em;
+  color: var(--tyrian); text-transform: uppercase; display: block; margin-bottom: 0.3rem;
+}
+.part-header .part-title {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.6rem;
+  font-weight: 600; color: var(--ink-light);
+}
+
+/* Try This! boxes */
+.try-this {
+  background: linear-gradient(135deg, rgba(122,58,106,0.06), rgba(42,106,122,0.06));
+  border: 2px dashed var(--tyrian); border-radius: 12px;
+  padding: 1.25rem 1.5rem; margin: 2rem 0; text-align: center;
+}
+.try-this-label {
+  font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em;
+  color: var(--tyrian); text-transform: uppercase; margin-bottom: 0.5rem;
+}
+.try-this p { font-size: 0.95rem; color: var(--ink-light); line-height: 1.6; }
+
+/* What Would YOU Do? */
+.choice-prompt {
+  background: var(--parchment-dark); border-left: 4px solid var(--warm);
+  padding: 1.25rem 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;
+}
+.choice-label {
+  font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.25em;
+  color: var(--warm); text-transform: uppercase; margin-bottom: 0.5rem;
+}
+.choice-prompt p { font-size: 0.95rem; color: var(--ink-light); line-height: 1.65; }
+
 /* Responsive */
 @media (max-width: 600px) {
   body { font-size: 16px; }
@@ -242,15 +290,19 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <a href="#rome">Rome</a>
     <a href="#who">Hannibal</a>
     <a href="#battle">The Battle</a>
+    <a href="#scipio">Scipio</a>
     <a href="#archimedes">Archimedes</a>
     <a href="#whatif">What If?</a>
     <a href="#carthage">Carthage</a>
     <a href="#weapons">Weapons</a>
     <a href="#animals">Animals</a>
     <a href="#science">Science</a>
+    <a href="#electricity">Electricity</a>
     <a href="#exploration">Exploration</a>
     <a href="#world">The World</a>
+    <a href="#rivals">Rivals</a>
     <a href="#food">Food!</a>
+    <a href="#shadows">Honest Truth</a>
     <a href="#today">Today</a>
   </nav>
   <a class="adult-link" href="/">Read the Full Scholarly Edition →</a>
@@ -258,6 +310,20 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
 
 <main>
 <div class="container">
+
+<div class="cold-open reveal-kid">
+  <p class="cold-hook">Imagine marching 37 elephants over the tallest mountains in Europe.</p>
+  <p>Snow up to your waist. Cliffs dropping into nothing. Soldiers from seven different countries, speaking five different languages, following one man — a 26-year-old general from North Africa who swore as a child that he would never be a friend of Rome.</p>
+  <p>He made it across. And then he started <em>winning</em>.</p>
+  <p>He won the biggest battle in ancient history. He stayed in enemy territory for <strong>fourteen years</strong>, undefeated. He came within a few days' march of destroying the most powerful civilization the world had ever seen.</p>
+  <p>He didn't do it. And because he didn't, <em>everything</em> about your life — the calendar on your wall, the alphabet you're reading, the laws that protect you, the religion your neighbors practice — all of it exists because of that one decision.</p>
+  <p class="cold-pivot">But first, you need to understand what he was trying to destroy. ↓</p>
+</div>
+
+<div class="part-header">
+  <span class="part-label">Part I</span>
+  <span class="part-title">The Story</span>
+</div>
 
 <!-- WHAT WAS ROME? -->
 <section class="chapter" id="rome">
@@ -431,6 +497,11 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
 
   <p class="reveal-kid">To put that number in perspective: Cannae is believed to be the <strong>highest loss of human life in a single day of battle in all of recorded history</strong>. More people died in those few hours than on the first day of the Battle of the Somme in World War I (1916), which is considered one of the bloodiest days in modern warfare. And this was done with swords, spears, and bare hands — not guns or bombs.</p>
 
+  <div class="try-this reveal-kid">
+    <div class="try-this-label">🔬 Try This!</div>
+    <p>Get 86 coins (or buttons, or pieces of cereal). Line them all up. Now take away 70 of them. Look at what's left. <strong>That's</strong> what happened to the Roman army in a single afternoon.</p>
+  </div>
+
   <figure class="chapter-img reveal-kid">
     <img src="kids-img/cannae-aerial.png" alt="Aerial view of the Battle of Cannae showing the Roman army trapped inside Hannibal's double envelopment — cavalry and infantry closing in from all sides" loading="lazy">
     <figcaption>The Battle of Cannae — Hannibal's trap closes around the Roman army</figcaption>
@@ -441,9 +512,54 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <div class="fun-fact-body">After winning this incredible battle, Hannibal's cavalry commander Maharbal begged him to march straight to Rome and finish the war. When Hannibal said no — he needed time to think — Maharbal said something people still remember 2,200 years later: <em>"You know how to win a victory, Hannibal. You just don't know how to use one."</em> Hannibal never marched on Rome. He spent 14 more years in Italy, winning battle after battle, but the war slowly slipped away. Was Maharbal right? That's the question this whole story is about.</div>
   </div>
 
+  <div class="choice-prompt reveal-kid">
+    <div class="choice-label">🧠 What Would YOU Do?</div>
+    <p>You've just won the biggest battle in history. Your army is exhausted but victorious. Rome is 250 miles away, with almost no soldiers left to defend it. Your best cavalry commander says: <strong>march now, and in five days we'll be eating dinner in Rome.</strong> But you have no siege equipment, your soldiers need rest, and you've never lost a battle — so why risk everything on one gamble? <strong>Do you march? Or do you wait?</strong> Think about it. Your answer might have changed the entire world.</p>
+  </div>
+
   <div class="fun-fact reveal-kid">
     <div class="fun-fact-header">🏅 Still Studied Today <span class="arrow">›</span></div>
     <div class="fun-fact-body">The Battle of Cannae is still taught at military academies like West Point (in the United States) and Sandhurst (in England). General Norman Schwarzkopf studied Hannibal's tactics before planning Operation Desert Storm in 1991. The German military strategist Alfred von Schlieffen based his entire World War I plan on Cannae's double envelopment. 2,200 years later, generals are still trying to copy Hannibal's homework!</div>
+  </div>
+</section>
+
+<!-- SCIPIO -->
+<section class="chapter" id="scipio">
+  <div class="chapter-header">
+    <span class="chapter-icon">🎭</span>
+    <span class="chapter-number">Chapter 4</span>
+    <h2>How Rome <em>Actually</em> Won</h2>
+  </div>
+
+  <p class="big-idea reveal-kid">Rome didn't beat Hannibal with a better general. They beat him with a better politician.</p>
+
+  <p class="reveal-kid">After Cannae, a young Roman officer named <strong>Scipio</strong> — who had survived the battle as a teenager — spent years studying Hannibal's methods. But what Scipio really learned wasn't tactics. It was something new: how to be a <em>celebrity</em>.</p>
+
+  <p class="reveal-kid">Scipio told people that the god Jupiter spoke to him directly. He made dramatic visits to temples before battles. He cultivated a superhero-like image that the Roman Senate had never seen before. The historian Robert O'Connell calls him "the self-promoting Roman military tribune." Where ancient writers describe Hannibal as "resolutely sane and uncannily strategic," Scipio gets a very different word: <em>self-promoting</em>.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🐎 The Real Winning Move <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Scipio's single most important act wasn't a battle — it was a <strong>friendship</strong>. Remember those Numidian cavalry who closed the trap at Cannae? Their prince, <strong>Masinissa</strong>, had been betrayed by Carthage in a marriage deal. Scipio courted the angry prince for years, promising him a kingdom. It worked. At the final battle of Zama (202 BCE), Masinissa's horsemen — the same cavalry that had won Cannae for Hannibal — were now fighting <em>against</em> him. The historian O'Connell says this alliance "sealed Carthage's fate." Not a battle plan. An alliance.</div>
+  </div>
+
+  <div class="choice-prompt reveal-kid">
+    <div class="choice-label">🧠 What Would YOU Do?</div>
+    <p>You're Masinissa, prince of Numidia. Carthage promised you a bride, then gave her to your rival instead. Now a young Roman general shows up offering you a <strong>kingdom</strong> if you switch sides. But Carthage is your neighbor — you'll have to live next to them forever. Rome is far away and might not keep its promises. <strong>Do you switch sides? Or stay loyal?</strong> Your decision will determine who wins the war.</p>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">😢 A Battle Hannibal Was Designed to Lose <span class="arrow">›</span></div>
+    <div class="fun-fact-body">At Zama, Hannibal wasn't the Hannibal of Cannae. He was fighting with untrained conscripts instead of his veteran army. His war elephants were barely trained and stampeded into his <em>own</em> soldiers. And he had no cavalry — because Masinissa had switched sides. Strip away Masinissa, and Scipio probably loses. The "brilliant general beats Hannibal" story is really: a brilliant politician stole Hannibal's allies and fought him at his weakest.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">💬 The Greatest Compliment in History <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Years after the war, Scipio met the exiled Hannibal and asked: "Who do you think was the greatest general ever?" Hannibal said: Alexander first, Pyrrhus second, himself third. Scipio smiled: "And if you had beaten <em>me</em>?" Hannibal replied: "Then I would put myself first — before Alexander, before everyone." Even in defeat, Hannibal knew Zama wasn't a fair test. He'd been beaten by politics, not by a better soldier.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">☠️ Hannibal's Poison Gift to Rome <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Here's something wild: Hannibal may have <strong>destroyed Rome after all</strong> — just not the way he planned. Before Hannibal, Rome's system was designed to prevent any one person from getting too powerful. But Hannibal was too good. Rome was forced to give Scipio his own personal army. That created a new kind of Roman: the celebrity general whose soldiers followed <em>him</em>, not the government. After Scipio came Marius, then Sulla, then Pompey, then Julius Caesar — who crossed the Rubicon River with his army and ended the Roman Republic forever. Each one followed the template Scipio created. Hannibal's greatest victory was the one he never knew he'd won.</div>
   </div>
 </section>
 
@@ -451,7 +567,7 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
 <section class="chapter" id="archimedes">
   <div class="chapter-header">
     <span class="chapter-icon">🔧</span>
-    <span class="chapter-number">Chapter 4</span>
+    <span class="chapter-number">Chapter 5</span>
     <h2>Archimedes: The <em>Genius</em> Who Fought Rome</h2>
   </div>
 
@@ -500,7 +616,7 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
 <section class="chapter" id="weapons">
   <div class="chapter-header">
     <span class="chapter-icon">🛡️</span>
-    <span class="chapter-number">Chapter 5.5</span>
+    <span class="chapter-number">Chapter 6</span>
     <h2>Cool Tools, Wild Weapons, <em>& Snake Bombs</em></h2>
   </div>
 
@@ -547,11 +663,17 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
   </figure>
 </section>
 
+<!-- PART II -->
+<div class="part-header">
+  <span class="part-label">Part II</span>
+  <span class="part-title">The Real Carthage</span>
+</div>
+
 <!-- WHAT IF? -->
 <section class="chapter" id="whatif">
   <div class="chapter-header">
     <span class="chapter-icon">🔮</span>
-    <span class="chapter-number">Chapter 6</span>
+    <span class="chapter-number">Chapter 7</span>
     <h2>What If the Story <em>Changed?</em></h2>
   </div>
 
@@ -579,7 +701,7 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
 <section class="chapter" id="carthage">
   <div class="chapter-header">
     <span class="chapter-icon">🌍</span>
-    <span class="chapter-number">Chapter 7</span>
+    <span class="chapter-number">Chapter 8</span>
     <h2>What Was <em>Carthage?</em></h2>
   </div>
 
@@ -616,7 +738,7 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
 <section class="chapter" id="animals">
   <div class="chapter-header">
     <span class="chapter-icon">🦁</span>
-    <span class="chapter-number">Chapter 8</span>
+    <span class="chapter-number">Chapter 9</span>
     <h2>Animals of the <em>Ancient World</em></h2>
   </div>
 
@@ -663,11 +785,53 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
   </div>
 </section>
 
+<!-- ELECTRICITY & COMPUTING -->
+<section class="chapter" id="electricity">
+  <div class="chapter-header">
+    <span class="chapter-icon">⚡</span>
+    <span class="chapter-number">Chapter 10</span>
+    <h2>Ancient <em>Batteries</em> and Computers</h2>
+  </div>
+
+  <p class="big-idea reveal-kid">The ancient world already had a computer and possibly a battery. They just didn't know what to do with them yet.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🔋 The Baghdad Battery <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Archaeologists found clay jars in Iraq dating to around 250 BCE that contain a copper cylinder and an iron rod. When you fill them with vinegar or grape juice, they produce about <strong>one volt of electricity</strong>. Scientists call them "Baghdad Batteries." Were they actually used as batteries? Nobody knows for sure — they might have been used for electroplating jewelry with thin layers of gold. But the point is: the <em>phenomenon</em> of electricity was right there, waiting to be understood. The Greek word <em>elektron</em> (meaning amber) is where we get the word "electricity" — because the Greeks noticed that rubbing amber on fur made it attract things. They just never figured out what was happening.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">⚙️ The World's First Computer <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Remember the Antikythera mechanism? That 2,100-year-old device with 37 bronze gears? It wasn't just a clock — it was a <strong>computer</strong>. It could calculate the positions of the Sun and Moon, predict eclipses, and even figure out when the next Olympic Games would be. Meanwhile, Hero of Alexandria built machines that could follow a set of programmed instructions using ropes and counterweights — basically ancient robots! In our timeline, nobody built anything this complex again for over 1,400 years. In the alternate world, with no interruption, these traditions keep developing. Imagine: mechanical computers by the year 500 CE, calculating everything from trade routes to tides.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">💡 From Amber to Light Bulbs <span class="arrow">›</span></div>
+    <div class="fun-fact-body">In our world, it took until the 1800s to go from "rubbing amber is weird" to "electricity powers cities." That's because understanding electricity requires a huge insight: electricity and magnetism are the <strong>same force</strong>. A scientist named James Clerk Maxwell figured this out in 1865. In the alternate world, that insight could come earlier — the Carthaginian dye industry was already doing electrochemistry (using electricity to drive chemical reactions) without knowing it. Workers dipping metals in acidic dye solutions would have noticed galvanic effects — tiny sparks, metals dissolving strangely. A civilization that's curious about <em>why</em> things happen (instead of just accepting them) could follow that trail to electric motors and light bulbs centuries ahead of our timeline.</div>
+  </div>
+
+  <div class="what-if reveal-kid">
+    <div class="what-if-card ours">
+      <div class="what-if-label">Our World</div>
+      <p>First battery: 1800. First electric motor: 1831. First power grid: 1882. First computer: 1940s. That's 2,000 years from the Baghdad Battery to your laptop.</p>
+    </div>
+    <div class="what-if-card alt">
+      <div class="what-if-label">Alternate World</div>
+      <p>Mechanical computers developing from ~200 BCE onward. Electrochemistry discovered through dye workshops. Electricity understood centuries earlier. The gap between discovery and everyday use is shorter because the civilization is already set up to use new technology.</p>
+    </div>
+  </div>
+
+  <div class="try-this reveal-kid">
+    <div class="try-this-label">🔬 Try This!</div>
+    <p>Rub a balloon on your hair (or a wool sweater), then hold it near small pieces of paper. Watch them jump! Congratulations — you just did the same experiment Thales of Miletus did in Greece <strong>2,600 years ago</strong>. He noticed that rubbing amber on fur made it attract things. The Greek word for amber? <em>Elektron.</em> That's where we get the word "electricity."</p>
+  </div>
+</section>
+
 <!-- EXPLORATION -->
 <section class="chapter" id="exploration">
   <div class="chapter-header">
     <span class="chapter-icon">🧭</span>
-    <span class="chapter-number">Chapter 9</span>
+    <span class="chapter-number">Chapter 11</span>
     <h2>The Greatest <em>Explorers</em> You've Never Heard Of</h2>
   </div>
 
@@ -704,11 +868,17 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
   </div>
 </section>
 
+<!-- PART III -->
+<div class="part-header">
+  <span class="part-label">Part III</span>
+  <span class="part-title">The Alternate World</span>
+</div>
+
 <!-- SCIENCE -->
 <section class="chapter" id="science">
   <div class="chapter-header">
     <span class="chapter-icon">🔬</span>
-    <span class="chapter-number">Chapter 10</span>
+    <span class="chapter-number">Chapter 12</span>
     <h2>Science That <em>Could Have Been</em></h2>
   </div>
 
@@ -754,13 +924,30 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
 <section class="chapter" id="world">
   <div class="chapter-header">
     <span class="chapter-icon">🌏</span>
-    <span class="chapter-number">Chapter 11</span>
+    <span class="chapter-number">Chapter 13</span>
     <h2>A <em>Different</em> World</h2>
   </div>
 
   <p class="big-idea reveal-kid">If Carthage won instead of Rome, the ripples would have reached every corner of the planet.</p>
 
-  <p class="reveal-kid"><strong>No Christianity or Islam</strong> — at least not in the forms we know. Remember, Christianity spread through the Roman Empire. No Roman Empire, no roads to spread it on, no emperor to make it official. Instead, the world would probably have lots of smaller, local religions and philosophical schools. Imagine hundreds of different belief systems instead of just a few giant ones.</p>
+  <p class="reveal-kid"><strong>No Christianity or Islam</strong> — at least not in the forms we know. Remember, Christianity spread through the Roman Empire. But it goes deeper: Jesus himself was a product of Roman occupation. The Roman taxes that crushed farmers, the Roman soldiers that occupied the land, the Roman governor Pontius Pilate — all of these created the conditions for the messianic movement that became Christianity. No Rome, no Roman occupation of Judea, no specific pressures that produced the Jesus story as we know it.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">✡ What Happens to the Jewish People? <span class="arrow">›</span></div>
+    <div class="fun-fact-body">This might be the biggest change of all. In our timeline, Rome destroyed the Jewish Temple in 70 CE — the center of Jewish religious life. Then Emperor Hadrian expelled Jews from Jerusalem in 135 CE, beginning 2,000 years of exile. Without Rome, <strong>the Temple still stands</strong>. There's no exile, no diaspora, no "Next year in Jerusalem" (because they never left). There's no Christian antisemitism — no one blaming Jews for the death of Christ, because Christ as we know him doesn't exist. No Spanish Inquisition. No pogroms. No Holocaust — because the entire chain of persecution requires Christianity, which requires Rome. Jewish communities still trade across the Mediterranean (Phoenician and Jewish merchant networks overlapped for centuries), but they live as neighbors, not refugees. Judaism becomes a confident, outward-facing religion rather than one shaped by 2,000 years of trauma and survival.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">✝️ What About Christianity? <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Remember what we learned in Chapter 1? Christianity is one of the biggest things Rome gave the world — over 2 billion people follow it today. Without Rome, it simply doesn't develop in any form we'd recognize. Jesus was born in Roman-controlled Palestine, tried by a Roman governor, and crucified using a Roman method of execution. The religion spread on Roman roads, was legalized by a Roman emperor, and was made the official religion of the Roman Empire. Take away Rome and <strong>every single link in that chain breaks</strong>.
+    <br><br>
+    Think about everything that flows from Christianity: Christmas, Easter, church steeples in every town, the entire structure of the calendar (BC/AD), cathedrals, gospel music, the concept of "turning the other cheek," hospitals (many were founded by churches), universities (Oxford, Cambridge, Harvard — all started as religious schools), and the idea that all people are equal before God. Also: the Crusades, the Inquisition, witch trials, religious wars that killed millions, and the use of religion to justify conquering other countries and enslaving people. Christianity produced both extraordinary beauty and extraordinary violence. In the alternate world, <strong>none of it exists</strong> — not the good parts and not the bad parts. That's not a simple gain or a simple loss. It's a completely different world.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">☪ What About Islam? <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Islam as we know it doesn't develop either — and this is a <strong>huge</strong> loss for world civilization. Muhammad's revelation emerged from very specific conditions: wars between the Byzantine and Persian empires, Christian communities in Arabia, Jewish tribes in Medina. Without Christianity and without the Byzantine Empire (which was the Eastern Roman Empire), these conditions don't exist. That means: no Umayyad Caliphate, no Abbasid Golden Age (which gave us algebra, the number zero, and modern optics), no Ottoman Empire, no Mughal Empire (which built the Taj Mahal), no Rumi's poetry, no Sufi music. The people still exist — Arabs, Persians, Turks — but they organize around different traditions. The <em>specific brilliance</em> of Islamic civilization is one of the things the alternate world genuinely loses.</div>
+  </div>
 
   <p class="reveal-kid"><strong>The Americas</strong> — In our world, Europeans reached the Americas in 1492 and brought diseases that killed tens of millions of Indigenous people. In the alternate world, if Carthaginian traders arrived centuries earlier as friends wanting to trade (not as conquerors), the Maya, Aztec, Inca, and other civilizations might have survived and thrived.</p>
 
@@ -786,7 +973,7 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
 <section class="chapter" id="food">
   <div class="chapter-header">
     <span class="chapter-icon">🍽️</span>
-    <span class="chapter-number">Chapter 12</span>
+    <span class="chapter-number">Chapter 14</span>
     <h2>What Would the <em>Food</em> Taste Like?</h2>
   </div>
 
@@ -823,13 +1010,90 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
     <div class="fun-fact-header">😋 A Taste Test <span class="arrow">›</span></div>
     <div class="fun-fact-body">Imagine a meal in the alternate 2026: <strong>A bowl of spiced grain</strong> with garum-based sauce perfected over 2,500 years. <strong>Grilled fish</strong> with chili peppers that arrived from the Americas 1,600 years ago. <strong>Cheese</strong> cultured with precision microbiology. <strong>Bread</strong> made with sourdough understood at the molecular level. <strong>Chocolate</strong> for dessert, spiced with cardamom from India. All of it more complex, more layered, and more delicious than anything in our world — because the flavor traditions had 1,000+ extra years to develop.</div>
   </div>
+
+  <div class="try-this reveal-kid">
+    <div class="try-this-label">🔬 Try This!</div>
+    <p>Next time you use <strong>ketchup</strong>, think about this: garum was the ketchup of the ancient world — a fermented sauce people put on <em>everything</em>. And next time you use <strong>soy sauce</strong>, you're tasting the same type of flavor (umami!) that Carthaginian garum had 2,500 years ago. Same idea, different continent, separated by thousands of years. Some inventions are so good that humans keep reinventing them.</p>
+  </div>
+</section>
+
+<!-- PART IV -->
+<div class="part-header">
+  <span class="part-label">Part IV</span>
+  <span class="part-title">Thinking Critically</span>
+</div>
+
+<!-- WHO CHALLENGES CARTHAGE? -->
+<section class="chapter" id="rivals">
+  <div class="chapter-header">
+    <span class="chapter-icon">⚔️</span>
+    <span class="chapter-number">Chapter 15</span>
+    <h2>But Wait — Who <em>Challenges</em> Carthage?</h2>
+  </div>
+
+  <p class="big-idea reveal-kid">History doesn't leave vacuums. If Carthage controls the richest trade routes on Earth, someone's going to want to take them.</p>
+
+  <p class="reveal-kid">This is the question every good historian would ask: okay, Rome is gone — but doesn't someone <em>else</em> become the next Rome? Let's look at the candidates:</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🏛️ Macedon — The Ghost of Alexander <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Alexander the Great had already proved that a Greek army could conquer everything from Egypt to India in just ten years. Without Rome absorbing Greece, Greek military culture stays dangerous. A new Alexander turning west instead of east? Totally possible. But Greek empires had a problem: they were brilliant at conquering but terrible at <em>keeping</em> what they conquered. Alexander's empire fell apart the moment he died. A Greek challenge to Carthage would be a lightning strike — dazzling but unsustainable.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🏺 Egypt — The Real Rival <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Ptolemaic Egypt is probably Carthage's most serious competitor. They controlled Egypt's grain (whoever feeds the cities has power over everyone), they had the biggest navy in the eastern Mediterranean, they held Alexandria (the world's intellectual capital), and they controlled the trade routes to India through the Red Sea. But here's the thing: the Ptolemies never had imperial ambitions like Rome did. They wanted to hold Egypt and protect their trade, not conquer the world. So Egypt would be a commercial rival — trade wars, grain embargoes, proxy conflicts over Sicily — but not an enemy trying to burn Carthage to the ground. That's exactly what makes Rome unique.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🗡️ The Gauls? Nope. <span class="arrow">›</span></div>
+    <div class="fun-fact-body">You might think the Celtic tribes of Europe (the Gauls) could unite and challenge Carthage — after all, they sacked Rome in 390 BCE! But here's what most people miss: Gallic military coalitions only formed <em>because</em> Rome was conquering them. Vercingetorix united the tribes in 52 BCE specifically because Julius Caesar was invading. Without Roman aggression, Celtic tribes have no reason to stop being what they naturally were: dozens of independent groups trading, raiding, and feuding with each other. A Carthaginian trade ship pulling into a Gallic harbor? That's a welcome customer, not an invader. The Gauls are not a threat to Carthage. They're customers.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🤔 The Honest Answer <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Probably <strong>nobody</strong> becomes the next Rome — because Rome was genuinely one-of-a-kind. Think about what made Rome special: citizen-soldiers who were also farmers, a culture that absolutely <em>refused</em> to accept defeat (no other ancient state lost 70,000 soldiers in an afternoon and kept fighting!), and an incredible ability to turn conquered people into Romans within a generation. No other civilization had this combination. The Greeks were brilliant but fragile. The Persians were organized but defensive. The Celts were fierce but tribal. The alternate world probably faces lots of smaller challenges — a Macedonian invasion here, a Persian trade war there — but never a single enemy that threatens everything the way Rome did.</div>
+  </div>
+</section>
+
+<!-- THE HONEST TRUTH -->
+<section class="chapter" id="shadows">
+  <div class="chapter-header">
+    <span class="chapter-icon">⚖️</span>
+    <span class="chapter-number">Chapter 16</span>
+    <h2>The <em>Honest</em> Truth</h2>
+  </div>
+
+  <p class="big-idea reveal-kid">The alternate world isn't paradise. Carthage had real problems, and some bad things would still happen — just different bad things.</p>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">💰 Rule by the Rich <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Carthage was run by wealthy merchant families. Even Aristotle, who praised their constitution, noticed that rich people had way more power than everyone else. A world built on the Carthaginian model doesn't escape this problem — it just organizes it differently. Instead of kings and nobles controlling everything (like in medieval Europe), wealthy traders and bankers control everything. Sound familiar? That's because some version of this problem exists in every civilization, including ours.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">⛓️ Slavery Doesn't Just Disappear <span class="arrow">›</span></div>
+    <div class="fun-fact-body">The alternate world probably doesn't have the transatlantic slave trade (which required European colonialism and Christian theology). But slavery existed in <em>every</em> ancient civilization, including Carthage. The good news: a trade civilization needs skilled, educated workers — and you can't get good work from people you're forcing to work. So market forces push <em>against</em> slavery over time. Ancient philosophers like Seneca already argued that slaves were moral equals. Buddhist traditions rejected the whole idea of social hierarchy. The alternate world probably abolishes slavery earlier than ours — but it also probably develops new forms of unfair labor: debt traps, exploitative contracts, workers who are technically "free" but have no real choice. Every economic system finds ways to take advantage of vulnerable people. Honesty requires admitting that.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🏴 Trade Can Be Its Own Kind of Bully <span class="arrow">›</span></div>
+    <div class="fun-fact-body">You don't need an army to exploit people. A civilization that controls all the trade routes can set unfair prices, lock out competitors, and make smaller communities dependent on goods they can't produce themselves. Carthage already did some of this — their trade treaties included zones where nobody else was allowed to trade. That's not as violent as conquest, but it's still power being used over weaker people. The alternate world avoids colonialism but probably invents its own forms of economic bullying.</div>
+  </div>
+
+  <div class="fun-fact reveal-kid">
+    <div class="fun-fact-header">🔥 What Rome Gave Us <span class="arrow">›</span></div>
+    <div class="fun-fact-body">Here's something important: Rome wasn't <em>all</em> bad. Roman law — the idea that you're innocent until proven guilty, that laws should be written down, that everyone should be treated equally under the law — is the foundation of legal systems used by half the world today. Roman roads connected an entire continent. Roman political ideas directly inspired the American and French revolutions. The alternate world has to reinvent all of these things from scratch, and there's no guarantee it does as good a job. Losing Rome means losing real achievements, not just avoiding real harms.</div>
+  </div>
+
+  <p class="reveal-kid">The point of this story isn't that the alternate world would be better. It's that it would be <strong>different</strong> — with different strengths, different problems, and different forms of unfairness. The real lesson is that our world's specific problems weren't inevitable. They were the result of specific choices and specific accidents. And that means we can still choose differently going forward.</p>
 </section>
 
 <!-- TODAY -->
 <section class="chapter" id="today">
   <div class="chapter-header">
     <span class="chapter-icon">🌟</span>
-    <span class="chapter-number">Chapter 13</span>
+    <span class="chapter-number">Chapter 17</span>
     <h2>What Does It All <em>Mean?</em></h2>
   </div>
 
@@ -854,8 +1118,7 @@ footer .elephant { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
   </figure>
 
   <div class="kid-quote reveal-kid">
-    <p>"The deepest lesson of history is not that Carthage fell. It is that the civilization that defeated it wrote the history, burned its libraries — and taught us for two thousand years that this was civilization."</p>
-    <cite>From the full essay</cite>
+    <p>"History is not about what happened. It is about what <em>could</em> have happened — and what that teaches us about tomorrow."</p>
   </div>
 
   <p class="reveal-kid" style="text-align:center; margin-top: 2rem;">
